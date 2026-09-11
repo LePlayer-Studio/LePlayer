@@ -1,1 +1,74 @@
-<!DOCTYPE html><html lang='zh-CN'><head><meta charset='UTF-8'><title>LePlayer</title></head><body><img src='img/logo.png' width='120'><h1>LePlayer</h1><p>高保真 Windows 本地音乐播放器</p><p><a href='https://github.com/LePlayer-Studio/LePlayer/releases'>Download</a></p></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LePlayer — 你的音乐，只属于你</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:#0d1117; color:#e6edf3; line-height:1.6; }
+.container { max-width:860px; margin:0 auto; padding:40px 20px; }
+.hero { text-align:center; padding:40px 0; }
+.hero img { width:128px; }
+h1 { font-size:2.5em; margin:16px 0 8px; }
+.tagline { color:#8b949e; font-size:1.1em; margin-bottom:8px; }
+.subtitle { color:#58a6ff; margin-bottom:32px; }
+.features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin:32px 0; }
+.card { background:#161b22; border:1px solid #30363d; border-radius:12px; padding:20px; }
+.card h3 { color:#58a6ff; margin-bottom:8px; }
+.screenshots { margin:40px 0; }
+.screenshots img { width:100%; border-radius:12px; border:1px solid #30363d; margin:16px 0; }
+.download { text-align:center; margin:40px 0; }
+.btn { display:inline-block; background:#238636; color:#fff; padding:14px 32px; border-radius:8px; text-decoration:none; font-size:1.1em; font-weight:600; }
+.btn:hover { background:#2ea043; }
+.features-list { list-style:none; padding:0; }
+.features-list li { padding:6px 0; }
+.features-list li:before { content:"✓ "; color:#3fb950; font-weight:bold; }
+footer { text-align:center; color:#6e7681; margin-top:60px; padding-top:20px; border-top:1px solid #30363d; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="hero">
+<img src="img/logo.png" alt="LePlayer">
+<h1>LePlayer</h1>
+<p class="tagline">以前用流媒体，后来开始自己存歌。</p>
+<p class="subtitle">世界正在被算法趋同，我的喜欢拒绝同步。</p>
+</div>
+
+<div class="features">
+<div class="card">
+<h3>bit-perfect 输出</h3>
+<p>WASAPI 独占模式直通声卡，采样率自适应，源率直出零重采样损失</p>
+</div>
+<div class="card">
+<h3>Rust 原生引擎</h3>
+<p>原生音频底层 + 环形缓冲 + 欠载淡出保护，长时间播放稳定可靠</p>
+</div>
+<div class="card">
+<h3>Material 3 原生 UI</h3>
+<p>深浅主题、动态取色、桌面歌词、迷你播放器，Compose Desktop 原生渲染</p>
+</div>
+<div class="card">
+<h3>专业音频管线</h3>
+<p>高质量重采样、严格背压控制、解码与输出解耦</p>
+</div>
+</div>
+
+<div class="screenshots">
+<img src="img/dark-library.png" alt="LePlayer 主界面">
+<img src="img/dark-albums.png" alt="专辑视图">
+<img src="img/dark-smart.png" alt="智选引擎">
+</div>
+
+<div class="download">
+<a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">下载最新版本</a>
+<p style="color:#6e7681;margin-top:12px;">Windows x64 · 内置运行时 · 约 138 MB</p>
+</div>
+
+<footer>
+<p>LePlayer — 不打扰，不驯化，不占有。</p>
+</footer>
+</div>
+</body>
+</html>
