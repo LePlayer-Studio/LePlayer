@@ -13,7 +13,7 @@ Kotlin × Rust 双引擎 · WASAPI 独占 bit-perfect 输出 · 源率直出 · 
 
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue)
 ![macOS/Linux](https://img.shields.io/badge/macOS%20%2F%20Linux-Coming%20Soon-lightgrey)
-![Version](https://img.shields.io/badge/Version-v1.5.3-brightgreen)
+![Version](https://img.shields.io/badge/Version-v1.5.4-brightgreen)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
 
@@ -106,7 +106,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 **安装 / Install**
 
-1. 下载 `LePlayer-Setup-1.5.3.exe`
+1. 下载 `LePlayer-Setup-1.5.4.exe`
 2. 右键 → **以管理员身份运行**（标准用户会弹出 UAC）
 3. 跟随向导完成安装，首次启动会引导选择音乐文件夹
 
