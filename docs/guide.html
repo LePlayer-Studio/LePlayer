@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LePlayer 使用指南</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:#0d1117; color:#e6edf3; line-height:1.7; }
+.container { max-width:860px; margin:0 auto; padding:40px 20px; }
+.back { display:inline-block; color:#58a6ff; text-decoration:none; margin-bottom:24px; font-size:0.95em; }
+.back:hover { text-decoration:underline; }
+h1 { font-size:2em; margin-bottom:8px; }
+.subtitle { color:#8b949e; margin-bottom:32px; }
+h2 { color:#58a6ff; margin:40px 0 16px; font-size:1.4em; border-bottom:1px solid #30363d; padding-bottom:8px; }
+h3 { color:#e6edf3; margin:24px 0 10px; font-size:1.1em; }
+p, li { color:#c9d1d9; font-size:0.95em; }
+ul { padding-left:24px; margin:8px 0; }
+li { margin:4px 0; }
+.tip { background:#161b22; border-left:3px solid #58a6ff; padding:12px 16px; border-radius:0 8px 8px 0; margin:16px 0; }
+.tip strong { color:#58a6ff; }
+.warn { background:#161b22; border-left:3px solid #d29922; padding:12px 16px; border-radius:0 8px 8px 0; margin:16px 0; }
+.warn strong { color:#d29922; }
+.kbd { background:#21262d; border:1px solid #30363d; border-radius:4px; padding:2px 8px; font-size:0.9em; font-family:monospace; }
+table { width:100%; border-collapse:collapse; margin:16px 0; }
+th, td { border:1px solid #30363d; padding:10px 14px; text-align:left; font-size:0.92em; }
+th { background:#161b22; color:#58a6ff; }
+td { color:#c9d1d9; }
+.toc { background:#161b22; border:1px solid #30363d; border-radius:12px; padding:20px 24px; margin-bottom:32px; }
+.toc h3 { margin:0 0 10px; color:#58a6ff; }
+.toc ul { list-style:none; padding:0; columns:2; }
+.toc li { margin:3px 0; }
+.toc a { color:#c9d1d9; text-decoration:none; }
+.toc a:hover { color:#58a6ff; }
+.ver { color:#3fb950; font-weight:600; }
+footer { text-align:center; color:#6e7681; margin-top:60px; padding-top:20px; border-top:1px solid #30363d; font-size:0.9em; }
+@media (max-width:640px) { .toc ul { columns:1; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back" href="index.html">← 返回主页</a>
+<h1>LePlayer 使用指南</h1>
+<p class="subtitle">从安装到进阶，一次讲清所有功能。</p>
+
+<div class="toc">
+<h3>目录</h3>
+<ul>
+<li><a href="#install">安装与首次启动</a></li>
+<li><a href="#library">音乐库管理</a></li>
+<li><a href="#playback">播放控制</a></li>
+<li><a href="#audio">音频输出</a></li>
+<li><a href="#lyrics">桌面歌词</a></li>
+<li><a href="#mini">迷你模式</a></li>
+<li><a href="#playlist">歌单管理</a></li>
+<li><a href="#theme">主题与外观</a></li>
+<li><a href="#hotkey">全局快捷键</a></li>
+<li><a href="#tray">系统托盘</a></li>
+<li><a href="#settings">设置详解</a></li>
+<li><a href="#tips">进阶技巧</a></li>
+<li><a href="#faq">常见问题</a></li>
+</ul>
+</div>
+
+<h2 id="install">一、安装与首次启动</h2>
+
+<h3>系统要求</h3>
+<ul>
+<li>Windows 10 1809 或 Windows 11（x64）</li>
+<li>内存 4 GB 及以上</li>
+<li>无需预装 Java 或任何运行环境</li>
+</ul>
+
+<h3>安装步骤</h3>
+<ol>
+<li>从 <a href="https://github.com/LePlayer-Studio/LePlayer/releases/latest" style="color:#58a6ff">Releases 页面</a> 下载 <code>LePlayer-Setup.exe</code></li>
+<li>右键安装包 → <strong>以管理员身份运行</strong>（安装到 Program Files 需要权限）</li>
+<li>选择安装路径，跟随向导完成</li>
+<li>首次启动会引导你添加音乐文件夹</li>
+</ol>
+
+<div class="tip"><strong>升级提示：</strong>直接运行新版安装包覆盖安装即可，音乐库、设置、歌单全部保留。</div>
+
+<h3>单实例保护</h3>
+<p>LePlayer 同时只能运行一个实例。如果已有程序在运行，再次启动会直接退出（不会弹出错误窗口）。</p>
+
+<h2 id="library">二、音乐库管理</h2>
+
+<h3>添加音乐文件夹</h3>
+<ul>
+<li>进入 <strong>设置 → 音乐文件夹</strong>，点击"添加文件夹"</li>
+<li>选择存放音乐的目录，支持多级子文件夹递归扫描</li>
+<li>添加后自动开始扫描，进度可见</li>
+</ul>
+
+<h3>支持格式</h3>
+<p>MP3 / FLAC / WAV / AAC / OGG / OPUS / M4A / WMA 等常见格式均支持。</p>
+
+<h3>增量扫描</h3>
+<ul>
+<li>扫描基于文件修改时间和大小，未变化的文件不会重复解析</li>
+<li>新增文件只需重新扫描新增部分，万级曲库也能秒级完成</li>
+<li>在设置中可手动触发"重新扫描"</li>
+</ul>
+
+<h3>文件去重</h3>
+<p>LePlayer 会自动识别内容相同的文件（基于内容哈希），重复文件不会重复入库。</p>
+
+<h3>元数据</h3>
+<ul>
+<li>自动读取歌曲标签（标题、艺术家、专辑、封面、曲风）</li>
+<li>文件名方向自动判断：自动识别"歌手-歌名"还是"歌名-歌手"格式</li>
+<li>自动清理标签中的脏值（如艺术家字段写着"日语""纯音乐"等）</li>
+<li>在线元数据补全静默执行，不打断你的操作</li>
+</ul>
+
+<h2 id="playback">三、播放控制</h2>
+
+<h3>基础操作</h3>
+<table>
+<tr><th>操作</th><th>方式</th></tr>
+<tr><td>播放/暂停</td><td>空格键，或点击播放栏按钮</td></tr>
+<tr><td>上一首/下一首</td><td>播放栏按钮，或 Ctrl + ← / →</td></tr>
+<tr><td>进度跳转</td><td>拖动播放进度条</td></tr>
+<tr><td>音量</td><td>播放栏音量滑块，或 Ctrl + ↑ / ↓</td></tr>
+<tr><td>双击播放</td><td>歌曲列表中双击任意歌曲开始播放</td></tr>
+<tr><td>右键菜单</td><td>播放 / 收藏 / 添加到歌单 / 从列表删除 / 彻底删除源文件</td></tr>
+</table>
+
+<h3>播放模式</h3>
+<ul>
+<li><strong>顺序播放</strong>：按列表顺序播放，播完停止</li>
+<li><strong>循环列表</strong>：播完最后一首回到第一首</li>
+<li><strong>单曲循环</strong>：重复当前歌曲</li>
+<li><strong>随机播放</strong>：随机打乱播放顺序</li>
+</ul>
+
+<h2 id="audio">四、音频输出</h2>
+
+<h3>两种输出模式</h3>
+<table>
+<tr><th>模式</th><th>说明</th><th>适用场景</th></tr>
+<tr><td>共享模式</td><td>系统混音，可与其他应用同时发声</td><td>日常听歌、边工作边听</td></tr>
+<tr><td>独占模式</td><td>直通声卡，bit-perfect，其他应用静音</td><td>专注聆听、高保真回放</td></tr>
+</table>
+
+<h3>采样率自适应</h3>
+<ul>
+<li>开启后，LePlayer 会自动检测音频文件的采样率</li>
+<li>如果文件采样率与设备原生采样率一致，跳过重采样，零音质损失</li>
+<li>不一致时使用高质量重采样算法，防过冲削波</li>
+</ul>
+
+<div class="warn"><strong>注意：</strong>独占模式下音量由系统音量控制（应用内音量滑块无效），这是 WASAPI 独占模式的正常行为。</div>
+
+<h2 id="lyrics">五、桌面歌词</h2>
+
+<h3>开启歌词</h3>
+<ul>
+<li>播放时按 <span class="kbd">Ctrl + L</span>，或右键托盘图标 → 显示桌面歌词</li>
+<li>自动读取内嵌歌词和同名 .lrc 文件</li>
+<li>支持逐字卡拉OK高亮，逐行跟随播放进度</li>
+</ul>
+
+<h3>歌词窗口操作</h3>
+<table>
+<tr><th>操作</th><th>效果</th></tr>
+<tr><td>拖动窗口</td><td>自由移动歌词位置</td></tr>
+<tr><td>点击小锁图标</td><td>锁定位置，锁定后鼠标点击穿透到下层窗口</td></tr>
+<tr><td>再次点击锁图标</td><td>解锁，可以拖动调整位置</td></tr>
+<tr><td>点击歌词文字</td><td>解锁后可点击切歌</td></tr>
+</table>
+
+<div class="tip"><strong>锁定穿透：</strong>锁定歌词后，歌词窗口不会再挡住你打字或点击其他软件。解锁后恢复正常交互。锁图标默认半透明，鼠标悬停时高亮显示。</div>
+
+<h2 id="mini">六、迷你模式</h2>
+<ul>
+<li>点击主窗口右上角的迷你模式按钮，切换到紧凑小播放器</li>
+<li>只保留封面、歌曲名和播放控制按钮</li>
+<li>再点一次恢复完整窗口</li>
+</ul>
+
+<h2 id="playlist">七、歌单管理</h2>
+
+<h3>创建歌单</h3>
+<ul>
+<li>左侧边栏点击"+"按钮，输入歌单名即可创建</li>
+<li>在"添加到歌单"对话框中也可输入新歌单名</li>
+<li>歌单自动保存到数据库，重启不丢失</li>
+</ul>
+
+<h3>添加歌曲</h3>
+<ul>
+<li>右键歌曲 → 添加到歌单 → 选择目标歌单</li>
+<li>支持批量选择（Ctrl/Shift + 点击）后批量添加</li>
+<li>可将整个文件夹、专辑、艺术家批量加入歌单</li>
+</ul>
+
+<h3>整理歌单</h3>
+<ul>
+<li>歌单内支持拖动排序</li>
+<li>右键歌单可重命名、删除</li>
+<li>从歌单删除不会删除源文件</li>
+</ul>
+
+<h2 id="theme">八、主题与外观</h2>
+
+<h3>深浅主题</h3>
+<ul>
+<li>自动跟随系统主题（Windows 明暗切换自动响应）</li>
+<li>可在设置中手动锁定浅色或深色</li>
+<li>动态取色：根据专辑封面自动调整界面配色</li>
+</ul>
+
+<h3>任务栏与托盘图标</h3>
+<ul>
+<li>任务栏图标随主题深浅自动切换</li>
+<li>系统托盘图标同样跟随主题</li>
+<li>关闭主窗口时最小化到托盘（可在设置中改为直接退出）</li>
+</ul>
+
+<h2 id="hotkey">九、全局快捷键</h2>
+
+<table>
+<tr><th>快捷键</th><th>功能</th></tr>
+<tr><td><span class="kbd">Ctrl + Alt + ←</span></td><td>上一首</td></tr>
+<tr><td><span class="kbd">Ctrl + Alt + →</span></td><td>下一首</td></tr>
+<tr><td><span class="kbd">Ctrl + Alt + 空格</span></td><td>播放/暂停</td></tr>
+<tr><td><span class="kbd">媒体键</span></td><td>播放/暂停、上一首、下一首（键盘上的多媒体按键）</td></tr>
+</table>
+
+<div class="tip"><strong>全局快捷键</strong>在任何应用中都生效，即使 LePlayer 在后台也能控制播放。</div>
+
+<h2 id="tray">十、系统托盘</h2>
+<ul>
+<li>关闭主窗口默认最小化到托盘，不退出程序</li>
+<li>托盘右键菜单：显示主窗口 / 显示桌面歌词 / 播放暂停 / 下一首 / 退出</li>
+<li>首次关闭窗口会询问"最小化到托盘还是直接退出"，勾选"不再询问"后记住你的选择</li>
+</ul>
+
+<h2 id="settings">十一、设置详解</h2>
+
+<h3>音乐库</h3>
+<table>
+<tr><th>选项</th><th>说明</th></tr>
+<tr><td>音乐文件夹</td><td>管理扫描目录，可添加多个</td></tr>
+<tr><td>重新扫描</td><td>手动触发全库重新扫描</td></tr>
+<tr><td>在线元数据补全</td><td>静默补全缺失的封面和曲目信息，不影响播放</td></tr>
+</table>
+
+<h3>播放</h3>
+<table>
+<tr><th>选项</th><th>说明</th></tr>
+<tr><td>WASAPI 独占模式</td><td>开启 bit-perfect 输出，推荐 HiFi 用户</td></tr>
+<tr><td>采样率自适应</td><td>自动匹配设备采样率，源率直出</td></tr>
+<tr><td>退出时播放完成后关闭</td><td>关闭时等待当前歌曲播完再退出</td></tr>
+</table>
+
+<h3>界面</h3>
+<table>
+<tr><th>选项</th><th>说明</th></tr>
+<tr><td>主题</td><td>浅色 / 深色 / 跟随系统</td></tr>
+<tr><td>动态取色</td><td>根据专辑封面自动配色</td></tr>
+<tr><td>桌面歌词</td><td>默认显示/隐藏</td></tr>
+<tr><td>最小化到托盘</td><td>关闭主窗口时的行为</td></tr>
+</table>
+
+<h3>关闭行为</h3>
+<p>首次关闭主窗口时会弹出选择：最小化到托盘 / 直接退出。勾选"不再询问"后，后续按你的选择执行。所有设置在退出时自动保存，重启后不丢失。</p>
+
+<h2 id="tips">十二、进阶技巧</h2>
+
+<h3>删除文件保护</h3>
+<ul>
+<li>右键歌曲 → "彻底删除源文件"会删除磁盘上的文件</li>
+<li>首次执行会弹出确认提示，勾选"不再询问"后记住选择</li>
+<li>从列表删除只移除数据库记录，不删文件</li>
+</ul>
+
+<h3>智选引擎</h3>
+<ul>
+<li>基于你的播放记录和跳过行为自动推荐相似歌曲</li>
+<li>越听越准，不需要手动设置偏好</li>
+<li>支持生成分享卡片</li>
+</ul>
+
+<h3>离线使用</h3>
+<ul>
+<li>所有音乐库数据本地存储，不依赖云服务</li>
+<li>封面缓存本地保存，离线可看</li>
+<li>在线补全仅在需要时联网，不收集使用数据</li>
+</ul>
+
+<h2 id="faq">十三、常见问题</h2>
+
+<h3>Q: 独占模式下音量调节无效？</h3>
+<p>A: WASAPI 独占模式下，应用内音量滑块失效，音量由系统音量控制。这是正常行为，切回共享模式即可恢复应用内音量控制。</p>
+
+<h3>Q: 全局快捷键没反应？</h3>
+<p>A: 请确认没有其他软件（如某些输入法、截图工具）占用了相同的全局快捷键。LePlayer 的快捷键是 Ctrl+Alt+方向键/空格，通常不会冲突。</p>
+
+<h3>Q: 桌面歌词挡住了打字？</h3>
+<p>A: 点击歌词窗口左上角的小锁图标锁定位置，锁定后鼠标点击穿透到下层窗口，不影响你打字。再次点击解锁。</p>
+
+<h3>Q: 扫描很慢？</h3>
+<p>A: 首次扫描需要读取所有文件标签，速度取决于磁盘速度。后续扫描是增量的，只处理新增和修改过的文件，会快很多。</p>
+
+<h3>Q: 设置重启后不生效？</h3>
+<p>A: v1.5.4 已修复此问题。所有设置在退出时自动写入磁盘。如果仍有问题，请通过 Issues 反馈。</p>
+
+<h3>Q: 支持哪些格式？</h3>
+<p>A: MP3 / FLAC / WAV / AAC / OGG / OPUS / M4A / WMA 等主流格式。AAC 和 ALAC 无损也支持。</p>
+
+<footer>
+<p>LePlayer — 不打扰，不驯化，不占有。你的音乐，只属于你。</p>
+<p><a href="index.html" style="color:#58a6ff;">返回主页</a> · <a href="https://github.com/LePlayer-Studio/LePlayer/releases/latest" style="color:#58a6ff;">下载最新版</a></p>
+</footer>
+
+</div>
+</body>
+</html>
