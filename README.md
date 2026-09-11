@@ -13,7 +13,7 @@ Kotlin × Rust 双引擎 · WASAPI 独占 bit-perfect 输出 · 源率直出 · 
 
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue)
 ![macOS/Linux](https://img.shields.io/badge/macOS%20%2F%20Linux-Coming%20Soon-lightgrey)
-![Version](https://img.shields.io/badge/Version-v1.5.2-brightgreen)
+![Version](https://img.shields.io/badge/Version-v1.5.3-brightgreen)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
 
@@ -100,19 +100,19 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 - **安装包**：[`LePlayer-Setup.exe`](https://github.com/LePlayer-Studio/LePlayer/releases/latest/download/LePlayer-Setup.exe)
   （最新版自动指向，无需手动更新）
-- **当前版本**：v1.5.2 · 约 138 MB
+- **当前版本**：v1.5.3 · 约 138 MB
 - **SHA-256**：`61d8969985ca15be48298189666b7476ff0b903e93084f60e6f73e46c26cae69`
 - **平台**：Windows x64（内置运行时，无需预装 Java 环境）
 
 **安装 / Install**
 
-1. 下载 `LePlayer-Setup-1.5.2.exe`
+1. 下载 `LePlayer-Setup-1.5.3.exe`
 2. 右键 → **以管理员身份运行**（标准用户会弹出 UAC）
 3. 跟随向导完成安装，首次启动会引导选择音乐文件夹
 
 升级安装会保留原有音乐库与设置。 / Upgrading keeps your existing library and settings.
 
-## 🆕 本次更新 v1.5.2 / What's New
+## 🆕 本次更新 v1.5.3 / What's New
 
 - **任务栏与系统托盘图标现在跟随深浅主题切换**（此前界面切换后图标仍停留在旧主题）
   - *Taskbar & tray icons now follow the light/dark theme*
@@ -121,7 +121,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 ## 🗺️ Roadmap
 
-- [x] v1.5.2 — 当前版本：采样率自适应 · 源率直出 · 智选引擎 · 桌面歌词
+- [x] v1.5.3 — 当前版本：采样率自适应 · 源率直出 · 智选引擎 · 桌面歌词
 - [ ] EQ / DSP 音效链完善
 - [ ] macOS / Linux 打包发布
 - [ ] 歌词逐行滚动与翻译
