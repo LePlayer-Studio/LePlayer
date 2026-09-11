@@ -7,28 +7,34 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Segoe UI',system-ui,sans-serif; background:#0d1117; color:#e6edf3; line-height:1.6; }
-.container { max-width:860px; margin:0 auto; padding:40px 20px; }
-.hero { text-align:center; padding:40px 0; }
-.hero img { width:128px; }
-h1 { font-size:2.5em; margin:16px 0 8px; }
-.tagline { color:#8b949e; font-size:1.1em; margin-bottom:8px; }
-.subtitle { color:#58a6ff; margin-bottom:32px; }
-.features { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin:32px 0; }
+.container { max-width:900px; margin:0 auto; padding:40px 20px; }
+.hero { text-align:center; padding:40px 0 20px; }
+.hero img { width:120px; }
+h1 { font-size:2.4em; margin:16px 0 8px; letter-spacing:1px; }
+.tagline { color:#8b949e; font-size:1.1em; }
+.subtitle { color:#58a6ff; margin-top:8px; font-size:0.95em; }
+.features { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin:36px 0; }
 .card { background:#161b22; border:1px solid #30363d; border-radius:12px; padding:20px; }
-.card h3 { color:#58a6ff; margin-bottom:8px; }
-.screenshots { margin:40px 0; }
-.screenshots img { width:100%; border-radius:12px; border:1px solid #30363d; margin:16px 0; }
-.download { text-align:center; margin:40px 0; }
-.btn { display:inline-block; background:#238636; color:#fff; padding:14px 32px; border-radius:8px; text-decoration:none; font-size:1.1em; font-weight:600; }
+.card h3 { color:#58a6ff; margin-bottom:6px; font-size:1.05em; }
+.card p { color:#8b949e; font-size:0.92em; }
+h2 { text-align:center; margin:48px 0 8px; font-size:1.6em; }
+.gallery-sub { text-align:center; color:#8b949e; margin-bottom:24px; font-size:0.95em; }
+.gallery { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.g-item { border-radius:12px; overflow:hidden; border:1px solid #30363d; background:#161b22; }
+.g-item img { width:100%; display:block; }
+.g-item .cap { padding:10px 14px; font-size:0.88em; color:#8b949e; border-top:1px solid #30363d; }
+.g-item .cap strong { color:#e6edf3; }
+.download { text-align:center; margin:48px 0; }
+.btn { display:inline-block; background:#238636; color:#fff; padding:14px 36px; border-radius:8px; text-decoration:none; font-size:1.1em; font-weight:600; }
 .btn:hover { background:#2ea043; }
-.features-list { list-style:none; padding:0; }
-.features-list li { padding:6px 0; }
-.features-list li:before { content:"✓ "; color:#3fb950; font-weight:bold; }
-footer { text-align:center; color:#6e7681; margin-top:60px; padding-top:20px; border-top:1px solid #30363d; }
+.meta { color:#6e7681; margin-top:12px; font-size:0.9em; }
+footer { text-align:center; color:#6e7681; margin-top:60px; padding-top:20px; border-top:1px solid #30363d; font-size:0.9em; }
+@media (max-width:640px) { .gallery { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
 <div class="container">
+
 <div class="hero">
 <img src="img/logo.png" alt="LePlayer">
 <h1>LePlayer</h1>
@@ -37,38 +43,50 @@ footer { text-align:center; color:#6e7681; margin-top:60px; padding-top:20px; bo
 </div>
 
 <div class="features">
-<div class="card">
-<h3>bit-perfect 输出</h3>
-<p>WASAPI 独占模式直通声卡，采样率自适应，源率直出零重采样损失</p>
-</div>
-<div class="card">
-<h3>Rust 原生引擎</h3>
-<p>原生音频底层 + 环形缓冲 + 欠载淡出保护，长时间播放稳定可靠</p>
-</div>
-<div class="card">
-<h3>Material 3 原生 UI</h3>
-<p>深浅主题、动态取色、桌面歌词、迷你播放器，Compose Desktop 原生渲染</p>
-</div>
-<div class="card">
-<h3>专业音频管线</h3>
-<p>高质量重采样、严格背压控制、解码与输出解耦</p>
-</div>
+<div class="card"><h3>bit-perfect 输出</h3><p>WASAPI 独占模式直通声卡，采样率自适应，源率直出零重采样损失</p></div>
+<div class="card"><h3>Rust 原生引擎</h3><p>原生音频底层 + 环形缓冲 + 欠载淡出保护，长时间播放稳定可靠</p></div>
+<div class="card"><h3>Material 3 原生 UI</h3><p>深浅主题、动态取色、桌面歌词、迷你播放器，Compose Desktop 原生渲染</p></div>
+<div class="card"><h3>专业音频管线</h3><p>高质量重采样、严格背压控制、解码与输出解耦</p></div>
 </div>
 
-<div class="screenshots">
-<img src="img/dark-library.png" alt="LePlayer 主界面">
+<h2>界面画廊</h2>
+<p class="gallery-sub">深浅双主题 · 多种视图</p>
+<div class="gallery">
+<div class="g-item">
+<img src="img/dark-library.png" alt="曲库视图（深色）">
+<div class="cap"><strong>曲库</strong> — 完整歌曲列表，双击播放，右键管理</div>
+</div>
+<div class="g-item">
+<img src="img/light-library.png" alt="曲库视图（浅色）">
+<div class="cap"><strong>浅色主题</strong> — 自动跟随系统，动态取色</div>
+</div>
+<div class="g-item">
 <img src="img/dark-albums.png" alt="专辑视图">
+<div class="cap"><strong>专辑墙</strong> — 按专辑艺术家与专辑名分组</div>
+</div>
+<div class="g-item">
+<img src="img/light-albums.png" alt="专辑视图（浅色）">
+<div class="cap"><strong>专辑封面</strong> — 本地封面缓存，离线可用</div>
+</div>
+<div class="g-item">
 <img src="img/dark-smart.png" alt="智选引擎">
+<div class="cap"><strong>智选引擎</strong> — 基于播放统计的智能推荐</div>
+</div>
+<div class="g-item">
+<img src="img/light-smart.png" alt="智选引擎（浅色）">
+<div class="cap"><strong>分享卡片</strong> — 一键生成好听记录</div>
+</div>
 </div>
 
 <div class="download">
 <a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">下载最新版本</a>
-<p style="color:#6e7681;margin-top:12px;">Windows x64 · 内置运行时 · 约 138 MB</p>
+<p class="meta">Windows x64 · 内置运行时 · 无需预装 Java · 约 138 MB</p>
 </div>
 
 <footer>
-<p>LePlayer — 不打扰，不驯化，不占有。</p>
+<p>LePlayer — 不打扰，不驯化，不占有。你的音乐，只属于你。</p>
 </footer>
+
 </div>
 </body>
 </html>
