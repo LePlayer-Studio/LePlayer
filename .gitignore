@@ -1,0 +1,120 @@
+# ============================================================
+# LePlayer .gitignore
+# ============================================================
+
+# ---------- Build outputs ----------
+**/build/
+**/out/
+**/target/
+**/dist/
+**/.gradle/
+**/.kotlin/
+
+# ---------- IDE ----------
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.swp
+*.swo
+*~
+
+# ---------- OS ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Logs ----------
+**/dev-logs/
+**/*.log
+**/logs/
+
+# ---------- Temp ----------
+**/.tmp/
+**/tmp/
+**/temp/
+*.tmp
+*.bak
+
+# ---------- Installer outputs (keep source, exclude binaries) ----------
+**/build/installer/*.exe
+**/build/installer/*.nsi
+!installer_backup/*.nsi
+
+# ---------- Native build (keep source, exclude binaries) ----------
+rust/le-audio/target/
+
+# ---------- Gradle wrapper (keep if using wrapper) ----------
+!gradle/wrapper/gradle-wrapper.jar
+
+# ---------- Local config ----------
+local.properties
+*.local
+
+# ---------- Cache ----------
+**/.cache/
+**/caches/
+
+# ---------- Compose Desktop ----------
+**/compose/
+**/processedResources/
+
+# ---------- Test outputs ----------
+**/test-results/
+**/test-reports/
+
+# ---------- NSIS ----------
+*.exe
+*.7z
+*.zip
+!installer_backup/*.nsi
+
+# ---------- GUI test screenshots (keep scripts only) ----------
+gui_tests/*.png
+gui_tests/*.jpg
+gui_tests/*.jpeg
+gui_tests/*.bmp
+
+# ---------- Build logs ----------
+build_release_log.txt
+build_dist.log
+
+# ---------- Shortcuts ----------
+*.lnk
+
+# ---------- Debug output / scratch (local only) ----------
+app_stdout.txt
+app_stderr.txt
+app_stdout2.txt
+app_stderr2.txt
+stdout.txt
+stderr.txt
+stdout2.txt
+stderr2.txt
+leplayer_crash.log
+build_*_log.txt
+build_*.log
+
+# ---------- Local scratch dirs ----------
+reports/
+hotfix-*/
+.tmp/
+installer_backup/
+
+# ---------- Release & promo artifacts (local only, never push) ----------
+# GitHub-only README / 发布脚本 / 推广物料 / 一次性工具——保持本地可见
+# 但不入库、不上传。cc57834 已经把"Release 附件/内部文档不入库"立成约定，
+# 这里补齐被遗漏的几类文件，让 git status 干净。
+README-github.md
+RELEASE_GUIDE.md
+release-automation/
+update-docs.ps1
+update-docs2.ps1
+upload-screenshots.ps1
+# 仓库根的 0 字节残留文件（可能是某次重定向误生成）；先忽略不追踪，
+# 必要时可直接 `rm /f/LePlayer/Desktop` 删除。
+/Desktop
+
+# Local Navidrome test server (not for release)
+navidrome/
