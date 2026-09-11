@@ -10,186 +10,746 @@
 <meta property="og:image" content="https://leplayer-studio.github.io/LePlayer/img/logo.png">
 <meta property="og:type" content="website">
 <link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=JetBrains+Mono:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:#0d1117; color:#e6edf3; line-height:1.6; }
-.container { max-width:960px; margin:0 auto; padding:40px 20px; }
 
-/* Hero */
-.hero { text-align:center; padding:60px 0 32px; }
-.hero img { width:120px; height:auto; }
-h1 { font-size:2.6em; margin:18px 0 10px; letter-spacing:1px; font-weight:700; }
-.tagline { color:#8b949e; font-size:1.15em; }
-.subtitle { color:#58a6ff; margin-top:10px; font-size:0.95em; }
+:root {
+--bg: #050b08;
+--bg-2: #08120d;
+--surface: rgba(10,20,15,.55);
+--surface-2: rgba(14,26,20,.75);
+--border: rgba(168,255,207,.055);
+--border-hi: rgba(168,255,207,.22);
+--text: #eaf4ee;
+--text-dim: #8ba797;
+--text-mute: #55705f;
+--accent: #6ee79b;
+--accent-2: #3ddc84;
+--hifi: #b8ffd6;
+--ease: cubic-bezier(.2,.7,.2,1);
+}
 
-/* Features */
-.features { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin:40px 0; }
-.card { background:#161b22; border:1px solid #30363d; border-radius:14px; padding:22px; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-.card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,.35); border-color:#58a6ff44; }
-.card h3 { color:#58a6ff; margin-bottom:8px; font-size:1.08em; font-weight:600; }
-.card p { color:#8b949e; font-size:0.93em; line-height:1.55; }
+body {
+font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+color:var(--text);
+line-height:1.65;
+background:
+radial-gradient(ellipse 100% 60% at 50% -20%, rgba(110,231,155,.10), transparent 70%),
+radial-gradient(ellipse 50% 40% at 85% 105%, rgba(61,220,132,.06), transparent 70%),
+radial-gradient(ellipse 40% 30% at 10% 80%, rgba(110,231,155,.03), transparent 70%),
+linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+background-attachment:fixed;
+position:relative;
+overflow-x:hidden;
+-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility;
+}
 
-/* Section titles */
-h2 { text-align:center; margin:56px 0 10px; font-size:1.7em; font-weight:600; }
-.gallery-sub { text-align:center; color:#8b949e; margin-bottom:28px; font-size:0.95em; }
+/* 极细噪点，增加质感 */
+body::before {
+content:"";
+position:fixed; inset:0;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+opacity:.025;
+pointer-events:none;
+z-index:0;
+mix-blend-mode:overlay;
+}
 
-/* Gallery */
-.gallery { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-.g-item { border-radius:14px; overflow:hidden; border:1px solid #30363d; background:#161b22; transition:transform .25s ease, box-shadow .25s ease; }
-.g-item:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.3); }
+.container { max-width:920px; margin:0 auto; padding:32px 24px; position:relative; z-index:1; }
+
+/* ---------- 顶部状态栏 ---------- */
+.statusbar {
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 0 32px;
+font-family:'JetBrains Mono', ui-monospace, monospace;
+font-size:.7em;
+letter-spacing:.18em;
+text-transform:uppercase;
+color:var(--text-mute);
+border-bottom:1px solid var(--border);
+margin-bottom:64px;
+}
+.statusbar .left,
+.statusbar .right { display:flex; align-items:center; gap:18px; }
+.statusbar .dot {
+width:5px; height:5px; border-radius:50%;
+background:var(--accent);
+box-shadow:0 0 8px var(--accent);
+animation:pulse 2.4s var(--ease) infinite;
+}
+@keyframes pulse { 0%,100%{ opacity:.6; } 50%{ opacity:1; } }
+.statusbar .hi { color:var(--hifi); }
+
+/* ---------- Hero ---------- */
+.hero { text-align:center; padding:24px 0 48px; position:relative; }
+
+.hero img {
+width:92px; height:auto;
+filter:drop-shadow(0 0 36px rgba(110,231,155,.35));
+animation:breathe 7s var(--ease) infinite;
+}
+@keyframes breathe {
+0%,100% { transform:scale(1); filter:drop-shadow(0 0 36px rgba(110,231,155,.35)); }
+50% { transform:scale(1.025); filter:drop-shadow(0 0 48px rgba(110,231,155,.5)); }
+}
+
+h1 {
+font-size:3.6em;
+font-weight:100;
+letter-spacing:.32em;
+margin:26px 0 16px;
+color:#ffffff;
+text-indent:.32em;
+text-shadow:0 0 60px rgba(110,231,155,.15);
+}
+
+.tagline {
+color:var(--text-dim);
+font-size:1.02em;
+font-weight:200;
+letter-spacing:.06em;
+}
+.subtitle {
+color:var(--accent);
+margin-top:12px;
+font-size:.86em;
+font-weight:300;
+letter-spacing:.14em;
+opacity:.85;
+}
+
+/* 波形 */
+#wave {
+display:block;
+width:100%;
+max-width:620px;
+height:72px;
+margin:36px auto 0;
+opacity:.85;
+}
+
+/* 规格行 */
+.specs {
+font-family:'JetBrains Mono', ui-monospace, monospace;
+color:var(--text-mute);
+font-size:.72em;
+letter-spacing:.22em;
+margin-top:18px;
+text-transform:uppercase;
+font-weight:300;
+}
+.specs span { color:var(--hifi); }
+.specs .sep { color:rgba(168,255,207,.2); margin:0 8px; }
+
+/* ---------- Features ---------- */
+.features {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:14px;
+margin:56px 0;
+}
+
+.card {
+background:linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid var(--border);
+border-radius:16px;
+padding:26px 24px;
+position:relative;
+overflow:hidden;
+box-shadow:
+0 1px 0 rgba(168,255,207,.04) inset,
+0 20px 40px -20px rgba(0,0,0,.6);
+transition:border-color .5s var(--ease), transform .5s var(--ease), box-shadow .5s var(--ease);
+opacity:0; transform:translateY(24px);
+}
+.card.in { opacity:1; transform:none; }
+
+/* 顶部微光 */
+.card::before {
+content:"";
+position:absolute;
+top:0; left:20%; right:20%;
+height:1px;
+background:linear-gradient(90deg, transparent, rgba(168,255,207,.35), transparent);
+opacity:.6;
+transition:opacity .5s var(--ease);
+}
+.card:hover {
+transform:translateY(-3px);
+border-color:var(--border-hi);
+box-shadow:
+0 1px 0 rgba(168,255,207,.08) inset,
+0 30px 60px -20px rgba(0,0,0,.7),
+0 0 40px -10px rgba(110,231,155,.15);
+}
+.card:hover::before { opacity:1; }
+
+/* 迷你 EQ */
+.mini-eq { display:flex; gap:3px; align-items:flex-end; height:20px; margin-bottom:16px; }
+.mini-eq i {
+width:2px; border-radius:2px;
+background:linear-gradient(180deg, var(--hifi), var(--accent-2));
+transform-origin:bottom;
+animation:eq 2.4s var(--ease) infinite;
+opacity:.9;
+}
+.mini-eq i:nth-child(1){ height:40%; animation-delay:0s; }
+.mini-eq i:nth-child(2){ height:80%; animation-delay:.2s; }
+.mini-eq i:nth-child(3){ height:55%; animation-delay:.4s; }
+.mini-eq i:nth-child(4){ height:95%; animation-delay:.6s; }
+.mini-eq i:nth-child(5){ height:35%; animation-delay:.8s; }
+@keyframes eq { 0%,100%{ transform:scaleY(.3);} 50%{ transform:scaleY(1);} }
+
+.card h3 {
+color:var(--text);
+margin-bottom:8px;
+font-size:1em;
+font-weight:400;
+letter-spacing:.03em;
+}
+.card h3 .tag {
+font-family:'JetBrains Mono', monospace;
+font-size:.62em;
+color:var(--hifi);
+border:1px solid rgba(168,255,207,.28);
+border-radius:3px;
+padding:2px 6px;
+margin-left:8px;
+vertical-align:middle;
+letter-spacing:.14em;
+font-weight:300;
+}
+.card p { color:var(--text-dim); font-size:.88em; line-height:1.65; font-weight:200; }
+
+/* ---------- Section titles ---------- */
+h2 {
+text-align:center;
+margin:80px 0 6px;
+font-size:1.35em;
+font-weight:200;
+letter-spacing:.18em;
+color:var(--text);
+}
+h2::after {
+content:"";
+display:block;
+width:24px; height:1px;
+background:linear-gradient(90deg, transparent, var(--accent), transparent);
+margin:16px auto 0;
+opacity:.6;
+}
+.gallery-sub {
+text-align:center;
+color:var(--text-mute);
+margin-bottom:36px;
+font-size:.78em;
+font-weight:300;
+letter-spacing:.18em;
+text-transform:uppercase;
+}
+
+/* ---------- Gallery ---------- */
+.gallery { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+
+.g-item {
+border-radius:16px;
+overflow:hidden;
+border:1px solid var(--border);
+background:var(--surface);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+box-shadow:0 20px 40px -20px rgba(0,0,0,.6);
+transition:transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease);
+opacity:0; transform:translateY(24px);
+position:relative;
+}
+.g-item.in { opacity:1; transform:none; }
+.g-item::before {
+content:"";
+position:absolute;
+top:0; left:20%; right:20%;
+height:1px;
+background:linear-gradient(90deg, transparent, rgba(168,255,207,.3), transparent);
+opacity:.5;
+z-index:2;
+pointer-events:none;
+}
+.g-item:hover {
+transform:translateY(-3px);
+border-color:var(--border-hi);
+box-shadow:
+0 30px 60px -20px rgba(0,0,0,.7),
+0 0 40px -10px rgba(110,231,155,.15);
+}
 .g-item img { width:100%; height:auto; display:block; }
-.g-item .cap { padding:12px 16px; font-size:0.88em; color:#8b949e; border-top:1px solid #30363d; }
-.g-item .cap strong { color:#e6edf3; font-weight:600; }
+.g-item .cap {
+padding:14px 18px;
+font-size:.82em;
+color:var(--text-dim);
+border-top:1px solid var(--border);
+font-weight:200;
+letter-spacing:.02em;
+}
+.g-item .cap strong { color:var(--text); font-weight:400; }
 
-/* Compact sections */
-.section { background:#161b22; border:1px solid #30363d; border-radius:14px; padding:28px; margin:24px 0; transition:border-color .25s ease; }
-.section:hover { border-color:#30363daa; }
-.section h3 { color:#58a6ff; margin-bottom:14px; font-size:1.15em; font-weight:600; }
+/* ---------- Section cards ---------- */
+.section {
+background:linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid var(--border);
+border-radius:16px;
+padding:30px;
+margin:24px 0;
+box-shadow:0 20px 40px -20px rgba(0,0,0,.6);
+transition:border-color .5s var(--ease);
+opacity:0; transform:translateY(24px);
+position:relative;
+}
+.section.in { opacity:1; transform:none; }
+.section::before {
+content:"";
+position:absolute;
+top:0; left:20%; right:20%;
+height:1px;
+background:linear-gradient(90deg, transparent, rgba(168,255,207,.3), transparent);
+opacity:.5;
+}
+.section:hover { border-color:var(--border-hi); }
+
+.section h3 {
+color:var(--text);
+margin-bottom:16px;
+font-size:1em;
+font-weight:400;
+letter-spacing:.04em;
+}
 .section ul { list-style:none; padding:0; }
-.section li { padding:6px 0; color:#c9d1d9; font-size:0.95em; }
-.section li:before { content:"• "; color:#58a6ff; }
-.section .ver { color:#3fb950; font-weight:600; }
-.section .date { color:#6e7681; font-size:0.85em; margin-left:8px; }
-
-/* Guide preview */
-.guide-preview { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px; }
-.guide-card { background:#0d1117; border:1px solid #21262d; border-radius:10px; padding:16px; }
-.guide-card h4 { color:#e6edf3; font-size:0.98em; margin-bottom:6px; font-weight:600; }
-.guide-card p { color:#8b949e; font-size:0.88em; line-height:1.5; }
-
-/* Link button */
-.link-btn { display:inline-block; color:#58a6ff; text-decoration:none; font-weight:600; font-size:0.95em; margin-top:12px; transition:color .2s ease; }
-.link-btn:hover { color:#79b8ff; text-decoration:underline; }
-
-/* Download */
-.download { text-align:center; margin:56px 0 48px; padding:40px 24px; background:#161b22; border:1px solid #30363d; border-radius:16px; }
-.btn { display:inline-block; background:#238636; color:#fff; padding:16px 40px; border-radius:10px; text-decoration:none; font-size:1.15em; font-weight:600; transition:background .2s ease, transform .2s ease, box-shadow .2s ease; }
-.btn:hover { background:#2ea043; transform:translateY(-2px); box-shadow:0 8px 24px rgba(35,134,54,.35); }
-.meta { color:#6e7681; margin-top:16px; font-size:0.92em; line-height:1.6; }
-.meta a { color:#58a6ff; text-decoration:none; transition:color .2s ease; }
-.meta a:hover { color:#79b8ff; text-decoration:underline; }
-
-/* Footer */
-footer { text-align:center; color:#6e7681; margin-top:64px; padding-top:24px; border-top:1px solid #30363d; font-size:0.9em; }
-
-/* Animations */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(18px); }
-  to   { opacity:1; transform:translateY(0); }
+.section li {
+padding:8px 0 8px 20px;
+color:var(--text-dim);
+font-size:.9em;
+font-weight:200;
+position:relative;
+letter-spacing:.01em;
 }
-.hero, .features, .gallery, .section, .download {
-  animation:fadeUp .7s ease both;
+.section li::before {
+content:"";
+position:absolute;
+left:0; top:16px;
+width:6px; height:1px;
+background:var(--accent);
+opacity:.5;
 }
-.features { animation-delay:.1s; }
-.gallery   { animation-delay:.15s; }
-.section   { animation-delay:.2s; }
-.download  { animation-delay:.25s; }
+.section .ver {
+color:var(--hifi);
+font-weight:400;
+font-family:'JetBrains Mono', monospace;
+letter-spacing:.06em;
+}
+.section .date {
+color:var(--text-mute);
+font-size:.82em;
+margin-left:10px;
+letter-spacing:.08em;
+}
 
-/* Responsive */
+/* ---------- Guide preview ---------- */
+.guide-preview {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:12px;
+margin-top:20px;
+}
+.guide-card {
+background:rgba(5,11,8,.6);
+border:1px solid var(--border);
+border-radius:12px;
+padding:18px;
+transition:border-color .4s var(--ease), background .4s var(--ease);
+}
+.guide-card:hover {
+border-color:var(--border-hi);
+background:rgba(110,231,155,.03);
+}
+.guide-card h4 {
+color:var(--text);
+font-size:.9em;
+margin-bottom:8px;
+font-weight:400;
+letter-spacing:.04em;
+}
+.guide-card p {
+color:var(--text-dim);
+font-size:.82em;
+line-height:1.6;
+font-weight:200;
+}
+.guide-card strong { color:var(--accent); font-weight:400; }
+
+/* ---------- Link button ---------- */
+.link-btn {
+display:inline-block;
+color:var(--accent-2);
+text-decoration:none;
+font-weight:400;
+font-size:.86em;
+margin-top:18px;
+letter-spacing:.08em;
+transition:color .3s var(--ease), letter-spacing .3s var(--ease);
+}
+.link-btn:hover {
+color:var(--hifi);
+letter-spacing:.14em;
+text-decoration:none;
+}
+
+/* ---------- Download ---------- */
+.download {
+text-align:center;
+margin:80px 0 56px;
+padding:56px 28px;
+background:linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid var(--border);
+border-radius:20px;
+box-shadow:0 30px 60px -20px rgba(0,0,0,.7);
+position:relative;
+overflow:hidden;
+opacity:0; transform:translateY(24px);
+}
+.download.in { opacity:1; transform:none; }
+.download::before {
+content:"";
+position:absolute;
+top:0; left:15%; right:15%;
+height:1px;
+background:linear-gradient(90deg, transparent, rgba(168,255,207,.5), transparent);
+}
+.download::after {
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(ellipse 60% 80% at 50% 0%, rgba(110,231,155,.06), transparent 70%);
+pointer-events:none;
+}
+
+/* 极简按钮：深绿玻璃 + 浅绿描边 */
+.btn {
+display:inline-block;
+background:rgba(110,231,155,.06);
+color:var(--hifi);
+padding:16px 46px;
+border-radius:10px;
+text-decoration:none;
+font-size:.95em;
+font-weight:400;
+letter-spacing:.14em;
+text-transform:uppercase;
+border:1px solid rgba(168,255,207,.3);
+transition:all .4s var(--ease);
+position:relative;
+overflow:hidden;
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
+}
+.btn::before {
+content:"";
+position:absolute;
+top:0; left:-100%;
+width:100%; height:100%;
+background:linear-gradient(90deg, transparent, rgba(168,255,207,.15), transparent);
+transition:left .8s var(--ease);
+}
+.btn:hover {
+background:rgba(110,231,155,.12);
+border-color:var(--hifi);
+color:#ffffff;
+box-shadow:
+0 0 30px -5px rgba(110,231,155,.4),
+0 0 60px -20px rgba(110,231,155,.3);
+transform:translateY(-1px);
+letter-spacing:.18em;
+}
+.btn:hover::before { left:100%; }
+
+.meta {
+color:var(--text-mute);
+margin-top:22px;
+font-size:.82em;
+line-height:1.8;
+font-weight:200;
+letter-spacing:.02em;
+}
+.meta a {
+color:var(--accent-2);
+text-decoration:none;
+transition:color .3s var(--ease);
+}
+.meta a:hover { color:var(--hifi); }
+
+/* ---------- Footer ---------- */
+footer {
+text-align:center;
+color:var(--text-mute);
+margin-top:80px;
+padding-top:28px;
+border-top:1px solid var(--border);
+font-size:.82em;
+font-weight:200;
+letter-spacing:.04em;
+}
+footer .lossless {
+font-family:'JetBrains Mono', monospace;
+font-size:.72em;
+color:rgba(168,255,207,.4);
+letter-spacing:.28em;
+text-transform:uppercase;
+margin-top:12px;
+font-weight:300;
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width:720px) {
-  h1 { font-size:2em; }
-  .hero { padding:40px 0 24px; }
-  .gallery { grid-template-columns:1fr; }
-  .features { grid-template-columns:1fr; }
-  .guide-preview { grid-template-columns:1fr; }
-  .download { padding:28px 16px; }
+h1 { font-size:2.2em; letter-spacing:.22em; text-indent:.22em; }
+.hero { padding:16px 0 32px; }
+.statusbar { font-size:.62em; gap:10px; }
+.statusbar .left, .statusbar .right { gap:12px; }
+.gallery { grid-template-columns:1fr; }
+.features { grid-template-columns:1fr; }
+.guide-preview { grid-template-columns:1fr; }
+.download { padding:40px 20px; }
+#wave { height:52px; }
+h2 { font-size:1.15em; letter-spacing:.14em; }
 }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="hero">
-    <img src="img/logo.png" alt="LePlayer">
-    <h1>LePlayer</h1>
-    <p class="tagline">以前用流媒体，后来开始自己存歌。</p>
-    <p class="subtitle">世界正在被算法趋同，我的喜欢拒绝同步。</p>
-  </div>
 
-  <div class="features">
-    <div class="card"><h3>bit-perfect 输出</h3><p>WASAPI 独占模式直通声卡，采样率自适应，源率直出零重采样损失</p></div>
-    <div class="card"><h3>Rust 原生引擎</h3><p>原生音频底层 + 环形缓冲 + 欠载淡出保护，长时间播放稳定可靠</p></div>
-    <div class="card"><h3>Material 3 原生 UI</h3><p>深浅主题、动态取色、桌面歌词、迷你播放器，Compose Desktop 原生渲染</p></div>
-    <div class="card"><h3>专业音频管线</h3><p>高质量重采样、严格背压控制、解码与输出解耦</p></div>
-  </div>
-
-  <h2>界面画廊</h2>
-  <p class="gallery-sub">深浅双主题 · 多种视图</p>
-  <div class="gallery">
-    <div class="g-item">
-      <img src="img/dark-library.png" alt="曲库视图（深色）" loading="lazy" width="1600" height="1025">
-      <div class="cap"><strong>曲库</strong> — 完整歌曲列表，双击播放，右键管理</div>
-    </div>
-    <div class="g-item">
-      <img src="img/light-library.png" alt="曲库视图（浅色）" loading="lazy" width="1600" height="1025">
-      <div class="cap"><strong>浅色主题</strong> — 自动跟随系统，动态取色</div>
-    </div>
-    <div class="g-item">
-      <img src="img/dark-albums.png" alt="专辑视图" loading="lazy" width="1600" height="1025">
-      <div class="cap"><strong>专辑墙</strong> — 按专辑艺术家与专辑名分组</div>
-    </div>
-    <div class="g-item">
-      <img src="img/light-albums.png" alt="专辑视图（浅色）" loading="lazy" width="1600" height="1025">
-      <div class="cap"><strong>专辑封面</strong> — 本地封面缓存，离线可用</div>
-    </div>
-    <div class="g-item">
-      <img src="img/dark-smart.png" alt="智选引擎" loading="lazy" width="1600" height="1025">
-      <div class="cap"><strong>智选引擎</strong> — 基于播放统计的智能推荐</div>
-    </div>
-    <div class="g-item">
-      <img src="img/light-smart.png" alt="智选引擎（浅色）" loading="lazy" width="1600" height="1025">
-      <div class="cap"><strong>分享卡片</strong> — 一键生成好听记录</div>
-    </div>
-  </div>
-
-  <h2>使用指南</h2>
-  <p class="gallery-sub">快速上手</p>
-  <div class="section">
-    <div class="guide-preview">
-      <div class="guide-card">
-        <h4>添加音乐</h4>
-        <p>首次启动后进入 <strong>设置 → 音乐文件夹</strong>，添加你的音乐目录，支持 MP3 / FLAC / WAV / AAC / OGG 等格式。</p>
-      </div>
-      <div class="guide-card">
-        <h4>桌面歌词</h4>
-        <p>播放时右键托盘图标 → 显示桌面歌词；点击小锁图标锁定位置，锁定后穿透不挡鼠标。</p>
-      </div>
-      <div class="guide-card">
-        <h4>独占模式</h4>
-        <p>设置中开启 WASAPI 独占，获得 bit-perfect 输出（音量由系统控制）。</p>
-      </div>
-      <div class="guide-card">
-        <h4>快捷键</h4>
-        <p><strong>空格</strong> 播放/暂停 · <strong>Ctrl + 方向键</strong> 切歌 · <strong>Ctrl + L</strong> 显示/隐藏桌面歌词</p>
-      </div>
-    </div>
-    <a class="link-btn" href="guide.html">📖 查看完整使用指南 →</a>
-  </div>
-
-  <h2>更新说明</h2>
-  <p class="gallery-sub">版本记录</p>
-  <div class="section">
-    <h3><span class="ver">v1.5.3</span> <span class="date">当前版本</span></h3>
-    <ul>
-      <li>修复关闭窗口时"下次不再询问"勾选不生效</li>
-      <li>修复桌面歌词锁定时遮挡其他窗口鼠标输入</li>
-      <li>修复专辑分组碎片化问题</li>
-      <li>修复文件名方向识别错误，自动判断"歌名-歌手"还是"歌手-歌名"</li>
-      <li>清理标签中的脏值艺术家名（如"纯音乐""日语"等）</li>
-      <li>桌面歌词锁子图标缩小，默认半透明，悬停高亮</li>
-      <li>在线元数据补全逻辑优化，静默执行</li>
-    </ul>
-    <a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">查看 Releases 历史版本 →</a>
-  </div>
-
-  <div class="download">
-    <a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">下载最新版本</a>
-    <p class="meta"><a href="guide.html">📖 详细使用指南</a> · Windows x64 · 内置运行时 · 无需预装 Java · 约 138 MB</p>
-  </div>
-
-  <footer>
-    <p>LePlayer — 不打扰，不驯化，不占有。你的音乐，只属于你。</p>
-  </footer>
+<!-- 顶部状态栏 -->
+<div class="statusbar">
+<div class="left">
+<span class="dot"></span>
+<span>Engine <span class="hi">Ready</span></span>
 </div>
+<div class="right">
+<span>v1.5.3</span>
+<span>Win x64</span>
+</div>
+</div>
+
+<div class="hero">
+<img src="img/logo.png" alt="LePlayer">
+<h1>LePlayer</h1>
+<p class="tagline">以前用流媒体，后来开始自己存歌。</p>
+<p class="subtitle">世界正在被算法趋同，我的喜欢拒绝同步。</p>
+
+<canvas id="wave"></canvas>
+<p class="specs">
+24bit / 192kHz <span class="sep">·</span> <span>DSD</span> <span class="sep">·</span> FLAC <span class="sep">·</span> WASAPI Exclusive
+</p>
+</div>
+
+<div class="features">
+<div class="card">
+<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
+<h3>bit-perfect 输出<span class="tag">HIFI</span></h3>
+<p>WASAPI 独占模式直通声卡，采样率自适应，源率直出零重采样损失</p>
+</div>
+<div class="card">
+<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
+<h3>Rust 原生引擎</h3>
+<p>原生音频底层 + 环形缓冲 + 欠载淡出保护，长时间播放稳定可靠</p>
+</div>
+<div class="card">
+<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
+<h3>Material 3 原生 UI</h3>
+<p>深浅主题、动态取色、桌面歌词、迷你播放器，Compose Desktop 原生渲染</p>
+</div>
+<div class="card">
+<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
+<h3>专业音频管线</h3>
+<p>高质量重采样、严格背压控制、解码与输出解耦</p>
+</div>
+</div>
+
+<h2>界面画廊</h2>
+<p class="gallery-sub">深浅双主题 · 多种视图</p>
+<div class="gallery">
+<div class="g-item">
+<img src="img/dark-library.png" alt="曲库视图（深色）" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>曲库</strong> — 完整歌曲列表，双击播放，右键管理</div>
+</div>
+<div class="g-item">
+<img src="img/light-library.png" alt="曲库视图（浅色）" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>浅色主题</strong> — 自动跟随系统，动态取色</div>
+</div>
+<div class="g-item">
+<img src="img/dark-albums.png" alt="专辑视图" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>专辑墙</strong> — 按专辑艺术家与专辑名分组</div>
+</div>
+<div class="g-item">
+<img src="img/light-albums.png" alt="专辑视图（浅色）" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>专辑封面</strong> — 本地封面缓存，离线可用</div>
+</div>
+<div class="g-item">
+<img src="img/dark-smart.png" alt="智选引擎" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>智选引擎</strong> — 基于播放统计的智能推荐</div>
+</div>
+<div class="g-item">
+<img src="img/light-smart.png" alt="智选引擎（浅色）" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>分享卡片</strong> — 一键生成好听记录</div>
+</div>
+</div>
+
+<h2>使用指南</h2>
+<p class="gallery-sub">快速上手</p>
+<div class="section">
+<div class="guide-preview">
+<div class="guide-card">
+<h4>添加音乐</h4>
+<p>首次启动后进入 <strong>设置 → 音乐文件夹</strong>，添加你的音乐目录，支持 MP3 / FLAC / WAV / AAC / OGG 等格式。</p>
+</div>
+<div class="guide-card">
+<h4>桌面歌词</h4>
+<p>播放时右键托盘图标 → 显示桌面歌词；点击小锁图标锁定位置，锁定后穿透不挡鼠标。</p>
+</div>
+<div class="guide-card">
+<h4>独占模式</h4>
+<p>设置中开启 WASAPI 独占，获得 bit-perfect 输出（音量由系统控制）。</p>
+</div>
+<div class="guide-card">
+<h4>快捷键</h4>
+<p><strong>空格</strong> 播放/暂停 · <strong>Ctrl + 方向键</strong> 切歌 · <strong>Ctrl + L</strong> 显示/隐藏桌面歌词</p>
+</div>
+</div>
+<a class="link-btn" href="guide.html">查看完整使用指南 →</a>
+</div>
+
+<h2>更新说明</h2>
+<p class="gallery-sub">版本记录</p>
+<div class="section">
+<h3><span class="ver">v1.5.3</span> <span class="date">当前版本</span></h3>
+<ul>
+<li>修复关闭窗口时"下次不再询问"勾选不生效</li>
+<li>修复桌面歌词锁定时遮挡其他窗口鼠标输入</li>
+<li>修复专辑分组碎片化问题</li>
+<li>修复文件名方向识别错误，自动判断"歌名-歌手"还是"歌手-歌名"</li>
+<li>清理标签中的脏值艺术家名（如"纯音乐""日语"等）</li>
+<li>桌面歌词锁子图标缩小，默认半透明，悬停高亮</li>
+<li>在线元数据补全逻辑优化，静默执行</li>
+</ul>
+<a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">查看 Releases 历史版本 →</a>
+</div>
+
+<div class="download">
+<a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">下载最新版本</a>
+<p class="meta"><a href="guide.html">详细使用指南</a> · Windows x64 · 内置运行时 · 无需预装 Java · 约 138 MB</p>
+</div>
+
+<footer>
+<p>LePlayer — 不打扰，不驯化，不占有。你的音乐，只属于你。</p>
+<p class="lossless">Lossless · Bit-perfect · Local-first</p>
+</footer>
+
+</div>
+
+<script>
+/* ---------- 双层波形 ---------- */
+(function(){
+const c = document.getElementById('wave');
+if(!c) return;
+const ctx = c.getContext('2d');
+let dpr = window.devicePixelRatio || 1;
+
+function resize(){
+dpr = window.devicePixelRatio || 1;
+c.width = c.offsetWidth * dpr;
+c.height = c.offsetHeight * dpr;
+}
+resize();
+window.addEventListener('resize', resize);
+
+let t = 0;
+function draw(){
+const w = c.width, h = c.height;
+ctx.clearRect(0,0,w,h);
+
+/* 镜像淡波（下层） */
+ctx.beginPath();
+for(let x=0; x<=w; x+=1){
+const p = x / w;
+const env = Math.sin(p * Math.PI);
+const y = h/2
++ Math.sin(p * 8 + t * .7) * h * 0.32 * env
++ Math.sin(p * 31 + t * 1.1) * h * 0.08 * env;
+x === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+}
+ctx.strokeStyle = 'rgba(110,231,155,.10)';
+ctx.lineWidth = 1 * dpr;
+ctx.stroke();
+
+/* 主波 */
+ctx.beginPath();
+for(let x=0; x<=w; x+=1){
+const p = x / w;
+const env = Math.sin(p * Math.PI);
+const y = h/2
++ Math.sin(p * 8 + t) * h * 0.20 * env
++ Math.sin(p * 23 + t * 1.7) * h * 0.06 * env
++ Math.sin(p * 47 + t * 2.3) * h * 0.025 * env;
+x === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+}
+ctx.strokeStyle = 'rgba(168,255,207,.55)';
+ctx.lineWidth = 1.1 * dpr;
+ctx.shadowColor = 'rgba(110,231,155,.55)';
+ctx.shadowBlur = 16 * dpr;
+ctx.stroke();
+
+/* 中线 */
+ctx.shadowBlur = 0;
+ctx.beginPath();
+ctx.moveTo(0, h/2);
+ctx.lineTo(w, h/2);
+ctx.strokeStyle = 'rgba(168,255,207,.05)';
+ctx.lineWidth = 1 * dpr;
+ctx.stroke();
+
+t += 0.010;
+requestAnimationFrame(draw);
+}
+draw();
+})();
+
+/* ---------- 滚动触发动效 ---------- */
+(function(){
+const els = document.querySelectorAll('.card, .g-item, .section, .download');
+if(!('IntersectionObserver' in window)){
+els.forEach(el => el.classList.add('in'));
+return;
+}
+const io = new IntersectionObserver((entries)=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('in');
+io.unobserve(e.target);
+}
+});
+}, { threshold:.1, rootMargin:'0px 0px -60px 0px' });
+els.forEach(el => io.observe(el));
+})();
+</script>
+
 </body>
 </html>
