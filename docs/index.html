@@ -24,6 +24,13 @@ h2 { text-align:center; margin:48px 0 8px; font-size:1.6em; }
 .g-item img { width:100%; display:block; }
 .g-item .cap { padding:10px 14px; font-size:0.88em; color:#8b949e; border-top:1px solid #30363d; }
 .g-item .cap strong { color:#e6edf3; }
+.section { background:#161b22; border:1px solid #30363d; border-radius:12px; padding:28px; margin:24px 0; }
+.section h3 { color:#58a6ff; margin-bottom:14px; font-size:1.15em; }
+.section ul { list-style:none; padding:0; }
+.section li { padding:6px 0; color:#c9d1d9; font-size:0.95em; }
+.section li:before { content:"• "; color:#58a6ff; }
+.section .ver { color:#3fb950; font-weight:600; }
+.section .date { color:#6e7681; font-size:0.85em; margin-left:8px; }
 .download { text-align:center; margin:48px 0; }
 .btn { display:inline-block; background:#238636; color:#fff; padding:14px 36px; border-radius:8px; text-decoration:none; font-size:1.1em; font-weight:600; }
 .btn:hover { background:#2ea043; }
@@ -52,30 +59,68 @@ footer { text-align:center; color:#6e7681; margin-top:60px; padding-top:20px; bo
 <h2>界面画廊</h2>
 <p class="gallery-sub">深浅双主题 · 多种视图</p>
 <div class="gallery">
-<div class="g-item">
-<img src="img/dark-library.png" alt="曲库视图（深色）">
-<div class="cap"><strong>曲库</strong> — 完整歌曲列表，双击播放，右键管理</div>
+<div class="g-item"><img src="img/dark-library.png" alt="曲库视图（深色）"><div class="cap"><strong>曲库</strong> — 完整歌曲列表，双击播放，右键管理</div></div>
+<div class="g-item"><img src="img/light-library.png" alt="曲库视图（浅色）"><div class="cap"><strong>浅色主题</strong> — 自动跟随系统，动态取色</div></div>
+<div class="g-item"><img src="img/dark-albums.png" alt="专辑视图"><div class="cap"><strong>专辑墙</strong> — 按专辑艺术家与专辑名分组</div></div>
+<div class="g-item"><img src="img/light-albums.png" alt="专辑视图（浅色）"><div class="cap"><strong>专辑封面</strong> — 本地封面缓存，离线可用</div></div>
+<div class="g-item"><img src="img/dark-smart.png" alt="智选引擎"><div class="cap"><strong>智选引擎</strong> — 基于播放统计的智能推荐</div></div>
+<div class="g-item"><img src="img/light-smart.png" alt="智选引擎（浅色）"><div class="cap"><strong>分享卡片</strong> — 一键生成好听记录</div></div>
 </div>
-<div class="g-item">
-<img src="img/light-library.png" alt="曲库视图（浅色）">
-<div class="cap"><strong>浅色主题</strong> — 自动跟随系统，动态取色</div>
+
+<h2>使用指南</h2>
+<p class="gallery-sub">快速上手</p>
+<div class="section">
+<h3>开始使用</h3>
+<ul>
+<li>首次启动后，进入 <strong>设置 → 音乐文件夹</strong>，添加你的音乐目录</li>
+<li>等待扫描完成，歌曲会自动入库，支持 MP3 / FLAC / WAV / AAC / OGG 等格式</li>
+<li>双击歌曲开始播放，单击选中，右键打开操作菜单</li>
+</ul>
 </div>
-<div class="g-item">
-<img src="img/dark-albums.png" alt="专辑视图">
-<div class="cap"><strong>专辑墙</strong> — 按专辑艺术家与专辑名分组</div>
+<div class="section">
+<h3>常用操作</h3>
+<ul>
+<li><strong>桌面歌词</strong>：播放时右键托盘图标 → 显示桌面歌词；点击小锁图标可锁定位置，锁定后穿透不挡鼠标</li>
+<li><strong>迷你模式</strong>：主窗口右上角切换，只保留小播放器</li>
+<li><strong>独占模式</strong>：设置中开启 WASAPI 独占，获得 bit-perfect 输出（音量由系统控制）</li>
+<li><strong>歌词</strong>：自动匹配内嵌歌词和同名 .lrc 文件，支持逐字卡拉OK高亮</li>
+<li><strong>智选引擎</strong>：基于你的播放记录自动推荐，越听越准</li>
+<li><strong>歌单</strong>：左侧边栏可新建歌单，右键歌曲 → 添加到歌单</li>
+</ul>
 </div>
-<div class="g-item">
-<img src="img/light-albums.png" alt="专辑视图（浅色）">
-<div class="cap"><strong>专辑封面</strong> — 本地封面缓存，离线可用</div>
+<div class="section">
+<h3>快捷键</h3>
+<ul>
+<li><strong>空格</strong>：播放 / 暂停</li>
+<li><strong>Ctrl + 方向键</strong>：上一首 / 下一首</li>
+<li><strong>Ctrl + L</strong>：显示 / 隐藏桌面歌词</li>
+</ul>
 </div>
-<div class="g-item">
-<img src="img/dark-smart.png" alt="智选引擎">
-<div class="cap"><strong>智选引擎</strong> — 基于播放统计的智能推荐</div>
+
+<h2>更新说明</h2>
+<p class="gallery-sub">版本记录</p>
+<div class="section">
+<h3><span class="ver">v1.5.3</span> <span class="date">当前版本</span></h3>
+<ul>
+<li>修复关闭窗口时"下次不再询问"勾选不生效</li>
+<li>修复桌面歌词锁定时遮挡其他窗口鼠标输入</li>
+<li>修复专辑分组碎片化问题</li>
+<li>修复文件名方向识别错误，自动判断"歌名-歌手"还是"歌手-歌名"</li>
+<li>清理标签中的脏值艺术家名（如"纯音乐""日语"等）</li>
+<li>桌面歌词锁子图标缩小，默认半透明，悬停高亮</li>
+<li>在线元数据补全逻辑优化，静默执行</li>
+</ul>
 </div>
-<div class="g-item">
-<img src="img/light-smart.png" alt="智选引擎（浅色）">
-<div class="cap"><strong>分享卡片</strong> — 一键生成好听记录</div>
-</div>
+<div class="section">
+<h3><span class="ver">v1.5.2</span></h3>
+<ul>
+<li>WASAPI 独占模式 bit-perfect 输出</li>
+<li>采样率自适应，源率直出</li>
+<li>高质量重采样，防过冲削波</li>
+<li>智选引擎：基于播放统计的智能推荐</li>
+<li>桌面歌词 + 迷你播放器</li>
+<li>深浅主题 + 动态取色</li>
+</ul>
 </div>
 
 <div class="download">
