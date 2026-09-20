@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LePlayer — 你的音乐，只属于你</title>
-<meta name="description" content="LePlayer — 你的音乐，只属于你。Windows 本地音乐播放器，bit-perfect 输出，Rust 原生引擎，Material 3 原生 UI。">
+<meta name="description" content="LePlayer — 你的音乐，只属于你。Windows 本地音乐播放器，WASAPI 共享/独占/ASIO 三后端，bit-perfect 输出，Material 3 原生 UI。">
 <meta property="og:title" content="LePlayer — 你的音乐，只属于你">
-<meta property="og:description" content="Windows 本地音乐播放器，bit-perfect 输出，Rust 原生引擎，Material 3 原生 UI。">
+<meta property="og:description" content="Windows 本地音乐播放器，WASAPI 共享/独占/ASIO 三后端，bit-perfect 输出，Material 3 原生 UI。">
 <meta property="og:image" content="https://leplayer-studio.github.io/LePlayer/img/logo.png">
 <meta property="og:type" content="website">
 <link rel="icon" href="img/logo.png">
@@ -544,7 +544,7 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <span>Engine <span class="hi">Ready</span></span>
 </div>
 <div class="right">
-<span>v1.5.4</span>
+<span>v1.6.0</span>
 <span>Win x64</span>
 </div>
 </div>
@@ -564,13 +564,13 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <div class="features">
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>bit-perfect 输出<span class="tag">HIFI</span></h3>
-<p>WASAPI 独占模式直通声卡，采样率自适应，源率直出零重采样损失</p>
+<h3>三种输出后端<span class="tag">NEW</span></h3>
+<p>WASAPI 共享、WASAPI 独占、ASIO 随时切换，独占与 ASIO 实现 Bit-Perfect 直通</p>
 </div>
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>Rust 原生引擎</h3>
-<p>原生音频底层 + 环形缓冲 + 欠载淡出保护，长时间播放稳定可靠</p>
+<h3>拉取式播放链路</h3>
+<p>单一解码线程配合环形缓冲，播放零欠载、节拍精确，长时间播放稳定</p>
 </div>
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
@@ -579,8 +579,8 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 </div>
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>专业音频管线</h3>
-<p>高质量重采样、严格背压控制、解码与输出解耦</p>
+<h3>高质量重采样</h3>
+<p>Kaiser 窗算法自动适配设备采样率与位深（24bit/192kHz），消除杂音与变速</p>
 </div>
 </div>
 
@@ -588,28 +588,30 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <p class="gallery-sub">深浅双主题 · 多种视图</p>
 <div class="gallery">
 <div class="g-item">
-<img src="img/dark-library.png" alt="曲库视图（深色）" loading="lazy" width="1600" height="1025">
-<div class="cap"><strong>曲库</strong> — 完整歌曲列表，双击播放，右键管理</div>
+<img src="img/dark-library.png" alt="歌曲列表" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>歌曲</strong> — CD+/HiRes 音质角标，支持排序与快速定位</div>
 </div>
 <div class="g-item">
-<img src="img/light-library.png" alt="曲库视图（浅色）" loading="lazy" width="1600" height="1025">
-<div class="cap"><strong>浅色主题</strong> — 自动跟随系统，动态取色</div>
+<img src="img/dark-playlist.png" alt="歌单详情" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>歌单详情</strong> — 专辑列、排序、快速滑块，管理更直观</div>
 </div>
 <div class="g-item">
-<img src="img/dark-albums.png" alt="专辑视图" loading="lazy" width="1600" height="1025">
-<div class="cap"><strong>专辑墙</strong> — 按专辑艺术家与专辑名分组</div>
+<img src="img/dark-engine.png" alt="音频引擎设置" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>音频引擎</strong> — 共享 / 独占 / ASIO 三后端，高级参数折叠</div>
 </div>
 <div class="g-item">
-<img src="img/light-albums.png" alt="专辑视图（浅色）" loading="lazy" width="1600" height="1025">
-<div class="cap"><strong>专辑封面</strong> — 本地封面缓存，离线可用</div>
+<img src="img/dark-albums.png" alt="专辑墙" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>专辑墙</strong> — 按专辑艺术家与专辑名分组浏览</div>
 </div>
 <div class="g-item">
 <img src="img/dark-smart.png" alt="智选引擎" loading="lazy" width="1600" height="1025">
 <div class="cap"><strong>智选引擎</strong> — 基于播放统计的智能推荐</div>
 </div>
 <div class="g-item">
-<img src="img/light-smart.png" alt="智选引擎（浅色）" loading="lazy" width="1600" height="1025">
-<div class="cap"><strong>分享卡片</strong> — 一键生成好听记录</div>
+<img src="img/light-library.png" alt="浅色主题" loading="lazy" width="1600" height="1025">
+<div class="cap"><strong>浅色主题</strong> — 自动跟随系统，动态取色</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -640,7 +642,21 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <h2>更新说明</h2>
 <p class="gallery-sub">版本记录</p>
 <div class="section">
-<h3><span class="ver">v1.5.4</span> <span class="date">当前版本</span></h3>
+<h3><span class="ver">v1.6.0</span> <span class="date">当前版本 · 大更新</span></h3>
+<ul>
+<li>新增 WASAPI 共享 / 独占 / ASIO 三种输出后端，ASIO 设备自动识别</li>
+<li>播放链路重构为拉取式输出：独立解码线程 + 环形缓冲，播放零欠载</li>
+<li>Kaiser 窗高质量重采样，自动适配 24bit/192kHz，消除杂音与变速</li>
+<li>设备预热 + 平滑淡入，后端热切换不再无声、不再爆音</li>
+<li>修复切歌、跳转、重头开始时歌词滞后，逐字高亮与声音同步</li>
+<li>歌单详情恢复音质角标、新增专辑列、排序与快速滑块</li>
+<li>修复扫描后艺术家/专辑“未知”，修复数据库重复插入错误</li>
+</ul>
+<a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">查看 Releases 历史版本 →</a>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.5.4</span> <span class="date">上一版本</span></h3>
 <ul>
 <li>修复退出时设置未完全保存的问题，所有开关重启后可靠持久化</li>
 <li>修复任务栏图标不随深浅主题切换的问题</li>
@@ -651,25 +667,11 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <li>大曲库元数据扫描性能优化，不再一次性加载全部文件列表</li>
 <li>卸载程序默认保留用户数据，避免误删歌单和设置</li>
 </ul>
-<a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">查看 Releases 历史版本 →</a>
-</div>
-
-<div class="section">
-<h3><span class="ver">v1.5.3</span> <span class="date">上一版本</span></h3>
-<ul>
-<li>修复关闭窗口时"下次不再询问"勾选不生效</li>
-<li>修复桌面歌词锁定时遮挡其他窗口鼠标输入</li>
-<li>修复专辑分组碎片化问题</li>
-<li>修复文件名方向识别错误，自动判断"歌名-歌手"还是"歌手-歌名"</li>
-<li>清理标签中的脏值艺术家名（如"纯音乐""日语"等）</li>
-<li>桌面歌词锁子图标缩小，默认半透明，悬停高亮</li>
-<li>在线元数据补全逻辑优化，静默执行</li>
-</ul>
 </div>
 
 <div class="download">
 <a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">下载最新版本</a>
-<p class="meta"><a href="guide.html">详细使用指南</a> · Windows x64 · 内置运行时 · 无需预装 Java · 约 138 MB</p>
+<p class="meta"><a href="guide.html">详细使用指南</a> · Windows x64 · 内置运行时 · 无需预装 Java · 约 140 MB</p>
 </div>
 
 <footer>
