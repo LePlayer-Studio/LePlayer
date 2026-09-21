@@ -544,7 +544,7 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <span>Engine <span class="hi">Ready</span></span>
 </div>
 <div class="right">
-<span>v1.6.0</span>
+<span>v1.6.1</span>
 <span>Win x64</span>
 </div>
 </div>
@@ -642,7 +642,18 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <h2>更新说明</h2>
 <p class="gallery-sub">版本记录</p>
 <div class="section">
-<h3><span class="ver">v1.6.0</span> <span class="date">当前版本 · 大更新</span></h3>
+<h3><span class="ver">v1.6.1</span> <span class="date">当前版本</span></h3>
+<ul>
+<li>修复热切换到 WASAPI 独占时 DAC 硬件采样率当次不跟随、需下一首才生效，现当次即按源采样率重建</li>
+<li>优化冷启动首次双击播放偏慢：启动不再重复探测设备，能力表改为空闲时后台补全并持久化</li>
+<li>修复 ASIO4ALL 搭配主板集成声卡时歌曲高潮的电流声，自动为软件聚合驱动增大 ASIO 缓冲</li>
+<li>修复共享模式下高潮段落重采样过冲被硬削产生的“滋”声，输出链路加入统一钳位防护</li>
+</ul>
+<a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">查看 Releases 历史版本 →</a>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.6.0</span> <span class="date">上一版本 · 大更新</span></h3>
 <ul>
 <li>新增 WASAPI 共享 / 独占 / ASIO 三种输出后端，ASIO 设备自动识别</li>
 <li>播放链路重构为拉取式输出：独立解码线程 + 环形缓冲，播放零欠载</li>
@@ -652,9 +663,7 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <li>歌单详情恢复音质角标、新增专辑列、排序与快速滑块</li>
 <li>修复扫描后艺术家/专辑“未知”，修复数据库重复插入错误</li>
 <li>音频引擎设置统一为“输出模式 + 输出设备”，与播放栏耳机菜单实时联动</li>
-<li>专业极简风格下，原“文件夹”更名为“歌单”，原“歌单”更名为“音乐库”</li>
 </ul>
-<a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">查看 Releases 历史版本 →</a>
 </div>
 
 <div class="section">
@@ -673,7 +682,7 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 
 <div class="download">
 <a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">下载最新版本</a>
-<p class="meta"><a href="guide.html">详细使用指南</a> · Windows x64 · 内置运行时 · 无需预装 Java · 约 140 MB</p>
+<p class="meta"><a href="guide.html">详细使用指南</a> · Windows x64 · 内置运行时 · 无需预装 Java · 约 161 MB</p>
 </div>
 
 <footer>
