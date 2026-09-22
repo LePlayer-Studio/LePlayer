@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <img src="docs/img/logo.png" width="128" alt="LePlayer" />
 
@@ -13,7 +13,7 @@ Kotlin × Rust 双引擎 · WASAPI 独占 bit-perfect 输出 · 源率直出 · 
 
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue)
 ![macOS/Linux](https://img.shields.io/badge/macOS%20%2F%20Linux-Coming%20Soon-lightgrey)
-![Version](https://img.shields.io/badge/Version-v1.5.4-brightgreen)
+![Version](https://img.shields.io/badge/Version-v1.6.3-brightgreen)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
 
@@ -49,6 +49,8 @@ Kotlin × Rust 双引擎 · WASAPI 独占 bit-perfect 输出 · 源率直出 · 
 | 背压控制 | 写入速率严格跟随播放速率，节奏不受 GC 干扰 |
 | 解耦架构 | 解码处理与音频输出分离，互不拖累 |
 | Rust 底层引擎 | 原生音频输出，缓冲管理与欠载淡入淡出保护 |
+| ASIO 原生 DSD | 支持 ASIO 原生 DSD 模式，DSD64/128/256 直出 DAC |
+| CUE 分轨解析 | 整轨音频自动拆分，独立曲目入库 |
 
 ### 🖥️ 界面交互 / UI & Interaction
 
@@ -100,31 +102,46 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 - **安装包**：[`LePlayer-Setup.exe`](https://github.com/LePlayer-Studio/LePlayer/releases/latest/download/LePlayer-Setup.exe)
   （最新版自动指向，无需手动更新）
-- **当前版本**：v1.5.3 · 约 138 MB
+- **当前版本**：v1.6.3 · 约 103 MB
 - **SHA-256**：`61d8969985ca15be48298189666b7476ff0b903e93084f60e6f73e46c26cae69`
 - **平台**：Windows x64（内置运行时，无需预装 Java 环境）
 
 **安装 / Install**
 
-1. 下载 `LePlayer-Setup-1.5.4.exe`
+1. 下载 `LePlayer-Setup-1.6.3.exe`
 2. 右键 → **以管理员身份运行**（标准用户会弹出 UAC）
 3. 跟随向导完成安装，首次启动会引导选择音乐文件夹
 
 升级安装会保留原有音乐库与设置。 / Upgrading keeps your existing library and settings.
 
-## 🆕 本次更新 v1.5.3 / What's New
+## 🆕 本次更新 v1.6.3 / What's New
 
-- **任务栏与系统托盘图标现在跟随深浅主题切换**（此前界面切换后图标仍停留在旧主题）
-  - *Taskbar & tray icons now follow the light/dark theme*
-- **音频输出稳定性提升**：优化缓冲策略与数据链路，消除高负载下的断续与削波
-  - *Improved audio stability: optimized buffering & pipeline, eliminating dropouts/clipping under load*
+### 新增
+- **原生 DSD 播放支持** — ASIO 原生 DSD 模式，DAC 直接识别 DSD 信号
+- **CUE 分轨自动解析** — 整轨音频 + .cue 文件自动拆分为独立曲目
+- **单首歌封面编辑** — 歌曲右键菜单直接编辑封面
+- **桌面歌词锁定** — 托盘菜单一键锁定/解锁，锁定后全穿透不挡操作
+- **全局字体体系统一** — 字号/字重/行高收口到设计 token，全局一致
+
+### 优化
+- 所有弹窗背景统一为半透明，与云母/烟雾材质融合
+- 下拉菜单样式统一为 14dp 圆角 + 边框，对齐右键菜单
+- sqlite native 瘦身 94%，安装包从 138 MB 降到 103 MB
+- 文件夹歌曲数量统计修正
+- 歌词串台问题修复
+
+### 修复
+- 更新检查器正则导致的 StackOverflowError
+- 更新说明中文乱码
+- 收件箱拖放文件写入问题
+- health check 恢复后播放异常
 
 ## 🗺️ Roadmap
 
-- [x] v1.5.3 — 当前版本：采样率自适应 · 源率直出 · 智选引擎 · 桌面歌词
+- [x] v1.6.3 — 当前版本：原生 DSD · CUE 分轨 · 字体统一 · 弹窗协调
+- [x] v1.6.0 - v1.6.2 — 收件箱拖放 · 歌词校准 · 桌面歌词锁定 · 瘦身
 - [ ] EQ / DSP 音效链完善
 - [ ] macOS / Linux 打包发布
-- [ ] 歌词逐行滚动与翻译
 - [ ] 更多主题与图标自定义
 
 ## 📄 许可证 / License
