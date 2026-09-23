@@ -13,7 +13,7 @@ Kotlin × Rust 双引擎 · WASAPI 独占 bit-perfect 输出 · 源率直出 · 
 
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue)
 ![macOS/Linux](https://img.shields.io/badge/macOS%20%2F%20Linux-Coming%20Soon-lightgrey)
-![Version](https://img.shields.io/badge/Version-v1.6.3-brightgreen)
+![Version](https://img.shields.io/badge/Version-v1.6.4-brightgreen)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
 
@@ -106,7 +106,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 - **安装包**：[`LePlayer-Setup.exe`](https://github.com/LePlayer-Studio/LePlayer/releases/latest/download/LePlayer-Setup.exe)
   （最新版自动指向，无需手动更新）
-- **当前版本**：v1.6.3 · 约 103 MB
+- **当前版本**：v1.6.4 · 约 103 MB
 - **SHA-256**：`61d8969985ca15be48298189666b7476ff0b903e93084f60e6f73e46c26cae69`
 - **平台**：Windows x64（内置运行时，无需预装 Java 环境）
 
@@ -118,9 +118,18 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 升级安装会保留原有音乐库与设置。 / Upgrading keeps your existing library and settings.
 
-## 🆕 本次更新 v1.6.3 / What's New
+## 🆕 本次更新 v1.6.4 / What's New
 
-### 新增
+### UI 统一
+- 所有点击展开的菜单（三点菜单 / 右键菜单 / 设置下拉 / 下拉框）统一样式：白底 + 14dp 圆角 + 细描边
+- 菜单视觉与右键菜单完全一致，消除二级弹窗割裂感
+
+### 优化
+- 托盘图标深色/浅色模式自动切换（修复深色模式下图标全黑看不见）
+- 代码行尾统一，消除 git diff 噪声
+- NSIS 安装包加版本资源，右键属性可看到版本号
+
+### 新增（1.6.3 及之前）
 - **原生 DSD 播放支持** — ASIO 原生 DSD 模式，DSD64/128/256 直出 DAC
 - **CUE 分轨自动解析** — 整轨音频 + .cue 文件自动拆分为独立曲目
 - **单首歌封面编辑** — 歌曲右键菜单直接编辑封面，写入文件元数据
@@ -148,7 +157,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 ## 🗺️ Roadmap
 
-- [x] v1.6.3 — 当前版本：原生 DSD · CUE 分轨 · 字体统一 · 弹窗协调
+- [x] v1.6.4 — 当前版本：原生 DSD · CUE 分轨 · 字体统一 · 弹窗协调
 - [x] v1.6.0 - v1.6.2 — 收件箱拖放 · 歌词校准 · 桌面歌词锁定 · 瘦身
 - [ ] EQ / DSP 音效链完善
 - [ ] macOS / Linux 打包发布
