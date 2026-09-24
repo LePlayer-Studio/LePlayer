@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
 
 <img src="docs/img/logo.png" width="128" alt="LePlayer" />
 
@@ -12,7 +12,7 @@
 Kotlin × Rust 双引擎 · WASAPI 独占 bit-perfect 输出 · 源率直出 · 全格式 HiFi 解码
 
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue)
-![Version](https://img.shields.io/badge/Version-v1.6.4-brightgreen)
+![Version](https://img.shields.io/badge/Version-v1.6.7-brightgreen)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
 
@@ -105,17 +105,36 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 - **安装包**：[`LePlayer-Setup.exe`](https://github.com/LePlayer-Studio/LePlayer/releases/latest/download/LePlayer-Setup.exe)
   （最新版自动指向，无需手动更新）
-- **当前版本**：v1.6.4 · 约 102 MB
-- **SHA-256**：`bf2f4889217a6d8c67ee17613ff9c948cc7b56092bec7ff1c9a519818b5434e1`
+- **当前版本**：v1.6.7 · 约 102 MB
 - **平台**：Windows x64（内置运行时，无需预装 Java 环境）
+
+> 也可在 **Microsoft Store** 搜索「LePlayer」安装（19 元买断制）。
 
 **安装 / Install**
 
-1. 下载 `LePlayer-Setup-1.6.4.exe`
+1. 下载 `LePlayer-Setup-1.6.7.exe`
 2. 右键 → **以管理员身份运行**（标准用户会弹出 UAC）
 3. 跟随向导完成安装
 
 升级安装会保留原有音乐库与设置。 / Upgrading keeps your existing library and settings.
+
+## 🆕 v1.6.7 更新要点 / What's New
+
+### 🎉 新功能
+- **系统回收站** — 删除歌曲走系统回收站，可还原，不误删
+- **回收站页面** — 设置里查看已忽略文件，显示歌名/艺术家/专辑，可恢复
+- **自动短片段过滤** — 扫库自动跳过 <30 秒片段（录音/铃声）
+- **内置标签编辑** — 右键直接改标题/艺术家/专辑，写回文件
+- **全局键盘快捷键** — 自定义播放/暂停/切歌/音量
+- **Windows SMTC** — 任务栏/锁屏/蓝牙耳机媒体控制
+- **全局 UI 缩放** — 80%-150% 滑块，4K 友好
+- **全屏自动放大 UI** — 进入全屏自动放大界面
+
+### 🔧 修复
+- 独占模式首次播放慢（启动后预热 WASAPI COM）
+- 卸载残留（文件关联/僵尸目录/运行中检测）
+- 菜单裁切（itemCount 漏算）
+- 行尾/空行爆炸（全仓 diff 从 12775 行收敛到 6219 行）
 
 ## 🆕 v1.6.4 更新要点 / What's New
 
@@ -133,6 +152,8 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 ## 🗺️ Roadmap
 
+- [x] v1.6.7 — 回收站 · 标签编辑 · SMTC · 全局快捷键 · UI 缩放
+- [x] v1.6.5–v1.6.6 — 多语言修复 · 字体迁移 · NSIS 卸载修复
 - [x] v1.6.4 — DSD 爆音修复 · 设备枚举 · 菜单统一 · 版本资源
 - [x] v1.6.3 — 原生 DSD · CUE 分轨 · 封面编辑 · 字体统一
 - [x] v1.6.0–v1.6.2 — 收件箱拖放 · 歌词校准 · 桌面歌词锁定 · 瘦身
