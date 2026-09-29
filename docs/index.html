@@ -532,6 +532,15 @@ h1 { font-size:2.2em; letter-spacing:.22em; text-indent:.22em; }
 #wave { height:52px; }
 h2 { font-size:1.15em; letter-spacing:.14em; }
 }
+/* ---------- 折叠的历史版本 ---------- */
+details.rel { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px 22px; margin:12px 0; transition:border-color .3s var(--ease); }
+details.rel[open] { border-color:var(--border-hi); }
+details.rel>summary { cursor:pointer; list-style:none; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; font-size:1.02em; color:var(--text); outline:none; }
+details.rel>summary::-webkit-details-marker { display:none; }
+details.rel>summary::after { content:"\25B8"; margin-left:auto; color:var(--text-mute); transition:transform .25s var(--ease); }
+details.rel[open]>summary::after { transform:rotate(90deg); }
+details.rel>summary:hover { color:var(--hifi); }
+details.rel .rel-body { margin-top:12px; }
 </style>
 </head>
 <body>
@@ -701,14 +710,97 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 </ul>
 </div>
 
-<div class="section">
-<h3><span class="ver">v1.6.4</span> <span class="date">音频与界面</span></h3>
+<details class="rel" open>
+<summary><span class="ver">v1.6.4</span><span class="date">菜单统一 · 工程修复</span></summary>
+<div class="rel-body">
 <ul>
-<li>修复 DSD 播放周期性爆音（ASIO 回调线程阻塞，半缓冲 11.6ms → 46.4ms）</li>
-<li>修复 TOPPING DAC 在共享 / 独占设备列表中消失（设备并集枚举）；菜单 / 弹窗材质统一；DLL 自动同步防错配</li>
+<li>所有点击展开的菜单（三点 / 右键 / 设置下拉 / 下拉框）统一样式：白底 + 14dp 圆角 + 细描边，消除二级弹窗割裂感</li>
+<li>托盘图标随深色 / 浅色模式自动切换（修复深色模式下图标全黑）；NSIS 安装包加入版本资源，右键属性可见版本号</li>
+<li>删除 NativeLoader 硬编码的开发机绝对路径，生产环境不再误加载本机文件；统一代码行尾，消除版本差异噪声</li>
 </ul>
-<a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases">查看更早版本（v1.6.0–v1.6.3 三后端 / 原生 DSD / CUE 分轨等）→</a>
 </div>
+</details>
+
+<details class="rel">
+<summary><span class="ver">v1.6.3</span><span class="date">原生 DSD · CUE 分轨</span></summary>
+<div class="rel-body">
+<ul>
+<li>新增 ASIO 原生 DSD 播放；CUE 整轨自动分轨解析与展开；单曲封面编辑入口；桌面歌词锁定 / 解锁托盘菜单</li>
+<li>DSD 半缓冲 11.6ms → 46.4ms，消除周期性爆音（回调线程每秒日志阻塞）；ASIO 设备枚举改为冷启动预加载 + 后台无感刷新</li>
+<li>全局字体体系统一（字号 / 字重 / 行高收口）；弹窗背景与下拉菜单样式统一；sqlite native 瘦身仅留 Windows-x64</li>
+<li>修复 TOPPING DAC 在共享 / 独占列表消失（设备并集枚举）、更新检查器 StackOverflow、歌词串台、health check 恢复后异常、DLL 自动同步防旧包错配</li>
+</ul>
+</div>
+</details>
+
+<details class="rel">
+<summary><span class="ver">v1.6.2</span><span class="date">安装包瘦身 · 细节修复</span></summary>
+<div class="rel-body">
+<ul>
+<li>新增收件箱拖放文件写入、单曲歌词偏移校准（per-track）、桌面歌词锁定 / 解锁托盘菜单</li>
+<li>sqlite-jdbc 瘦身仅保留 Windows-x64 native，安装包减小约 62MB</li>
+<li>修复更新检查器正则导致的 StackOverflowError、更新说明中文乱码、health check 恢复后播放异常</li>
+</ul>
+</div>
+</details>
+
+<details class="rel">
+<summary><span class="ver">v1.6.1</span><span class="date">独占热切换 · 起播优化</span></summary>
+<div class="rel-body">
+<ul>
+<li>修复播放中热切换到 WASAPI 独占时 DAC 采样率当次不跟随、需下一首才生效，现当次即按源采样率重建</li>
+<li>优化冷启动首次双击偏慢：启动不再重复探测设备，能力表改为空闲时后台补全并持久化</li>
+<li>修复 ASIO4ALL 搭配主板集成声卡时高潮段落电流声（自动为软件聚合驱动增大 ASIO 缓冲）</li>
+<li>修复共享模式重采样过冲在高潮被硬削产生的“滋”声，输出链路加入统一钳位防护</li>
+</ul>
+</div>
+</details>
+
+<details class="rel">
+<summary><span class="ver">v1.6.0</span><span class="date">大版本 · 三后端与拉取链路</span></summary>
+<div class="rel-body">
+<ul>
+<li>新增 WASAPI 共享 / 独占 / ASIO 三种输出后端，ASIO 设备自动识别，支持专业 USB DAC</li>
+<li>播放链路重构为拉取式（Pull）：独立解码线程 + 环形缓冲，零欠载、节拍精确</li>
+<li>Kaiser 窗高质量重采样，自动适配 24bit / 192kHz；设备预热 + 平滑淡入，后端热切换不再无声 / 爆音</li>
+<li>切歌 / 跳转 / 重头时歌词与声音同步，逐字高亮不再滞后；歌单详情新增快速滑块、排序、专辑列与音质角标</li>
+<li>修复扫描后艺术家 / 专辑大量“未知”、数据库重复插入；音频设置统一为「输出模式 + 输出设备」并与播放栏联动</li>
+</ul>
+</div>
+</details>
+
+<details class="rel">
+<summary><span class="ver">v1.5.4</span><span class="date">持久化与稳定性</span></summary>
+<div class="rel-body">
+<ul>
+<li>修复退出时设置未完全保存、任务栏图标不随主题切换、全局快捷键（Ctrl+Alt / 媒体键）无响应</li>
+<li>修复从托盘 / 桌面歌词唤起时最大化状态丢失、逐字高亮渲染性能、脏值识别多个边界</li>
+<li>新增单实例守卫（重复启动自动激活已有窗口）；大库元数据扫描性能优化；卸载默认保留用户数据</li>
+</ul>
+</div>
+</details>
+
+<details class="rel">
+<summary><span class="ver">v1.5.3</span><span class="date">桌面歌词与分组修复</span></summary>
+<div class="rel-body">
+<ul>
+<li>修复关闭窗口“下次不再询问”不生效、桌面歌词锁定时遮挡其他窗口鼠标输入、专辑分组碎片化、文件名方向识别错误</li>
+<li>桌面歌词锁子图标缩小并默认半透明、悬停高亮；在线元数据补全逻辑优化；卡拉 OK 逐字高亮修复</li>
+</ul>
+</div>
+</details>
+
+<details class="rel">
+<summary><span class="ver">v1.5.2</span><span class="date">独占直通初版</span></summary>
+<div class="rel-body">
+<ul>
+<li>WASAPI 独占 bit-perfect 输出、采样率自适应源率直出、高质量重采样防过冲削波</li>
+<li>智选引擎（基于播放统计的智能推荐）、桌面歌词 + 迷你播放器、深浅主题 + 动态取色、多维度歌单管理</li>
+</ul>
+</div>
+</details>
+
+<a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases">查看全部历史版本（GitHub Releases）→</a>
 
 <div class="download">
 <a class="btn" href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">🛒 微软商店获取最新版 v1.6.7</a>
