@@ -388,7 +388,7 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <span>Guide <span class="hi">Online</span></span>
 </div>
 <div class="right">
-<span>v1.5.4</span>
+<span>v1.6.7</span>
 <span>Win x64</span>
 </div>
 </div>
@@ -401,6 +401,7 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <h3>目录</h3>
 <ul>
 <li><a href="#install">安装与首次启动</a></li>
+<li><a href="#store">微软商店版说明</a></li>
 <li><a href="#library">音乐库管理</a></li>
 <li><a href="#hidden">你可能没发现的功能（重点）</a></li>
 <li><a href="#playback">播放控制</a></li>
@@ -420,18 +421,24 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <h2 id="install">一、安装与首次启动</h2>
 <h3>系统要求</h3>
 <ul>
-<li>Windows 10 1809 或 Windows 11（x64）</li>
+<li>Windows 10 2004（内部版本 19041）及以上，或 Windows 11（x64）</li>
 <li>内存 4 GB 及以上</li>
-<li>无需预装 Java 或任何运行环境</li>
+<li>无需预装 Java 或任何运行环境（安装包内置运行时）</li>
 </ul>
-<h3>安装步骤</h3>
+<h3>方式一：微软商店（推荐，最新版 v1.6.7）</h3>
 <ol>
-<li>从 <a href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">Releases 页面</a> 下载 <code>LePlayer-Setup.exe</code></li>
+<li>在 Microsoft Store 搜索「LePlayer」，或打开<a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">商店页面</a></li>
+<li>购买（买断制，一次购买永久使用）后由系统自动安装、自动更新</li>
+</ol>
+<h3>方式二：GitHub 安装包（v1.6.6，最终免费版）</h3>
+<ol>
+<li>下载 <a href="https://github.com/LePlayer-Studio/LePlayer/releases/download/v1.6.6/LePlayer-Setup-1.6.6.exe"><code>LePlayer-Setup-1.6.6.exe</code></a>（约 102 MB）</li>
 <li>右键安装包 → <strong>以管理员身份运行</strong>（安装到 Program Files 需要权限）</li>
-<li>选择安装路径，跟随向导完成</li>
+<li>选择安装路径与缓存目录，跟随向导完成</li>
 <li>首次启动会引导你添加音乐文件夹</li>
 </ol>
-<div class="tip"><strong>升级提示：</strong>直接运行新版安装包覆盖安装即可，音乐库、设置、歌单全部保留。</div>
+<div class="tip"><strong>升级提示：</strong>GitHub 版直接运行新版安装包覆盖安装即可，音乐库、设置、歌单全部保留。<strong>v1.6.6 之后的新版本仅在微软商店发布，GitHub 不再更新安装包。</strong></div>
+<div class="warn" id="store"><strong>微软商店版注意（缓存目录）：</strong>商店版（MSIX）运行在系统沙箱中，<strong>缓存 / 数据目录使用系统分配的位置，不支持自定义到其他盘或文件夹</strong>，由系统统一管理；安装向导中也没有自定义缓存目录这一步。如需把缓存放到自选目录，请使用 GitHub 的 NSIS 安装版。两个版本体功能一致，你的音乐文件始终保留在原处、不会被移动或上传。</div>
 <h3>单实例保护</h3>
 <p>LePlayer 同时只能运行一个实例。如果已有程序在运行，再次启动会直接退出（不会弹出错误窗口）。</p>
 
@@ -508,7 +515,7 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <tr><td>进度跳转</td><td>拖动播放进度条</td></tr>
 <tr><td>音量</td><td>播放栏音量滑块，或 Ctrl + ↑ / ↓</td></tr>
 <tr><td>双击播放</td><td>歌曲列表中双击任意歌曲开始播放</td></tr>
-<tr><td>右键菜单</td><td>播放 / 收藏 / 添加到歌单 / 从列表删除 / 彻底删除源文件</td></tr>
+<tr><td>右键菜单</td><td>播放 / 收藏 / 添加到歌单 / 编辑标签 / 替换封面 / 打开文件位置 / 删除到回收站</td></tr>
 </table>
 <h3>播放模式</h3>
 <ul>
@@ -537,6 +544,7 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <li>源采样率与设备一致时跳过重采样，零音质损失</li>
 </ul>
 <div class="warn"><strong>注意：</strong>独占模式下音量由系统音量控制（应用内音量滑块无效），这是 WASAPI 独占的正常行为；ASIO 按每首歌源采样率打开，实现位完美输出。</div>
+<div class="tip"><strong>原生 DSD / CUE：</strong>ASIO 后端支持原生 DSD 与 DoP，DSD64 / DSD128 / DSD256 直出 DAC；CUE 整轨会自动分轨、独立曲目入库，右键「打开文件位置」会定位到对应的整轨文件。</div>
 
 <h2 id="lyrics">六、桌面歌词</h2>
 <h3>开启歌词</h3>
@@ -604,7 +612,7 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <tr><td><span class="kbd">Ctrl + Alt + 空格</span></td><td>播放/暂停</td></tr>
 <tr><td><span class="kbd">媒体键</span></td><td>播放/暂停、上一首、下一首（键盘上的多媒体按键）</td></tr>
 </table>
-<div class="tip"><strong>全局快捷键</strong>在任何应用中都生效，即使 LePlayer 在后台也能控制播放。</div>
+<div class="tip"><strong>全局快捷键</strong>在任何应用中都生效，即使 LePlayer 在后台也能控制播放，并可在设置中自定义。此外 LePlayer 已接入 <strong>Windows SMTC</strong>：任务栏缩略图、锁屏界面、蓝牙耳机与键盘媒体键都能播放 / 暂停 / 切歌，播放时还会阻止屏幕保护启动。</div>
 
 <h2 id="tray">十一、系统托盘</h2>
 <ul>
@@ -617,8 +625,11 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <h3>音乐库</h3>
 <table>
 <tr><th>选项</th><th>说明</th></tr>
-<tr><td>歌单</td><td>管理扫描目录、实时监听，可添加多个</td></tr>
-<tr><td>重新扫描</td><td>手动触发全库重新扫描</td></tr>
+<tr><td>歌单</td><td>管理扫描目录、实时监听，可添加多个；本地 / NAS / 外置盘都是普通路径，一视同仁</td></tr>
+<tr><td>重新扫描</td><td>手动触发刷新，即时执行</td></tr>
+<tr><td>文件夹黑名单</td><td>扫库时跳过指定目录</td></tr>
+<tr><td>短片段过滤</td><td>自动排除短于 30 秒的录音 / 铃声片段</td></tr>
+<tr><td>回收站</td><td>查看 / 恢复被删除的歌曲，确认后才进入系统回收站</td></tr>
 <tr><td>在线元数据补全</td><td>静默补全缺失的封面和曲目信息，不影响播放</td></tr>
 </table>
 <h3>播放</h3>
@@ -631,20 +642,35 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <h3>界面</h3>
 <table>
 <tr><th>选项</th><th>说明</th></tr>
-<tr><td>主题</td><td>浅色 / 深色 / 跟随系统</td></tr>
+<tr><td>主题</td><td>浅色 / 深色 / 跟随系统，云母 / 烟雾材质可选</td></tr>
 <tr><td>动态取色</td><td>根据专辑封面自动配色</td></tr>
-<tr><td>桌面歌词</td><td>默认显示/隐藏</td></tr>
+<tr><td>全局 UI 缩放</td><td>80%–150% 滑块，4K / 大屏友好；全屏时自动放大</td></tr>
+<tr><td>全局字体</td><td>MiSans / 系统字体（雅黑、等线等）/ 自定义字体文件</td></tr>
+<tr><td>歌词字体</td><td>页面歌词、桌面歌词可分别设置字体</td></tr>
+<tr><td>桌面歌词</td><td>默认显示 / 隐藏、显示下一行、锁定穿透</td></tr>
 <tr><td>最小化到托盘</td><td>关闭主窗口时的行为</td></tr>
 </table>
 <h3>关闭行为</h3>
 <p>首次关闭主窗口时会弹出选择：最小化到托盘 / 直接退出。勾选"不再询问"后，后续按你的选择执行。所有设置在退出时自动保存，重启后不丢失。</p>
 
 <h2 id="tips">十三、进阶技巧</h2>
-<h3>删除文件保护</h3>
+<h3>删除与回收站（防误删）</h3>
 <ul>
-<li>右键歌曲 → "彻底删除源文件"会删除磁盘上的文件</li>
-<li>首次执行会弹出确认提示，勾选"不再询问"后记住选择</li>
-<li>从列表删除只移除数据库记录，不删文件</li>
+<li>右键歌曲 →「删除」会先把歌曲移入<strong>软件内回收站</strong>并弹出提示，不会立刻删除磁盘文件</li>
+<li>在<strong>设置 → 回收站</strong>可查看被删歌曲的歌名 / 艺术家 / 专辑，并可一键恢复</li>
+<li>在回收站确认清理后，文件进入 <strong>Windows 系统回收站</strong>，仍可在系统回收站里还原，不会被直接永久删除</li>
+<li>「从当前列表移除」只影响该列表 / 歌单显示，不动文件；文件夹扫描页可联动清理失效记录</li>
+</ul>
+<h3>内置标签编辑</h3>
+<ul>
+<li>右键歌曲 →「编辑标签」，可直接修改标题 / 艺术家 / 专辑并<strong>写回音频文件</strong>（支持 MP3 / FLAC / APE 等）</li>
+<li>曲库、专辑、艺术家、歌单、收件箱各处右键都能进入，保存后自动刷新对应列表</li>
+<li>右键「替换封面」可把封面写入文件元数据</li>
+</ul>
+<h3>扫库过滤</h3>
+<ul>
+<li><strong>文件夹黑名单：</strong>设置中可让扫库跳过指定目录（如铃声、录音单独存放的文件夹）</li>
+<li><strong>短片段过滤：</strong>自动跳过短于 30 秒的片段（录音 / 铃声），适合快速入库</li>
 </ul>
 <h3>智选引擎</h3>
 <ul>
@@ -661,9 +687,9 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 
 <h2 id="faq">十四、常见问题</h2>
 <h3>Q: 切换到独占后 DAC 采样率当次没变？</h3>
-<p>A: v1.6.1 已修复，热切换当次即按歌曲源采样率重建，无需等到下一首。</p>
+<p>A: 当前版本已修复，热切换当次即按歌曲源采样率重建，无需等到下一首。</p>
 <h3>Q: 共享模式歌曲高潮有“滋”声？</h3>
-<p>A: v1.6.1 已在输出链路加入钳位防护，重采样过冲不再被硬削。</p><h3>Q: 独占模式下音量调节无效？</h3>
+<p>A: 当前版本输出链路已加入统一钳位防护，重采样过冲不再被硬削。</p><h3>Q: 独占模式下音量调节无效？</h3>
 <p>A: WASAPI 独占模式下，应用内音量滑块失效，音量由系统音量控制。这是正常行为，切回共享模式即可恢复应用内音量控制。</p>
 <h3>Q: 全局快捷键没反应？</h3>
 <p>A: 请确认没有其他软件（如某些输入法、截图工具）占用了相同的全局快捷键。LePlayer 的快捷键是 Ctrl+Alt+方向键/空格，通常不会冲突。</p>
@@ -672,13 +698,19 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <h3>Q: 扫描很慢？</h3>
 <p>A: 首次扫描需要读取所有文件标签，速度取决于磁盘速度。后续扫描是增量的，只处理新增和修改过的文件，会快很多。</p>
 <h3>Q: 设置重启后不生效？</h3>
-<p>A: v1.5.4 已修复此问题。所有设置在退出时自动写入磁盘。如果仍有问题，请通过 Issues 反馈。</p>
+<p>A: 当前版本已修复，所有设置在退出时自动写入磁盘。如果仍有问题，请通过 Issues 反馈。</p>
 <h3>Q: 支持哪些格式？</h3>
-<p>A: MP3 / FLAC / WAV / AAC / OGG / OPUS / M4A / WMA 等主流格式。AAC 和 ALAC 无损也支持。</p>
+<p>A: MP3 / FLAC / WAV / AAC / OGG / OPUS / M4A / WMA / APE / ALAC，以及 ASIO 下的原生 DSD（DSF / DFF）/ DoP。</p>
+<h3>Q: 微软商店版和 GitHub 版有什么区别？</h3>
+<p>A: 功能一致。商店版为买断制、由系统自动更新，但缓存目录由沙箱管理、不能自定义位置；GitHub 的 v1.6.6 安装版免费、可自选安装与缓存目录，之后不再更新。</p>
+<h3>Q: 商店里搜不到 LePlayer？</h3>
+<p>A: 应用可能仍在审核，稍候再搜，或直接访问<a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">商店页面</a>。</p>
+<h3>Q: 误删了歌曲怎么办？</h3>
+<p>A: 删除先进软件内回收站（设置 → 回收站），可查看与恢复；确认清理后也只是进入 Windows 系统回收站，仍可还原。</p>
 
 <footer>
 <p>LePlayer — 不打扰，不驯化，不占有。你的音乐，只属于你。</p>
-<p><a href="index.html">返回主页</a> · <a href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">下载最新版</a></p>
+<p><a href="index.html">返回主页</a> · <a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">微软商店（最新版）</a> · <a href="https://github.com/LePlayer-Studio/LePlayer/releases/download/v1.6.6/LePlayer-Setup-1.6.6.exe">GitHub v1.6.6</a></p>
 <p class="lossless">Lossless · Bit-perfect · Local-first</p>
 </footer>
 
