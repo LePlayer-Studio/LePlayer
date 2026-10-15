@@ -34,7 +34,7 @@ html { scroll-behavior:smooth; }
 }
 
 body {
-font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+font-family:'MiSans','Inter','Segoe UI',system-ui,-apple-system,sans-serif;
 color:var(--text);
 line-height:1.65;
 background:
@@ -553,7 +553,7 @@ details.rel .rel-body { margin-top:12px; }
 <span>Engine <span class="hi">Ready</span></span>
 </div>
 <div class="right">
-<span>v1.6.7</span>
+<span>v1.6.9</span>
 <span>Win x64</span>
 </div>
 </div>
@@ -610,6 +610,11 @@ details.rel .rel-body { margin-top:12px; }
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
 <h3>高质量重采样</h3>
 <p>Kaiser 窗算法自动适配设备采样率与位深（24bit/192kHz），统一钳位消除杂音与变速</p>
+</div>
+<div class="card">
+<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
+<h3>设备跟随与热插拔</h3>
+<p>输出设备选「默认设备」即随系统切换耳机 / 音箱 / 蓝牙 / DAC，播放不中断；设备掉线自动切回并提示</p>
 </div>
 </div>
 
@@ -673,13 +678,32 @@ details.rel .rel-body { margin-top:12px; }
 <div class="section" style="border-color:rgba(110,231,155,.35);">
 <h3>📢 分发渠道变更</h3>
 <ul>
-<li><strong>v1.6.7 及以后仅在微软商店更新</strong>（买断制，一次购买永久使用，自动更新）</li>
+<li><strong>v1.6.7 及以后仅在微软商店更新</strong>（当前 v1.6.9，买断制，一次购买永久使用，自动更新）</li>
 <li><strong>GitHub 最后一个安装包为 v1.6.6</strong>，可免费下载；之后 GitHub 只保留更新记录，不再上传安装包</li>
 </ul>
 </div>
 
+<div class="section" style="border-color:rgba(110,231,155,.35);">
+<h3><span class="ver">v1.6.9</span> <span class="date">最新版 · 微软商店</span></h3>
+<ul>
+<li>输出设备跟随系统默认：选「默认设备」时随系统切换耳机 / 音箱 / 蓝牙 / DAC，播放不中断；选具体设备则固定使用</li>
+<li>设备掉线自动恢复：固定输出设备不可用时自动切回跟随系统默认并提示，ASIO 无响应同样兜底</li>
+<li>耳机 / DAC 热插拔检测更及时；万级曲库数据库写入启用 WAL 与忙等待，大库操作更稳</li>
+</ul>
+</div>
+
 <div class="section">
-<h3><span class="ver">v1.6.7</span> <span class="date">最新版 · 微软商店</span></h3>
+<h3><span class="ver">v1.6.8</span> <span class="date">微软商店版</span></h3>
+<ul>
+<li>歌手 / 专辑名全站可点跳转，多歌手分段独立可点，按压有选中反馈，返回回到原浏览位置</li>
+<li>桌面歌词体系大修：窗口几何自维护、浅色主题颜色不再发灰、HSV 拾色器、不透明度级联生效</li>
+<li>全局字体选择（MiSans / 系统字体 / 自定义字体文件），页面与桌面歌词字体可分别设置</li>
+<li>合辑按专辑艺术家聚合不再碎裂；大库分批就绪、视频文件自动排除、缺失文件自愈；中 / 英 / 繁三语补齐</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.6.7</span> <span class="date">微软商店版</span></h3>
 <ul>
 <li>修复商店沙箱（MSIX）内启动即崩溃，商店版联网改用兼容沙箱的网络栈</li>
 <li>修复部分封面在非开发环境静默不显示的发布阻断问题</li>
@@ -803,10 +827,10 @@ details.rel .rel-body { margin-top:12px; }
 <a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases">查看全部历史版本（GitHub Releases）→</a>
 
 <div class="download">
-<a class="btn" href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">🛒 微软商店获取最新版 v1.6.7</a>
+<a class="btn" href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">🛒 微软商店获取最新版 v1.6.9</a>
 <div style="height:14px"></div>
 <a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/download/v1.6.6/LePlayer-Setup-1.6.6.exe" style="background:transparent;border-color:rgba(168,255,207,.16);color:var(--text-dim);">⬇️ GitHub 安装版 v1.6.6（最终版 · 免费）</a>
-<p class="meta">最新版 v1.6.7 起仅在 <a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">微软商店</a> 更新（买断制，一次购买永久使用，自动更新）<br>GitHub 安装包止于 v1.6.6，之后仅保留更新记录 · Windows 10 2004+ / Windows 11 x64 · 内置运行时 · 无需预装 Java · 约 102 MB<br><a href="guide.html">详细使用指南</a></p>
+<p class="meta">最新版 v1.6.9 起仅在 <a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">微软商店</a> 更新（买断制，一次购买永久使用，自动更新）<br>GitHub 安装包止于 v1.6.6，之后仅保留更新记录 · Windows 10 2004+ / Windows 11 x64 · 内置运行时 · 无需预装 Java · 商店版约 125 MB<br><a href="guide.html">详细使用指南</a></p>
 </div>
 
 <footer>
