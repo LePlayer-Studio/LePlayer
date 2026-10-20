@@ -553,7 +553,7 @@ details.rel .rel-body { margin-top:12px; }
 <span>Engine <span class="hi">Ready</span></span>
 </div>
 <div class="right">
-<span>v1.6.9</span>
+<span>v1.6.12</span>
 <span>Win x64</span>
 </div>
 </div>
@@ -585,6 +585,11 @@ details.rel .rel-body { margin-top:12px; }
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
 <h3>系统媒体集成</h3>
 <p>Windows SMTC 任务栏 / 锁屏 / 蓝牙耳机 / 媒体键原生控制，全局键盘快捷键在后台也能用</p>
+</div>
+<div class="card">
+<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
+<h3>局域网投送 / 接收</h3>
+<p>DLNA 投送到电视 / 音箱 / 手机，自动转码、换曲零等待；也可开启接收模式，让局域网设备把音频投到本机（默认关闭）</p>
 </div>
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
@@ -678,13 +683,34 @@ details.rel .rel-body { margin-top:12px; }
 <div class="section" style="border-color:rgba(110,231,155,.35);">
 <h3>📢 分发渠道变更</h3>
 <ul>
-<li><strong>v1.6.7 及以后仅在微软商店更新</strong>（当前 v1.6.9，买断制，一次购买永久使用，自动更新）</li>
+<li><strong>v1.6.7 及以后仅在微软商店更新</strong>（当前 v1.6.12，买断制，一次购买永久使用，自动更新）</li>
 <li><strong>GitHub 最后一个安装包为 v1.6.6</strong>，可免费下载；之后 GitHub 只保留更新记录，不再上传安装包</li>
 </ul>
 </div>
 
 <div class="section" style="border-color:rgba(110,231,155,.35);">
-<h3><span class="ver">v1.6.9</span> <span class="date">最新版 · 微软商店</span></h3>
+<h3><span class="ver">v1.6.12</span> <span class="date">最新版 · 微软商店</span></h3>
+<ul>
+<li><strong>DLNA 局域网投送</strong>：把正在播放的歌曲 / 队列投送到局域网内电视、音箱、手机等设备；自动发现、按设备能力转码（优先 MP3）、换曲零等待，播放栏 / 列表一键投送，电视端同步封面</li>
+<li><strong>DLNA 接收投送</strong>：设置 → 实验室「局域网接收投送」（默认关闭）开启后，本机作为渲染器接收局域网设备投送的音频并播放；自动显示封面、换曲带歌词，仅接受局域网来源</li>
+<li><strong>独占首播无声修复</strong>：开启独占后首次点播放可能静音的问题已修复，首次建流即按独占配置生效</li>
+<li><strong>稳定性</strong>：全局快捷键首次触发崩溃已修复；正常退出不再被误报「崩溃后启动」并抑制自动续播</li>
+<li><strong>格式扩展</strong>：新增支持 WMA / OGG（.oga）/ M4B</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.6.11</span> <span class="date">微软商店版</span></h3>
+<ul>
+<li>WASAPI 独占真正生效：修复「选了独占、实际仍在共享播放」；设备拒绝独占时明确提示</li>
+<li>ASIO 打不开修复：打开 ASIO 前真正释放设备（旧版只暂停流），失败说明原因；反复失败建议重启</li>
+<li>DSD（DoP）播放更稳定；NAS / 网络盘扫描显著加速；大曲库重复扫描更安静</li>
+<li>问题反馈日志更完整（含前一日、2000 行）；曲库状态可自查；点播放等待更短；图标铺满</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.6.9</span> <span class="date">微软商店版</span></h3>
 <ul>
 <li>输出设备跟随系统默认：选「默认设备」时随系统切换耳机 / 音箱 / 蓝牙 / DAC，播放不中断；选具体设备则固定使用</li>
 <li>设备掉线自动恢复：固定输出设备不可用时自动切回跟随系统默认并提示，ASIO 无响应同样兜底</li>
@@ -827,10 +853,10 @@ details.rel .rel-body { margin-top:12px; }
 <a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases">查看全部历史版本（GitHub Releases）→</a>
 
 <div class="download">
-<a class="btn" href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">🛒 微软商店获取最新版 v1.6.9</a>
+<a class="btn" href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">🛒 微软商店获取最新版 v1.6.12</a>
 <div style="height:14px"></div>
 <a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/download/v1.6.6/LePlayer-Setup-1.6.6.exe" style="background:transparent;border-color:rgba(168,255,207,.16);color:var(--text-dim);">⬇️ GitHub 安装版 v1.6.6（最终版 · 免费）</a>
-<p class="meta">最新版 v1.6.9 起仅在 <a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">微软商店</a> 更新（买断制，一次购买永久使用，自动更新）<br>GitHub 安装包止于 v1.6.6，之后仅保留更新记录 · Windows 10 2004+ / Windows 11 x64 · 内置运行时 · 无需预装 Java · 商店版约 125 MB<br><a href="guide.html">详细使用指南</a></p>
+<p class="meta">最新版 v1.6.12 起仅在 <a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">微软商店</a> 更新（买断制，一次购买永久使用，自动更新）<br>GitHub 安装包止于 v1.6.6，之后仅保留更新记录 · Windows 10 2004+ / Windows 11 x64 · 内置运行时 · 无需预装 Java · 商店版约 143 MB<br><a href="guide.html">详细使用指南</a></p>
 </div>
 
 <footer>
