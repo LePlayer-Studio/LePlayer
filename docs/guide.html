@@ -388,7 +388,7 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <span>Guide <span class="hi">Online</span></span>
 </div>
 <div class="right">
-<span>v1.6.7</span>
+<span>v1.6.12</span>
 <span>Win x64</span>
 </div>
 </div>
@@ -413,6 +413,7 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <li><a href="#hotkey">全局快捷键</a></li>
 <li><a href="#tray">系统托盘</a></li>
 <li><a href="#settings">设置详解</a></li>
+<li><a href="#dlna">局域网投送与接收</a></li>
 <li><a href="#tips">进阶技巧</a></li>
 <li><a href="#faq">常见问题</a></li>
 </ul>
@@ -425,7 +426,7 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <li>内存 4 GB 及以上</li>
 <li>无需预装 Java 或任何运行环境（安装包内置运行时）</li>
 </ul>
-<h3>方式一：微软商店（推荐，最新版 v1.6.7）</h3>
+<h3>方式一：微软商店（推荐，最新版 v1.6.12）</h3>
 <ol>
 <li>在 Microsoft Store 搜索「LePlayer」，或打开<a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">商店页面</a></li>
 <li>购买（买断制，一次购买永久使用）后由系统自动安装、自动更新</li>
@@ -450,7 +451,7 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <li>添加后自动开始扫描，进度可见</li>
 </ul>
 <h3>支持格式</h3>
-<p>MP3 / FLAC / WAV / AAC / OGG / OPUS / M4A / WMA 等常见格式均支持。</p>
+<p>MP3 / FLAC / WAV / AAC / OGG / OGA / OPUS / M4A / M4B / WMA / APE / ALAC 等常见格式均支持（1.6.12 起新增 WMA / .oga / M4B）。</p>
 <h3>增量扫描</h3>
 <ul>
 <li>扫描基于文件修改时间和大小，未变化的文件不会重复解析</li>
@@ -653,7 +654,22 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <h3>关闭行为</h3>
 <p>首次关闭主窗口时会弹出选择：最小化到托盘 / 直接退出。勾选"不再询问"后，后续按你的选择执行。所有设置在退出时自动保存，重启后不丢失。</p>
 
-<h2 id="tips">十三、进阶技巧</h2>
+<h2 id="dlna">十三、局域网投送与接收（1.6.12 新增）</h2>
+<p>LePlayer 支持与同一局域网内的 DLNA / UPnP 设备互相投送音频：</p>
+<h3>投送：把歌投到其他设备</h3>
+<ul>
+<li>播放栏或歌曲列表点「<strong>投送到设备</strong>」→ 选择局域网内的电视 / 音箱 / 手机等设备，开始投送</li>
+<li>本机自动发现设备、按目标能力转码（优先 MP3，兼容性最好），换曲后台预编码、起播零等待</li>
+<li>投送面板可查看状态、停止投送；投送期间本机仍可继续浏览曲库</li>
+</ul>
+<h3>接收：让别的设备投到本机</h3>
+<ul>
+<li>设置 → 实验室 → 「<strong>局域网接收投送</strong>」（<strong>默认关闭</strong>）</li>
+<li>开启后本机作为局域网渲染器，手机音乐 App / 其他播放器可把音频投到本机播放并控制；自动显示封面、换曲带歌词</li>
+<li><strong>安全提示：</strong>开启后同一局域网内的设备都可以投送，请仅在可信网络使用；投送来源仅接受局域网地址，用完后关闭开关即可</li>
+</ul>
+
+<h2 id="tips">十四、进阶技巧</h2>
 <h3>删除与回收站（防误删）</h3>
 <ul>
 <li>右键歌曲 →「删除」会先把歌曲移入<strong>软件内回收站</strong>并弹出提示，不会立刻删除磁盘文件</li>
@@ -685,14 +701,14 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <li>在线补全仅在需要时联网，不收集使用数据</li>
 </ul>
 
-<h2 id="faq">十四、常见问题</h2>
+<h2 id="faq">十五、常见问题</h2>
 <h3>Q: 切换到独占后 DAC 采样率当次没变？</h3>
 <p>A: 当前版本已修复，热切换当次即按歌曲源采样率重建，无需等到下一首。</p>
 <h3>Q: 共享模式歌曲高潮有“滋”声？</h3>
 <p>A: 当前版本输出链路已加入统一钳位防护，重采样过冲不再被硬削。</p><h3>Q: 独占模式下音量调节无效？</h3>
 <p>A: WASAPI 独占模式下，应用内音量滑块失效，音量由系统音量控制。这是正常行为，切回共享模式即可恢复应用内音量控制。</p>
 <h3>Q: 全局快捷键没反应？</h3>
-<p>A: 请确认没有其他软件（如某些输入法、截图工具）占用了相同的全局快捷键。LePlayer 的快捷键是 Ctrl+Alt+方向键/空格，通常不会冲突。</p>
+<p>A: 1.6.12 已修复首次触发即崩溃的问题。若仍无响应，请确认没有其他软件（如某些输入法、截图工具）占用了相同的全局快捷键。LePlayer 的快捷键是 Ctrl+Alt+方向键/空格，通常不会冲突。</p>
 <h3>Q: 桌面歌词挡住了打字？</h3>
 <p>A: 点击歌词窗口左上角的小锁图标锁定位置，锁定后鼠标点击穿透到下层窗口，不影响你打字。再次点击解锁。</p>
 <h3>Q: 扫描很慢？</h3>
@@ -700,13 +716,17 @@ h2 { font-size:1.1em; letter-spacing:.1em; margin-top:56px; }
 <h3>Q: 设置重启后不生效？</h3>
 <p>A: 当前版本已修复，所有设置在退出时自动写入磁盘。如果仍有问题，请通过 Issues 反馈。</p>
 <h3>Q: 支持哪些格式？</h3>
-<p>A: MP3 / FLAC / WAV / AAC / OGG / OPUS / M4A / WMA / APE / ALAC，以及 ASIO 下的原生 DSD（DSF / DFF）/ DoP。</p>
+<p>A: MP3 / FLAC / WAV / AAC / OGG / OGA / OPUS / M4A / M4B / WMA / APE / ALAC，以及 ASIO 下的原生 DSD（DSF / DFF）/ DoP。</p>
 <h3>Q: 微软商店版和 GitHub 版有什么区别？</h3>
 <p>A: 功能一致。商店版为买断制、由系统自动更新，但缓存目录由沙箱管理、不能自定义位置；GitHub 的 v1.6.6 安装版免费、可自选安装与缓存目录，之后不再更新。</p>
 <h3>Q: 商店里搜不到 LePlayer？</h3>
 <p>A: 应用可能仍在审核，稍候再搜，或直接访问<a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">商店页面</a>。</p>
 <h3>Q: 误删了歌曲怎么办？</h3>
 <p>A: 删除先进软件内回收站（设置 → 回收站），可查看与恢复；确认清理后也只是进入 Windows 系统回收站，仍可还原。</p>
+<h3>Q: 投送时找不到设备？</h3>
+<p>A: 确认目标设备（电视 / 音箱 / 手机）已开机、支持 DLNA / 投屏，并与电脑在<strong>同一局域网</strong>；手机端需开启投送 / 媒体共享。设备发现走多通道（多播 + 子网广播 + 单播摸底），个别路由器过滤多播时仍有存活路径；仍找不到时刷新设备列表重试。</p>
+<h3>Q: 局域网接收投送安全吗？</h3>
+<p>A: 该功能<strong>默认关闭</strong>，开启后同一局域网内的设备都可以投送（他人可用），请仅在可信网络使用；投送来源仅接受局域网地址，私网不可达的媒体会快速失败并提示。用完后关闭开关即可。</p>
 
 <footer>
 <p>LePlayer — 不打扰，不驯化，不占有。你的音乐，只属于你。</p>
