@@ -12,7 +12,7 @@
 Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直出 bit-perfect · 全格式 HiFi 解码
 
 ![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue)
-![Latest](https://img.shields.io/badge/最新版-v1.6.9%20(商店)-brightgreen)
+![Latest](https://img.shields.io/badge/最新版-v1.6.12%20(商店)-brightgreen)
 ![GitHub](https://img.shields.io/badge/GitHub%20安装版-v1.6.6-success)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
@@ -27,11 +27,11 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 
 > ## 📢 分发渠道说明 / Distribution
 >
-> - **最新版本在微软商店发布**：**v1.6.7 及以后版本仅通过 [Microsoft Store](https://apps.microsoft.com/detail/9PDTB5PT4VR7) 提供更新（买断制，一次购买永久使用），当前最新为 v1.6.9。**
+> - **最新版本在微软商店发布**：**v1.6.7 及以后版本仅通过 [Microsoft Store](https://apps.microsoft.com/detail/9PDTB5PT4VR7) 提供更新（买断制，一次购买永久使用），当前最新为 v1.6.12。**
 > - **GitHub 最后一个安装包为 v1.6.6**：本页提供的 `LePlayer-Setup-1.6.6.exe` 是 GitHub 渠道的最终安装版，可免费下载使用，之后不再在 GitHub 上传新的安装包。
 > - **GitHub 之后只保留更新记录**：新版本的功能与修复说明仍会在此页面与[更新日志](#-更新日志--changelog)持续更新，但安装包请前往微软商店获取。
 >
-> Latest version (v1.6.9) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards.
+> Latest version (v1.6.12) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards.
 
 ---
 
@@ -62,6 +62,7 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 | 背压控制 | 写入速率严格跟随播放速率，节奏不受 GC 干扰 |
 | 三级容错 | 位深不支持自动回退，原生层异常降级 JavaSound，保证总能出声 |
 | CUE 分轨解析 | 整轨音频自动拆分，独立曲目入库并正确定位整轨文件 |
+| 全格式解码 | MP3 / FLAC / WAV / AAC / APE / WavPack / M4A / M4B / OGG / OPUS / WMA / DSF / DFF 等 |
 | 设备热切换 | 播放中切换后端 / 设备不重头、不爆音；设备断开自动暂停；自动跟随系统默认设备 |
 
 ### 🖥️ 界面交互 / UI & Interaction
@@ -71,6 +72,7 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 - **全局右键菜单** — 播放 / 下一首 / 收藏 / 编辑标签 / 替换封面 / 歌词校准 / 打开文件位置 / 删除到回收站，曲库、专辑、艺术家、歌单、收件箱各处一致
 - **桌面歌词 + 迷你播放器** — 独立歌词窗口与迷你模式，支持锁定全穿透、单句偏移校准、显示下一行、独立字体设置、HSV 拾色
 - **Windows SMTC 系统集成** — 任务栏、锁屏、蓝牙耳机 / 键盘媒体键原生控制，播放时阻止屏保
+- **DLNA 局域网投送 / 接收** — 把正在播放的歌曲投送到局域网内电视 / 音箱 / 手机等设备（自动发现、按设备能力转码、换曲零等待）；也可开启接收模式，让局域网设备把音频投到本机播放（默认关闭，仅接受局域网来源）
 - **全局键盘快捷键** — 播放 / 暂停 / 切歌 / 音量 / 桌面歌词，后台也能控制，支持自定义
 - **全局 UI 缩放** — 80%–150% 滑块，4K / 大屏友好；全屏自动放大界面
 - **全局字体** — 随包 MiSans、系统字体（雅黑 / 等线等）与自定义字体文件，全局 / 页面歌词 / 桌面歌词可分别设置
@@ -123,7 +125,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 > 当前仅发布 **Windows x64** 版本，内置运行时，**无需预装 Java 环境**。
 
-### 🛒 方式一：微软商店（推荐，最新版 v1.6.9）
+### 🛒 方式一：微软商店（推荐，最新版 v1.6.12）
 
 - 在 Microsoft Store 搜索 **「LePlayer」**，或点击 [商店页面](https://apps.microsoft.com/detail/9PDTB5PT4VR7)
 - 买断制，一次购买永久使用，后续自动更新
@@ -145,6 +147,22 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 > **商店版提示**：微软商店（MSIX）版由系统沙箱管理，**缓存 / 数据目录使用系统分配位置，不支持自定义到其他盘或文件夹**；如需自定义缓存目录，请使用 GitHub 的 NSIS 安装版。
 
 ## 🆕 更新日志 / Changelog
+
+### v1.6.12 — 微软商店版（仅商店发布）
+
+- **DLNA 局域网投送**：把正在播放的歌曲 / 队列投送到局域网内电视、音箱、手机等 DLNA 设备；自动发现、按设备能力转码（优先 MP3）、换曲零等待；播放栏 / 列表一键投送，电视端同步封面
+- **DLNA 接收投送**：设置 → 实验室「局域网接收投送」（默认关闭）开启后，本机作为渲染器接收局域网设备投送的音频并播放；自动显示封面、换曲带歌词，仅接受局域网来源
+- **独占首播无声修复**：开启独占后启动 / 恢复播放第一次点播放可能静音的问题已修复，首次建流即按独占配置生效
+- **全局快捷键崩溃修复**：首次触发即崩溃的问题已修复；**CrashGuard 误报修复**：正常退出不再被误报「崩溃后启动」并抑制自动续播
+- **格式扩展**：新增支持 WMA / OGG（.oga）/ M4B
+
+### v1.6.11 — 微软商店版（仅商店发布）
+
+- **WASAPI 独占真正生效**：修复「设置里选了独占、实际仍在共享模式播放」；设备拒绝独占时明确提示，不再黑盒
+- **ASIO 打不开修复**：打开 ASIO 前真正释放音频设备（旧版只暂停流、设备仍被占用），失败时说明原因；反复失败会建议重启
+- **DSD（DoP）播放稳定**：修复部分 DAC / 驱动组合下偶发闪退（对象被释放两次）
+- **NAS 扫描显著加速**（先快速入库、后台补全精确参数）；大曲库重复扫描更安静（差分持久化）
+- 问题反馈日志更完整（含前一日、2000 行）；启动日志可自查曲库状态；点播放等待更短；图标铺满
 
 ### v1.6.9 — 微软商店版（仅商店发布）
 
@@ -211,6 +229,8 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 ## 🗺️ Roadmap
 
+- [x] v1.6.12 — DLNA 局域网投送 / 接收 · 独占首播无声修复 · 格式扩展
+- [x] v1.6.11 — 独占真正生效 · ASIO 设备释放 · DSD 稳定 · NAS 扫描加速
 - [x] v1.6.9 — 曲库健壮性 · 系统默认设备跟随 · 热插拔检测
 - [x] v1.6.8 — 歌手 / 专辑可点跳转 · 桌面歌词大修 · 三语 · 字体体系
 - [x] v1.6.7 — 微软商店上架（商店渠道分发、买断制）
