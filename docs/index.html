@@ -34,7 +34,7 @@ html { scroll-behavior:smooth; }
 }
 
 body {
-font-family:'MiSans','Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
 color:var(--text);
 line-height:1.65;
 background:
@@ -532,15 +532,6 @@ h1 { font-size:2.2em; letter-spacing:.22em; text-indent:.22em; }
 #wave { height:52px; }
 h2 { font-size:1.15em; letter-spacing:.14em; }
 }
-/* ---------- 折叠的历史版本 ---------- */
-details.rel { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px 22px; margin:12px 0; transition:border-color .3s var(--ease); }
-details.rel[open] { border-color:var(--border-hi); }
-details.rel>summary { cursor:pointer; list-style:none; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; font-size:1.02em; color:var(--text); outline:none; }
-details.rel>summary::-webkit-details-marker { display:none; }
-details.rel>summary::after { content:"\25B8"; margin-left:auto; color:var(--text-mute); transition:transform .25s var(--ease); }
-details.rel[open]>summary::after { transform:rotate(90deg); }
-details.rel>summary:hover { color:var(--hifi); }
-details.rel .rel-body { margin-top:12px; }
 </style>
 </head>
 <body>
@@ -553,7 +544,7 @@ details.rel .rel-body { margin-top:12px; }
 <span>Engine <span class="hi">Ready</span></span>
 </div>
 <div class="right">
-<span>v1.6.12</span>
+<span>v1.6.13</span>
 <span>Win x64</span>
 </div>
 </div>
@@ -573,53 +564,23 @@ details.rel .rel-body { margin-top:12px; }
 <div class="features">
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>三种输出后端</h3>
-<p>WASAPI 共享、WASAPI 独占、ASIO 随时切换，独占与 ASIO 实现 Bit-Perfect 直通，原生 DSD / DoP 直出</p>
+<h3>三种输出后端<span class="tag">NEW</span></h3>
+<p>WASAPI 共享、WASAPI 独占、ASIO 随时切换，独占与 ASIO 实现 Bit-Perfect 直通</p>
 </div>
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
 <h3>拉取式播放链路</h3>
-<p>Rust 音频线程按硬件时钟主动拉数，单解码线程配合环形缓冲，零欠载、节拍精确、长时间稳定</p>
-</div>
-<div class="card">
-<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>系统媒体集成</h3>
-<p>Windows SMTC 任务栏 / 锁屏 / 蓝牙耳机 / 媒体键原生控制，全局键盘快捷键在后台也能用</p>
-</div>
-<div class="card">
-<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>局域网投送 / 接收</h3>
-<p>DLNA 投送到电视 / 音箱 / 手机，自动转码、换曲零等待；也可开启接收模式，让局域网设备把音频投到本机（默认关闭）</p>
-</div>
-<div class="card">
-<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>内置标签编辑</h3>
-<p>右键直接改标题 / 艺术家 / 专辑并写回文件，曲库各处可触发，支持 APE 等格式</p>
-</div>
-<div class="card">
-<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>删除进回收站</h3>
-<p>删除先入软件内回收站可查看可恢复，确认清理走系统回收站仍能还原，不直接永久删除</p>
-</div>
-<div class="card">
-<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>缩放与字体</h3>
-<p>全局 UI 缩放 80–150%、全屏自动放大，4K 友好；全局 / 歌词字体自由切换并支持自定义</p>
+<p>单一解码线程配合环形缓冲，播放零欠载、节拍精确，长时间播放稳定</p>
 </div>
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
 <h3>Material 3 原生 UI</h3>
-<p>深浅主题、云母 / 烟雾材质、动态取色、桌面歌词、迷你播放器，Compose Desktop 原生渲染</p>
+<p>深浅主题、动态取色、桌面歌词、迷你播放器，Compose Desktop 原生渲染</p>
 </div>
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
 <h3>高质量重采样</h3>
-<p>Kaiser 窗算法自动适配设备采样率与位深（24bit/192kHz），统一钳位消除杂音与变速</p>
-</div>
-<div class="card">
-<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>设备跟随与热插拔</h3>
-<p>输出设备选「默认设备」即随系统切换耳机 / 音箱 / 蓝牙 / DAC，播放不中断；设备掉线自动切回并提示</p>
+<p>Kaiser 窗算法自动适配设备采样率与位深（24bit/192kHz），消除杂音与变速</p>
 </div>
 </div>
 
@@ -679,184 +640,59 @@ details.rel .rel-body { margin-top:12px; }
 </div>
 
 <h2>更新说明</h2>
-<p class="gallery-sub">版本记录 · 分发渠道</p>
-<div class="section" style="border-color:rgba(110,231,155,.35);">
-<h3>📢 分发渠道变更</h3>
+<p class="gallery-sub">版本记录</p>
+<div class="section">
+<h3><span class=”ver”>v1.6.13</span> <span class=”date”>当前版本</span></h3>
 <ul>
-<li><strong>v1.6.7 及以后仅在微软商店更新</strong>（当前 v1.6.12，买断制，一次购买永久使用，自动更新）</li>
-<li><strong>GitHub 最后一个安装包为 v1.6.6</strong>，可免费下载；之后 GitHub 只保留更新记录，不再上传安装包</li>
+<li>大曲库（10 万首以上）全链路优化：扫描只写有变化的文件、主列表真虚拟滚动、trigram FTS 中文搜索加速、播放层不再全量加载曲库</li>
+<li>修复部分设备 192kHz 采样率下循环静音的问题</li>
+<li>DLNA 投送兼容性修复：安全软件拦截回环时自动降级，投送不再静默失效</li>
+<li>启动速度优化：数据库迁移幂等化、查询去冗余列</li>
+</ul>
+<a class=”link-btn” href=”https://github.com/LePlayer-Studio/LePlayer/releases/latest”>查看 Releases 历史版本 →</a>
+</div>
+
+<div class=”section”>
+<h3><span class=”ver”>v1.6.12</span> <span class=”date”>上一版本 · 大更新</span></h3>
+<ul>
+<li>DLNA 局域网投送：一键把音乐投到电视 / 投屏盒子 / DLNA 音箱，无损自动转码兜底</li>
+<li>DLNA 接收投送（DMR）：LePlayer 可被手机远程投送，默认关闭（设置 → 实验室）</li>
+<li>修复独占模式首次播放无声、全局快捷键首次触发崩溃</li>
+<li>新增支持 WMA / OGG（.oga）/ M4B 格式</li>
 </ul>
 </div>
 
-<div class="section" style="border-color:rgba(110,231,155,.35);">
-<h3><span class="ver">v1.6.12</span> <span class="date">最新版 · 微软商店</span></h3>
+<div class=”section”>
+<h3><span class=”ver”>v1.6.0</span> <span class=”date”>大版本</span></h3>
 <ul>
-<li><strong>DLNA 局域网投送</strong>：把正在播放的歌曲 / 队列投送到局域网内电视、音箱、手机等设备；自动发现、按设备能力转码（优先 MP3）、换曲零等待，播放栏 / 列表一键投送，电视端同步封面</li>
-<li><strong>DLNA 接收投送</strong>：设置 → 实验室「局域网接收投送」（默认关闭）开启后，本机作为渲染器接收局域网设备投送的音频并播放；自动显示封面、换曲带歌词，仅接受局域网来源</li>
-<li><strong>独占首播无声修复</strong>：开启独占后首次点播放可能静音的问题已修复，首次建流即按独占配置生效</li>
-<li><strong>稳定性</strong>：全局快捷键首次触发崩溃已修复；正常退出不再被误报「崩溃后启动」并抑制自动续播</li>
-<li><strong>格式扩展</strong>：新增支持 WMA / OGG（.oga）/ M4B</li>
+<li>新增 WASAPI 共享 / 独占 / ASIO 三种输出后端，ASIO 设备自动识别</li>
+<li>播放链路重构为拉取式输出：独立解码线程 + 环形缓冲，播放零欠载</li>
+<li>Kaiser 窗高质量重采样，自动适配 24bit/192kHz，消除杂音与变速</li>
+<li>设备预热 + 平滑淡入，后端热切换不再无声、不再爆音</li>
+<li>修复切歌、跳转、重头开始时歌词滞后，逐字高亮与声音同步</li>
+<li>歌单详情恢复音质角标、新增专辑列、排序与快速滑块</li>
+<li>修复扫描后艺术家/专辑“未知”，修复数据库重复插入错误</li>
+<li>音频引擎设置统一为“输出模式 + 输出设备”，与播放栏耳机菜单实时联动</li>
 </ul>
 </div>
 
 <div class="section">
-<h3><span class="ver">v1.6.11</span> <span class="date">微软商店版</span></h3>
+<h3><span class="ver">v1.5.4</span> <span class="date">上一版本</span></h3>
 <ul>
-<li>WASAPI 独占真正生效：修复「选了独占、实际仍在共享播放」；设备拒绝独占时明确提示</li>
-<li>ASIO 打不开修复：打开 ASIO 前真正释放设备（旧版只暂停流），失败说明原因；反复失败建议重启</li>
-<li>DSD（DoP）播放更稳定；NAS / 网络盘扫描显著加速；大曲库重复扫描更安静</li>
-<li>问题反馈日志更完整（含前一日、2000 行）；曲库状态可自查；点播放等待更短；图标铺满</li>
+<li>修复退出时设置未完全保存的问题，所有开关重启后可靠持久化</li>
+<li>修复任务栏图标不随深浅主题切换的问题</li>
+<li>修复全局快捷键（Ctrl+Alt+方向键/空格、媒体键）无响应的问题</li>
+<li>修复从托盘或桌面歌词唤起时最大化状态丢失的问题</li>
+<li>修复歌词逐字高亮渲染的性能问题</li>
+<li>防止重复打开多个实例：再次启动时自动检测已有进程</li>
+<li>大曲库元数据扫描性能优化，不再一次性加载全部文件列表</li>
+<li>卸载程序默认保留用户数据，避免误删歌单和设置</li>
 </ul>
 </div>
-
-<div class="section">
-<h3><span class="ver">v1.6.9</span> <span class="date">微软商店版</span></h3>
-<ul>
-<li>输出设备跟随系统默认：选「默认设备」时随系统切换耳机 / 音箱 / 蓝牙 / DAC，播放不中断；选具体设备则固定使用</li>
-<li>设备掉线自动恢复：固定输出设备不可用时自动切回跟随系统默认并提示，ASIO 无响应同样兜底</li>
-<li>耳机 / DAC 热插拔检测更及时；万级曲库数据库写入启用 WAL 与忙等待，大库操作更稳</li>
-</ul>
-</div>
-
-<div class="section">
-<h3><span class="ver">v1.6.8</span> <span class="date">微软商店版</span></h3>
-<ul>
-<li>歌手 / 专辑名全站可点跳转，多歌手分段独立可点，按压有选中反馈，返回回到原浏览位置</li>
-<li>桌面歌词体系大修：窗口几何自维护、浅色主题颜色不再发灰、HSV 拾色器、不透明度级联生效</li>
-<li>全局字体选择（MiSans / 系统字体 / 自定义字体文件），页面与桌面歌词字体可分别设置</li>
-<li>合辑按专辑艺术家聚合不再碎裂；大库分批就绪、视频文件自动排除、缺失文件自愈；中 / 英 / 繁三语补齐</li>
-</ul>
-</div>
-
-<div class="section">
-<h3><span class="ver">v1.6.7</span> <span class="date">微软商店版</span></h3>
-<ul>
-<li>修复商店沙箱（MSIX）内启动即崩溃，商店版联网改用兼容沙箱的网络栈</li>
-<li>修复部分封面在非开发环境静默不显示的发布阻断问题</li>
-<li>多位艺术家正确拆分建档，合唱曲显示全部艺术家，不再只显示第一个</li>
-<li>手动刷新文件夹即时执行；声明兼容 Windows 10 2004+ / Windows 11 24H2，通过 WACK 认证自测</li>
-</ul>
-</div>
-
-<div class="section">
-<h3><span class="ver">v1.6.6</span> <span class="date">GitHub 最终安装版</span></h3>
-<ul>
-<li>删除进入软件内回收站并弹出提示，可查看歌名 / 艺术家 / 专辑、可恢复；确认清理走系统回收站，仍可还原</li>
-<li>内置标签编辑：右键改标题 / 艺术家 / 专辑并写回文件，曲库 / 专辑 / 艺术家 / 歌单 / 收件箱全入口打通，补充 APE</li>
-<li>Windows SMTC：任务栏 / 锁屏 / 蓝牙耳机 / 媒体键原生控制；全局键盘快捷键可自定义</li>
-<li>全局 UI 缩放 80–150%、全屏自动放大；全局 / 页面 / 桌面歌词字体分别可调（MiSans / 系统字体 / 自定义字体）</li>
-<li>文件夹黑名单 + 30 秒短片段过滤；设备断开自动暂停；页面缓存与滚动位置记忆</li>
-<li>封面源端降采样 + 加权缓存，修复列表快速滑动内存溢出崩溃</li>
-<li>修复「打开文件位置」误跳文档目录，现正确定位并选中文件；专辑「全部播放」直接开始播放</li>
-<li>独占首播预热缩短起播等待；在线歌词与翻译、在线元数据 / 封面静默补全；NSIS 安装 / 卸载体验修复</li>
-</ul>
-</div>
-
-<div class="section">
-<h3><span class="ver">v1.6.5</span> <span class="date">商店打包准备</span></h3>
-<ul>
-<li>新增全局 UI 缩放、全屏放大、全局快捷键、SMTC、文件夹黑名单、内置标签编辑、桌面歌词下一行、音质分析入口</li>
-<li>微软商店 MSIX 打包与上架准备；字体与多语言相关修复</li>
-</ul>
-</div>
-
-<details class="rel" open>
-<summary><span class="ver">v1.6.4</span><span class="date">菜单统一 · 工程修复</span></summary>
-<div class="rel-body">
-<ul>
-<li>所有点击展开的菜单（三点 / 右键 / 设置下拉 / 下拉框）统一样式：白底 + 14dp 圆角 + 细描边，消除二级弹窗割裂感</li>
-<li>托盘图标随深色 / 浅色模式自动切换（修复深色模式下图标全黑）；NSIS 安装包加入版本资源，右键属性可见版本号</li>
-<li>删除 NativeLoader 硬编码的开发机绝对路径，生产环境不再误加载本机文件；统一代码行尾，消除版本差异噪声</li>
-</ul>
-</div>
-</details>
-
-<details class="rel">
-<summary><span class="ver">v1.6.3</span><span class="date">原生 DSD · CUE 分轨</span></summary>
-<div class="rel-body">
-<ul>
-<li>新增 ASIO 原生 DSD 播放；CUE 整轨自动分轨解析与展开；单曲封面编辑入口；桌面歌词锁定 / 解锁托盘菜单</li>
-<li>DSD 半缓冲 11.6ms → 46.4ms，消除周期性爆音（回调线程每秒日志阻塞）；ASIO 设备枚举改为冷启动预加载 + 后台无感刷新</li>
-<li>全局字体体系统一（字号 / 字重 / 行高收口）；弹窗背景与下拉菜单样式统一；sqlite native 瘦身仅留 Windows-x64</li>
-<li>修复 TOPPING DAC 在共享 / 独占列表消失（设备并集枚举）、更新检查器 StackOverflow、歌词串台、health check 恢复后异常、DLL 自动同步防旧包错配</li>
-</ul>
-</div>
-</details>
-
-<details class="rel">
-<summary><span class="ver">v1.6.2</span><span class="date">安装包瘦身 · 细节修复</span></summary>
-<div class="rel-body">
-<ul>
-<li>新增收件箱拖放文件写入、单曲歌词偏移校准（per-track）、桌面歌词锁定 / 解锁托盘菜单</li>
-<li>sqlite-jdbc 瘦身仅保留 Windows-x64 native，安装包减小约 62MB</li>
-<li>修复更新检查器正则导致的 StackOverflowError、更新说明中文乱码、health check 恢复后播放异常</li>
-</ul>
-</div>
-</details>
-
-<details class="rel">
-<summary><span class="ver">v1.6.1</span><span class="date">独占热切换 · 起播优化</span></summary>
-<div class="rel-body">
-<ul>
-<li>修复播放中热切换到 WASAPI 独占时 DAC 采样率当次不跟随、需下一首才生效，现当次即按源采样率重建</li>
-<li>优化冷启动首次双击偏慢：启动不再重复探测设备，能力表改为空闲时后台补全并持久化</li>
-<li>修复 ASIO4ALL 搭配主板集成声卡时高潮段落电流声（自动为软件聚合驱动增大 ASIO 缓冲）</li>
-<li>修复共享模式重采样过冲在高潮被硬削产生的“滋”声，输出链路加入统一钳位防护</li>
-</ul>
-</div>
-</details>
-
-<details class="rel">
-<summary><span class="ver">v1.6.0</span><span class="date">大版本 · 三后端与拉取链路</span></summary>
-<div class="rel-body">
-<ul>
-<li>新增 WASAPI 共享 / 独占 / ASIO 三种输出后端，ASIO 设备自动识别，支持专业 USB DAC</li>
-<li>播放链路重构为拉取式（Pull）：独立解码线程 + 环形缓冲，零欠载、节拍精确</li>
-<li>Kaiser 窗高质量重采样，自动适配 24bit / 192kHz；设备预热 + 平滑淡入，后端热切换不再无声 / 爆音</li>
-<li>切歌 / 跳转 / 重头时歌词与声音同步，逐字高亮不再滞后；歌单详情新增快速滑块、排序、专辑列与音质角标</li>
-<li>修复扫描后艺术家 / 专辑大量“未知”、数据库重复插入；音频设置统一为「输出模式 + 输出设备」并与播放栏联动</li>
-</ul>
-</div>
-</details>
-
-<details class="rel">
-<summary><span class="ver">v1.5.4</span><span class="date">持久化与稳定性</span></summary>
-<div class="rel-body">
-<ul>
-<li>修复退出时设置未完全保存、任务栏图标不随主题切换、全局快捷键（Ctrl+Alt / 媒体键）无响应</li>
-<li>修复从托盘 / 桌面歌词唤起时最大化状态丢失、逐字高亮渲染性能、脏值识别多个边界</li>
-<li>新增单实例守卫（重复启动自动激活已有窗口）；大库元数据扫描性能优化；卸载默认保留用户数据</li>
-</ul>
-</div>
-</details>
-
-<details class="rel">
-<summary><span class="ver">v1.5.3</span><span class="date">桌面歌词与分组修复</span></summary>
-<div class="rel-body">
-<ul>
-<li>修复关闭窗口“下次不再询问”不生效、桌面歌词锁定时遮挡其他窗口鼠标输入、专辑分组碎片化、文件名方向识别错误</li>
-<li>桌面歌词锁子图标缩小并默认半透明、悬停高亮；在线元数据补全逻辑优化；卡拉 OK 逐字高亮修复</li>
-</ul>
-</div>
-</details>
-
-<details class="rel">
-<summary><span class="ver">v1.5.2</span><span class="date">独占直通初版</span></summary>
-<div class="rel-body">
-<ul>
-<li>WASAPI 独占 bit-perfect 输出、采样率自适应源率直出、高质量重采样防过冲削波</li>
-<li>智选引擎（基于播放统计的智能推荐）、桌面歌词 + 迷你播放器、深浅主题 + 动态取色、多维度歌单管理</li>
-</ul>
-</div>
-</details>
-
-<a class="link-btn" href="https://github.com/LePlayer-Studio/LePlayer/releases">查看全部历史版本（GitHub Releases）→</a>
 
 <div class="download">
-<a class="btn" href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">🛒 微软商店获取最新版 v1.6.12</a>
-<div style="height:14px"></div>
-<a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/download/v1.6.6/LePlayer-Setup-1.6.6.exe" style="background:transparent;border-color:rgba(168,255,207,.16);color:var(--text-dim);">⬇️ GitHub 安装版 v1.6.6（最终版 · 免费）</a>
-<p class="meta">最新版 v1.6.12 起仅在 <a href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">微软商店</a> 更新（买断制，一次购买永久使用，自动更新）<br>GitHub 安装包止于 v1.6.6，之后仅保留更新记录 · Windows 10 2004+ / Windows 11 x64 · 内置运行时 · 无需预装 Java · 商店版约 143 MB<br><a href="guide.html">详细使用指南</a></p>
+<a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">下载最新版本</a>
+<p class="meta"><a href="guide.html">详细使用指南</a> · Windows x64 · 内置运行时 · 无需预装 Java · 约 161 MB</p>
 </div>
 
 <footer>
