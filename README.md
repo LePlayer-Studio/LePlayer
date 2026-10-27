@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <img src="docs/img/logo.png" width="128" alt="LePlayer" />
 
