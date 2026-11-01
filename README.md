@@ -12,7 +12,7 @@
 Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直出 bit-perfect · 全格式 HiFi 解码
 
 ![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue)
-![Latest](https://img.shields.io/badge/最新版-v1.6.13%20(商店)-brightgreen)
+![Latest](https://img.shields.io/badge/最新版-v1.7.1%20(商店)-brightgreen)
 ![GitHub](https://img.shields.io/badge/GitHub%20安装版-v1.6.6-success)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
@@ -31,7 +31,7 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 > - **GitHub 最后一个安装包为 v1.6.6**：本页提供的 `LePlayer-Setup-1.6.6.exe` 是 GitHub 渠道的最终安装版，可免费下载使用，之后不再在 GitHub 上传新的安装包。
 > - **GitHub 之后只保留更新记录**：新版本的功能与修复说明仍会在此页面与[更新日志](#-更新日志--changelog)持续更新，但安装包请前往微软商店获取。
 >
-> Latest version (v1.6.7+) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards. Current store version: v1.6.13.
+> Latest version (v1.6.7+) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards. Current store version: v1.7.1.
 
 ---
 
@@ -122,7 +122,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 > 当前仅发布 **Windows x64** 版本，内置运行时，**无需预装 Java 环境**。
 
-### 🛒 方式一：微软商店（推荐，最新版 v1.6.13）
+### 🛒 方式一：微软商店（推荐，最新版 v1.7.1）
 
 - 在 Microsoft Store 搜索 **「LePlayer」**，或点击 [商店页面](https://apps.microsoft.com/detail/9PDTB5PT4VR7)
 - 买断制，一次购买永久使用，后续自动更新
@@ -144,6 +144,22 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 > **商店版提示**：微软商店（MSIX）版由系统沙箱管理，**缓存 / 数据目录使用系统分配位置，不支持自定义到其他盘或文件夹**；如需自定义缓存目录，请使用 GitHub 的 NSIS 安装版。
 
 ## 🆕 更新日志 / Changelog
+
+### v1.7.1 — 安全加固与反馈通道重构
+
+- **安全审计修复批**：目录前缀查询双向归一（修复 NAS / 正斜杠路径下黑名单自愈计数恒 0、文件夹封禁漏匹配）、撤销启动时通配符删桌面 jar（改为精确名单）、反馈外发路径脱敏、备份恢复解压 2GB 上限防压缩炸弹、黑名单弹窗主次按钮位次规范
+- **遗留三项安全红线落地**：CUE 路径闸（只允许 CUE 同目录 / 子目录内音频，拒绝绝对路径与任何 `..` 段）、DLNA SSRF 闸（回环 / 保留网段全拒、GENA 订阅须同网段、DNS 解析 1.5s 封顶）、NAS 凭据写入 Windows 凭据管理器（不再命令行传参）
+- **反馈改 HTTPS 中转**：彻底移除本地 SMTP 发信凭据；未部署中转时按钮降级为「复制反馈内容」，绝不回退明文发信
+- 黑名单新增目录零移除时补吐司提示（此前仅移除 >0 才提示）
+
+### v1.7.0 — 沉浸式 UI 大更新（合并 1.6.14 全部改动）
+
+- **详情页频谱进度条**取代普通进度条：56dp 频谱进度条可点击 / 拖拽跳转，支持多彩彩虹渐变或跟随主题取色
+- **文件夹黑名单目录树勾选管理**：设置页由手填文本框升级为目录树管理器（懒加载子目录、超大目录截断保护），并支持一次多选多个目录
+- **MINI 播放器新增 DLNA 投送 / 接收入口**：迷你窗口直接复用主窗口投送与接收组件
+- **沉浸式动态封面背景**：当前歌曲封面模糊铺满主窗口、切歌柔和淡入；播放页随封面取色的动态氛围光（强度可调）+ 黑胶旋转封面
+- **自定义标签 / 专辑版本组 / 制作人员展示**；专辑 / 艺术家屏蔽、筛选书签、一键备份 / 恢复
+- 设置页重构为分类 + 页内二级标签；安装包 / 商店包品牌视觉刷新（深色氛围光 + 频谱主视觉、MSIX 深色 SplashScreen）
 
 ### v1.6.13 — 大曲库性能全链路改造
 
@@ -223,6 +239,8 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 ## 🗺️ Roadmap
 
+- [x] v1.7.1 — 安全加固与反馈通道重构（CUE / DLNA SSRF / NAS 凭据、HTTPS 反馈中转）
+- [x] v1.7.0 — 沉浸式 UI 大更新（频谱进度条 · 黑名单目录树 · MINI 投送接收 · 氛围光）
 - [x] v1.6.13 — 大曲库性能全链路改造
 - [x] v1.6.12 — DLNA 局域网投送 / 接收
 - [x] v1.6.8–v1.6.11 — 专辑聚合 · 设备跟随 · ASIO/独占稳定性 · 构建自动化
