@@ -544,7 +544,7 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <span>Engine <span class="hi">Ready</span></span>
 </div>
 <div class="right">
-<span>v1.6.13</span>
+<span>v1.7.1</span>
 <span>Win x64</span>
 </div>
 </div>
@@ -642,7 +642,27 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <h2>更新说明</h2>
 <p class="gallery-sub">版本记录</p>
 <div class="section">
-<h3><span class=”ver”>v1.6.13</span> <span class=”date”>当前版本</span></h3>
+<h3><span class="ver">v1.7.1</span> <span class="date">当前版本 · 安全加固</span></h3>
+<ul>
+<li>安全审计修复批：目录前缀查询双向归一、反馈外发脱敏、撤销通配符删除、备份解压 2GB 上限、黑名单弹窗按钮位次</li>
+<li>CUE 路径闸 / DLNA SSRF 闸 / NAS 凭据写入系统凭据管理器三项安全红线落地</li>
+<li>反馈改 HTTPS 中转，彻底移除本地发信凭据；未部署中转时降级为复制反馈内容</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.7.0</span> <span class="date">UI 大更新（含 1.6.14 合并）</span></h3>
+<ul>
+<li>详情页频谱进度条取代普通进度条：可点击 / 拖拽跳转，支持多彩彩虹渐变或主题取色</li>
+<li>文件夹黑名单目录树勾选管理（可多选）；MINI 播放器新增 DLNA 投送 / 接收入口</li>
+<li>沉浸式动态封面背景 + 随封面取色的动态氛围光与黑胶旋转封面</li>
+<li>自定义标签、专辑版本组、制作人员展示；专辑 / 艺术家屏蔽、筛选书签、一键备份 / 恢复</li>
+<li>设置页重构为分类 + 页内二级标签；安装包 / 商店包品牌视觉刷新</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.6.13</span> <span class="date">上一版本 · 大更新</span></h3>
 <ul>
 <li>大曲库（10 万首以上）全链路优化：扫描只写有变化的文件、主列表真虚拟滚动、trigram FTS 中文搜索加速、播放层不再全量加载曲库</li>
 <li>修复部分设备 192kHz 采样率下循环静音的问题</li>
