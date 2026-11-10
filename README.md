@@ -12,7 +12,7 @@
 Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直出 bit-perfect · 全格式 HiFi 解码
 
 ![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue)
-![Latest](https://img.shields.io/badge/最新版-v1.7.1%20(商店)-brightgreen)
+![Latest](https://img.shields.io/badge/最新版-v1.7.6%20(商店)-brightgreen)
 ![GitHub](https://img.shields.io/badge/GitHub%20安装版-v1.6.6-success)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
@@ -31,7 +31,7 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 > - **GitHub 最后一个安装包为 v1.6.6**：本页提供的 `LePlayer-Setup-1.6.6.exe` 是 GitHub 渠道的最终安装版，可免费下载使用，之后不再在 GitHub 上传新的安装包。
 > - **GitHub 之后只保留更新记录**：新版本的功能与修复说明仍会在此页面与[更新日志](#-更新日志--changelog)持续更新，但安装包请前往微软商店获取。
 >
-> Latest version (v1.6.7+) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards. Current store version: v1.7.1.
+> Latest version (v1.6.7+) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards. Current store version: v1.7.6.
 
 ---
 
@@ -122,7 +122,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 > 当前仅发布 **Windows x64** 版本，内置运行时，**无需预装 Java 环境**。
 
-### 🛒 方式一：微软商店（推荐，最新版 v1.7.1）
+### 🛒 方式一：微软商店（推荐，最新版 v1.7.6）
 
 - 在 Microsoft Store 搜索 **「LePlayer」**，或点击 [商店页面](https://apps.microsoft.com/detail/9PDTB5PT4VR7)
 - 买断制，一次购买永久使用，后续自动更新
@@ -144,6 +144,27 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 > **商店版提示**：微软商店（MSIX）版由系统沙箱管理，**缓存 / 数据目录使用系统分配位置，不支持自定义到其他盘或文件夹**；如需自定义缓存目录，请使用 GitHub 的 NSIS 安装版。
 
 ## 🆕 更新日志 / Changelog
+
+### v1.7.6 — 看门狗自愈安全版
+- **界面假死不再误降级**：看门狗只在渲染帧通道停摆时降级渲染后端；UI 事件通道停摆改为保存完整线程栈供排查，不再静默切到 CPU 软件渲染导致界面卡顿
+- **自愈重启安全化**：新进程确认进入主程序后，旧进程才 `Runtime.halt()` 退出，绕过会卡死的 shutdown hooks，避免僵尸进程挡住重启
+- **降级可见可恢复**：若曾被自动降级，主界面顶部显示红色横幅，一键「恢复硬件加速」切回 Direct3D；设置页对应选项标红
+- **启动更顺**：首次曲库扫描延后到启动 30 秒后并等待系统 CPU 空闲；无法识别的音频文件（如部分 APE）失败记录持久化，重启不再重复探测
+- 稳定性修复，不含新功能；曲库结构不变，升级不会触发全量重扫
+
+### v1.7.5 — 音频共存安全版
+- **修复其它应用声音被踢掉**：开着网页 / 游戏等其它音源时启动或切歌，不再让它们的音频会话失效且不恢复
+- 共享模式（默认）下不再为探测声卡能力临时创建独占音频流；独占输出仍可在「设置 → 音频 → 输出模式」主动切换
+- 全新用户配置的安装包首启实测通过
+
+### v1.7.4 — 稳定性与播放队列完整度
+- 修复随机播放切歌可能越界崩溃；设置 / 队列 / 音频状态一致性全面加固
+- 主窗口与迷你播放器快捷键均可操作，搜索框内输入不受影响
+- 播放队列完整覆盖当前曲库列表，曲库增减时实时跟随且播放不中断
+- 黑名单文件夹显示名称与完整路径；已忽略文件记录可直接删除；无法识别文件不再每轮重复扫描
+- Rust 音频接口统一 Panic 防护，异常后自动复位
+
+> v1.7.2 为已废弃的测试版本、v1.7.3 出包未上架，二者改动随 v1.7.4 一次发布。
 
 ### v1.7.1 — 安全加固与反馈通道重构
 
@@ -239,6 +260,9 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 ## 🗺️ Roadmap
 
+- [x] v1.7.6 — 看门狗自愈安全版（通道拆分降级 · 线程栈 dump · 安全重启 · 首扫延后）
+- [x] v1.7.5 — 音频共存安全版（共享模式不再真建独占流）
+- [x] v1.7.4 — 崩溃根治 · 队列完整度与实时同步 · 快捷键焦点根因 · 正式发版前置三修
 - [x] v1.7.1 — 安全加固与反馈通道重构（CUE / DLNA SSRF / NAS 凭据、HTTPS 反馈中转）
 - [x] v1.7.0 — 沉浸式 UI 大更新（频谱进度条 · 黑名单目录树 · MINI 投送接收 · 氛围光）
 - [x] v1.6.13 — 大曲库性能全链路改造
