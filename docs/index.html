@@ -544,7 +544,7 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <span>Engine <span class="hi">Ready</span></span>
 </div>
 <div class="right">
-<span>v1.7.1</span>
+<span>v1.7.6</span>
 <span>Win x64</span>
 </div>
 </div>
@@ -642,7 +642,33 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <h2>更新说明</h2>
 <p class="gallery-sub">版本记录</p>
 <div class="section">
-<h3><span class="ver">v1.7.1</span> <span class="date">当前版本 · 安全加固</span></h3>
+<h3><span class="ver">v1.7.6</span> <span class="date">当前版本 · 看门狗自愈安全版</span></h3>
+<ul>
+<li>界面无响应不再被误判为渲染故障而静默降级为软件渲染（CPU 软绘会导致卡顿）；仅在渲染帧通道停摆时才降级</li>
+<li>自愈重启改为「新进程确认进入主程序后旧进程才安全退出」，界面无响应时先保存完整线程栈供排查</li>
+<li>若确被自动降级，主界面顶部红色横幅可一键「恢复硬件加速」切回 Direct3D，设置页对应项标红</li>
+<li>首次曲库扫描延后到启动 30 秒后并等待系统空闲；无法识别的音频文件失败记录持久化，重启不再重复探测</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.7.5</span> <span class="date">音频共存安全版</span></h3>
+<ul>
+<li>修复开着网页 / 游戏等其它音源时启动或切歌会把它们的声音踢掉且不恢复的问题</li>
+<li>共享模式（默认）不再为探测声卡能力临时创建独占音频流；独占输出仍可主动切换</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.7.4</span> <span class="date">稳定性与播放队列完整度</span></h3>
+<ul>
+<li>修复随机播放切歌可能越界崩溃；设置 / 队列 / 音频状态一致性全面加固</li>
+<li>主窗口与迷你播放器快捷键均可操作；播放队列完整覆盖曲库列表并实时跟随增减</li>
+<li>黑名单显示名称与完整路径；已忽略文件记录可删；无法识别文件不再每轮重复扫描</li>
+</ul>
+</div>
+<div class="section">
+<h3><span class="ver">v1.7.1</span> <span class="date">安全加固</span></h3>
 <ul>
 <li>安全审计修复批：目录前缀查询双向归一、反馈外发脱敏、撤销通配符删除、备份解压 2GB 上限、黑名单弹窗按钮位次</li>
 <li>CUE 路径闸 / DLNA SSRF 闸 / NAS 凭据写入系统凭据管理器三项安全红线落地</li>
