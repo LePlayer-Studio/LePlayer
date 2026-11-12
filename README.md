@@ -12,7 +12,7 @@
 Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直出 bit-perfect · 全格式 HiFi 解码
 
 ![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue)
-![Latest](https://img.shields.io/badge/最新版-v1.7.6%20(商店)-brightgreen)
+![Latest](https://img.shields.io/badge/最新版-v1.7.8%20(商店)-brightgreen)
 ![GitHub](https://img.shields.io/badge/GitHub%20安装版-v1.6.6-success)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
@@ -31,7 +31,7 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 > - **GitHub 最后一个安装包为 v1.6.6**：本页提供的 `LePlayer-Setup-1.6.6.exe` 是 GitHub 渠道的最终安装版，可免费下载使用，之后不再在 GitHub 上传新的安装包。
 > - **GitHub 之后只保留更新记录**：新版本的功能与修复说明仍会在此页面与[更新日志](#-更新日志--changelog)持续更新，但安装包请前往微软商店获取。
 >
-> Latest version (v1.6.7+) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards. Current store version: v1.7.6.
+> Latest version (v1.6.7+) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards. Current store version: v1.7.8.
 
 ---
 
@@ -122,7 +122,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 > 当前仅发布 **Windows x64** 版本，内置运行时，**无需预装 Java 环境**。
 
-### 🛒 方式一：微软商店（推荐，最新版 v1.7.6）
+### 🛒 方式一：微软商店（推荐，最新版 v1.7.8）
 
 - 在 Microsoft Store 搜索 **「LePlayer」**，或点击 [商店页面](https://apps.microsoft.com/detail/9PDTB5PT4VR7)
 - 买断制，一次购买永久使用，后续自动更新
@@ -144,6 +144,22 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 > **商店版提示**：微软商店（MSIX）版由系统沙箱管理，**缓存 / 数据目录使用系统分配位置，不支持自定义到其他盘或文件夹**；如需自定义缓存目录，请使用 GitHub 的 NSIS 安装版。
 
 ## 🆕 更新日志 / Changelog
+
+### v1.7.8 — 桌面歌词全屏让位 + 歌词身份匹配修复版
+- **桌面歌词全屏 / 最大化让位五轮修订**：F11 网页全屏、Office 最大化后歌词正确让位；刷新桌面不再误隐藏；关闭全屏即时恢复；125% 缩放兼容
+- **新增可选开关**：窗口最大化时自动隐藏桌面歌词（默认关闭，关闭时行为与 1.7.7 一致）
+- **在线歌词身份评分**：Live / Remix / 伴奏 / 翻唱不再抢占原版歌词，主源命中即返回不增网络开销
+- **歌词加载优先级修复**：手动 > 外置 .lrc > 内嵌标签 > 库内缓存 > 在线拉取，内嵌歌词不再被陈旧在线缓存遮蔽
+- **歌词数据侧自愈**：扫描落库时自动清理占位垃圾在线歌词行（纯静默数据清理，无 UI 露出）
+- 播放详情页频谱进度条降高（56dp → 20dp），不再挤压封面 / 歌词区
+- **安全加固批**：DLNA 闲置自动收口、网络响应 8 MiB 上限、入站请求 256 KiB 上限
+
+### v1.7.7 — 元数据图谱补全 + 音频热切换零杂音版
+- **制作人员（credits）图谱补全**：单曲 / 专辑可按需从数据源补全作曲 / 作词 / 演唱 / 制作；默认零自动网络拉取，先比对再写入，可一键清除
+- **切共享模式瞬间电流杂音修复**：临时共享客户端渲染缓冲未初始化即入混音器，现已先写零再启动
+- **设置回声三连热切换修复**：一次点击不再触发多次后端切换与静默窗叠加
+- **ASIO 关闭 / 暂停硬停咔哒修复**：静音闩 + 停流前等一个回调周期
+- 桌面歌词启动必崩修复；歌单详情页 hover 高亮补齐
 
 ### v1.7.6 — 看门狗自愈安全版
 - **界面假死不再误降级**：看门狗只在渲染帧通道停摆时降级渲染后端；UI 事件通道停摆改为保存完整线程栈供排查，不再静默切到 CPU 软件渲染导致界面卡顿
