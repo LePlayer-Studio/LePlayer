@@ -12,7 +12,7 @@
 Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直出 bit-perfect · 全格式 HiFi 解码
 
 ![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue)
-![Latest](https://img.shields.io/badge/最新版-v1.7.8%20(商店)-brightgreen)
+![Latest](https://img.shields.io/badge/最新版-v1.7.9%20(商店)-brightgreen)
 ![GitHub](https://img.shields.io/badge/GitHub%20安装版-v1.6.6-success)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
@@ -31,7 +31,7 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 > - **GitHub 最后一个安装包为 v1.6.6**：本页提供的 `LePlayer-Setup-1.6.6.exe` 是 GitHub 渠道的最终安装版，可免费下载使用，之后不再在 GitHub 上传新的安装包。
 > - **GitHub 之后只保留更新记录**：新版本的功能与修复说明仍会在此页面与[更新日志](#-更新日志--changelog)持续更新，但安装包请前往微软商店获取。
 >
-> Latest version (v1.6.7+) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards. Current store version: v1.7.8.
+> Latest version (v1.6.7+) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards. Current store version: v1.7.9.
 
 ---
 
@@ -122,7 +122,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 > 当前仅发布 **Windows x64** 版本，内置运行时，**无需预装 Java 环境**。
 
-### 🛒 方式一：微软商店（推荐，最新版 v1.7.8）
+### 🛒 方式一：微软商店（推荐，最新版 v1.7.9）
 
 - 在 Microsoft Store 搜索 **「LePlayer」**，或点击 [商店页面](https://apps.microsoft.com/detail/9PDTB5PT4VR7)
 - 买断制，一次购买永久使用，后续自动更新
@@ -144,6 +144,15 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 > **商店版提示**：微软商店（MSIX）版由系统沙箱管理，**缓存 / 数据目录使用系统分配位置，不支持自定义到其他盘或文件夹**；如需自定义缓存目录，请使用 GitHub 的 NSIS 安装版。
 
 ## 🆕 更新日志 / Changelog
+
+### v1.7.9 — 设置页收口 + 搜索框重写 + 快捷键补全版
+- **设置页收口**：删除 5 个从未生效的"实验功能"占位开关（Hi-Res 自动检测 / AI 母带 / 空间音频 / 云端听歌记录 / 语音控制）；联网元数据补全两开关合一
+- **搜索框重写**：胶囊造型、宽度随界面语言自适应，中 / 英 / 繁显示一致不再遮挡，补齐悬停与按下反馈
+- **新快捷键**：`Ctrl + F` 聚焦搜索框；曲库多选后 `Delete` 一键移出（确认弹窗，绝不删除音频文件）
+- **滚轮调音量**：播放栏音量区悬停滚轮 ±4%/格，静音时滚动自动取消静音
+- **「播放全部」归位**：专辑 / 艺术家 / 标签 / 歌单四页统一移到标题区，右上角只留次要操作
+- **弹窗图标修复**：右键菜单 / 托盘菜单等弹窗不再向任务栏 / Alt+Tab 泄漏默认图标
+- 本版不含曲库结构变更，不触发曲库全量重扫
 
 ### v1.7.8 — 桌面歌词全屏让位 + 歌词身份匹配修复版
 - **桌面歌词全屏 / 最大化让位五轮修订**：F11 网页全屏、Office 最大化后歌词正确让位；刷新桌面不再误隐藏；关闭全屏即时恢复；125% 缩放兼容
