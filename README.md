@@ -12,26 +12,27 @@
 Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直出 bit-perfect · 全格式 HiFi 解码
 
 ![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue)
-![Latest](https://img.shields.io/badge/最新版-v1.7.9%20(商店)-brightgreen)
-![GitHub](https://img.shields.io/badge/GitHub%20安装版-v1.6.6-success)
+![Latest](https://img.shields.io/badge/最新版-v1.7.9-brightgreen)
+![GitHub](https://img.shields.io/badge/GitHub%20社区版-v1.7.9-success)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
 
-[🛒 微软商店（最新版）](https://apps.microsoft.com/detail/9PDTB5PT4VR7) · [⬇️ GitHub 安装版 v1.6.6](https://github.com/LePlayer-Studio/LePlayer/releases/download/v1.6.6/LePlayer-Setup-1.6.6.exe) · [🌐 在线预览](https://leplayer-studio.github.io/LePlayer/) · [使用指南](https://leplayer-studio.github.io/LePlayer/guide.html)
+[🛒 微软商店（¥19 买断）](https://apps.microsoft.com/detail/9PDTB5PT4VR7) · [⬇️ GitHub 社区版 v1.7.9（免费）](https://github.com/LePlayer-Studio/LePlayer/releases/latest) · 💬 交流群：QQ 859684728 · [🌐 在线预览](https://leplayer-studio.github.io/LePlayer/) · [使用指南](https://leplayer-studio.github.io/LePlayer/guide.html)
 
-<img src="docs/img/dark-library.png" width="860" alt="LePlayer 主界面预览" style="border-radius:12px;margin-top:20px;" />
+<img src="docs/img/leplayer-demo.gif" width="860" alt="LePlayer 演示" style="border-radius:12px;margin-top:20px;" />
 
 </div>
 
 ---
 
-> ## 📢 分发渠道说明 / Distribution
+> ## 📢 双渠道分发 / Distribution
 >
-> - **最新版本在微软商店发布**：**v1.6.7 及以后版本仅通过 [Microsoft Store](https://apps.microsoft.com/detail/9PDTB5PT4VR7) 提供更新（买断制，一次购买永久使用）。**
-> - **GitHub 最后一个安装包为 v1.6.6**：本页提供的 `LePlayer-Setup-1.6.6.exe` 是 GitHub 渠道的最终安装版，可免费下载使用，之后不再在 GitHub 上传新的安装包。
-> - **GitHub 之后只保留更新记录**：新版本的功能与修复说明仍会在此页面与[更新日志](#-更新日志--changelog)持续更新，但安装包请前往微软商店获取。
+> - **两个渠道，同一个产品**：GitHub 社区版与微软商店版**版本号一致、功能完全一致、全功能无阉割**。
+> - **⬇️ GitHub 社区版（免费）**：[Releases 最新版](https://github.com/LePlayer-Studio/LePlayer/releases/latest) 直接下载安装包，无试用期、无功能锁、无弹窗；不含静默自动更新——「检查更新」会引导你回到本页下载新版。
+> - **🛒 微软商店版（¥19 买断）**：支持**静默自动更新**、商店签名认证、一键安装。**如果你觉得 LePlayer 好用，欢迎前往微软商店购买正版——这是对独立开发者最直接的支持。**
+> - **💬 交流群**：QQ 群 **859684728**（小红书主页同名群聊入口同步开放）——反馈问题、提需求、抢先体验新版本。
 >
-> Latest version (v1.6.7+) is delivered exclusively through the Microsoft Store. The last GitHub installer is v1.6.6; this repository keeps release notes only afterwards. Current store version: v1.7.9.
+> Both channels ship the **same version with identical, full features**. The GitHub edition is free (no trial, no feature locks, manual updates only); the Microsoft Store edition (¥19, one-time) adds silent auto-updates and official certification. If you like LePlayer, buying the Store edition is the best way to support an independent developer.
 
 ---
 
@@ -103,6 +104,15 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 - **绿色版**为当前默认桌面图标
 - 深色模式下任务栏与系统托盘图标随主题自动切换
 
+## 📸 界面预览 / Screenshots
+
+<div align="center">
+
+<img src="docs/img/dark-library.png" width="420" alt="曲库" style="border-radius:8px;" /> <img src="docs/img/dark-albums.png" width="420" alt="专辑" style="border-radius:8px;" />
+<img src="docs/img/dark-engine.png" width="420" alt="音频引擎" style="border-radius:8px;" /> <img src="docs/img/light-library.png" width="420" alt="浅色主题" style="border-radius:8px;" />
+
+</div>
+
 ## 🏗️ 双引擎架构 / Dual-Engine
 
 | 层 | 职责 |
@@ -122,37 +132,40 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 > 当前仅发布 **Windows x64** 版本，内置运行时，**无需预装 Java 环境**。
 
-### 🛒 方式一：微软商店（推荐，最新版 v1.7.9）
+### 🛒 方式一：微软商店（¥19 买断，v1.7.9）
 
 - 在 Microsoft Store 搜索 **「LePlayer」**，或点击 [商店页面](https://apps.microsoft.com/detail/9PDTB5PT4VR7)
-- 买断制，一次购买永久使用，后续自动更新
+- 买断制，一次购买永久使用，**静默自动更新**，商店签名认证
 - 支持 Windows 10 2004（build 19041）及以上 / Windows 11
 
-### ⬇️ 方式二：GitHub 安装包（最终版 v1.6.6，免费）
+### ⬇️ 方式二：GitHub 社区版（免费，v1.7.9，与商店版同版本同功能）
 
-- 下载 [`LePlayer-Setup-1.6.6.exe`](https://github.com/LePlayer-Studio/LePlayer/releases/download/v1.6.6/LePlayer-Setup-1.6.6.exe)（约 102 MB）
-- 历史版本见 [Releases](https://github.com/LePlayer-Studio/LePlayer/releases)；**v1.6.6 之后 GitHub 不再更新安装包**
+- 下载 [`LePlayer-Setup-1.7.9.exe`](https://github.com/LePlayer-Studio/LePlayer/releases/latest)（约 127 MB）
+- **全功能、无试用期、无功能锁**；不含静默自动更新，「设置 → 检查更新」会引导回到 [Releases](https://github.com/LePlayer-Studio/LePlayer/releases) 下载新版
+- 历史版本见 [Releases](https://github.com/LePlayer-Studio/LePlayer/releases)
 
 **安装 / Install**
 
 1. 下载安装包
-2. 右键 → **以管理员身份运行**（标准用户会弹出 UAC）
+2. 右键 → **以管理员身份运行**（标准用户会弹出 UAC；GitHub 版未做商店签名，首次运行 SmartScreen 可能提示，点「仍要运行」即可）
 3. 跟随向导完成安装（NSIS 版可自选安装目录与缓存目录）
 
 升级安装会保留原有音乐库与设置。 / Upgrading keeps your existing library and settings.
 
-> **商店版提示**：微软商店（MSIX）版由系统沙箱管理，**缓存 / 数据目录使用系统分配位置，不支持自定义到其他盘或文件夹**；如需自定义缓存目录，请使用 GitHub 的 NSIS 安装版。
+> **渠道差异**：商店版（MSIX）数据目录由系统管理，不支持自定义路径；GitHub 版（NSIS）可自选安装与缓存目录。两版数据目录各自独立，切换渠道后需重新添加一次音乐文件夹（音频文件本身不受影响）。
 
 ## 🆕 更新日志 / Changelog
 
-### v1.7.9 — 设置页收口 + 搜索框重写 + 快捷键补全版
-- **设置页收口**：删除 5 个从未生效的"实验功能"占位开关（Hi-Res 自动检测 / AI 母带 / 空间音频 / 云端听歌记录 / 语音控制）；联网元数据补全两开关合一
-- **搜索框重写**：胶囊造型、宽度随界面语言自适应，中 / 英 / 繁显示一致不再遮挡，补齐悬停与按下反馈
-- **新快捷键**：`Ctrl + F` 聚焦搜索框；曲库多选后 `Delete` 一键移出（确认弹窗，绝不删除音频文件）
-- **滚轮调音量**：播放栏音量区悬停滚轮 ±4%/格，静音时滚动自动取消静音
-- **「播放全部」归位**：专辑 / 艺术家 / 标签 / 歌单四页统一移到标题区，右上角只留次要操作
-- **弹窗图标修复**：右键菜单 / 托盘菜单等弹窗不再向任务栏 / Alt+Tab 泄漏默认图标
-- 本版不含曲库结构变更，不触发曲库全量重扫
+### v1.7.9 — 大曲库内存防爆 + 设置页收口版
+- **大曲库内存防爆清理**：查重 / 孤儿清理 / 文件夹删除 / 封面重建 / 曲风批量编辑全部改为数据库分批（keyset 游标）处理，15 万首级曲库批量操作不再把全库拉进内存；主代码 0 处全量拉取
+- **设置页收口**：移除 5 个从未生效的"实验功能"占位开关；联网元数据补全双开关合一；动作段一行三段式
+- **搜索框重写**：胶囊自绘，宽度随界面语言自适应（简中 / English / 繁中一致），带悬停与按下反馈
+- **快捷键补全**：`Ctrl + F` 聚焦搜索；曲库多选 `Delete` 移出（确认框，绝不删音频文件）
+- **滚轮调音量**：播放栏音量区悬停滚动即可调音量，静音时滚动自动取消静音
+- **「播放全部」归位**：专辑 / 艺术家 / 标签 / 歌单四页统一移入标题区
+- **弹窗图标修复**：托盘 / 右键菜单等弹窗不再向任务栏泄漏默认白方块图标
+- **双渠道分发上线**：GitHub 恢复发布社区完整版（与商店版同版本同功能，免费、无试用期、无功能锁）
+- 曲库结构不变，升级不会触发全量重扫
 
 ### v1.7.8 — 桌面歌词全屏让位 + 歌词身份匹配修复版
 - **桌面歌词全屏 / 最大化让位五轮修订**：F11 网页全屏、Office 最大化后歌词正确让位；刷新桌面不再误隐藏；关闭全屏即时恢复；125% 缩放兼容
@@ -285,6 +298,7 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 ## 🗺️ Roadmap
 
+- [x] v1.7.9 — 大曲库内存防爆 · 设置页收口 · 搜索框重写 · 快捷键/滚轮补全 · 双渠道分发
 - [x] v1.7.6 — 看门狗自愈安全版（通道拆分降级 · 线程栈 dump · 安全重启 · 首扫延后）
 - [x] v1.7.5 — 音频共存安全版（共享模式不再真建独占流）
 - [x] v1.7.4 — 崩溃根治 · 队列完整度与实时同步 · 快捷键焦点根因 · 正式发版前置三修
@@ -313,7 +327,8 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 ## 🤝 反馈支持 / Feedback
 
-使用中遇到问题或有好想法，欢迎前往 [Issues](https://github.com/LePlayer-Studio/LePlayer/issues) 反馈，附上问题描述与复现步骤即可。
+- **QQ 交流群：859684728** —— 反馈问题、提需求、抢先体验新版本（小红书主页同名群聊入口同步开放）
+- [Issues](https://github.com/LePlayer-Studio/LePlayer/issues)：附上问题描述与复现步骤即可
 
 ---
 
