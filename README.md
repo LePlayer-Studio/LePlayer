@@ -19,6 +19,8 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 
 [🛒 微软商店（¥19 买断）](https://apps.microsoft.com/detail/9PDTB5PT4VR7) · [⬇️ GitHub 社区版 v1.7.9（免费）](https://github.com/LePlayer-Studio/LePlayer/releases/latest) · 💬 交流群：QQ 859684728 · [🌐 在线预览](https://leplayer-studio.github.io/LePlayer/) · [使用指南](https://leplayer-studio.github.io/LePlayer/guide.html)
 
+**LePlayer 的本地全功能完全免费。如果您觉得它好用，欢迎前往微软商店（¥19）购买官方版，这不仅能获得一键静默更新，也是支持独立开发者继续维护的最大动力。**
+
 <img src="docs/img/leplayer-demo.gif" width="860" alt="LePlayer 演示" style="border-radius:12px;margin-top:20px;" />
 
 </div>
