@@ -148,6 +148,35 @@ font-weight:300;
 .specs span { color:var(--hifi); }
 .specs .sep { color:rgba(168,255,207,.2); margin:0 8px; }
 
+/* ---------- Demo GIF ---------- */
+.demo-wrap {
+max-width:860px;
+margin:8px auto 0;
+border-radius:18px;
+overflow:hidden;
+border:1px solid var(--border);
+background:var(--surface);
+box-shadow:0 30px 60px -20px rgba(0,0,0,.7), 0 0 60px -20px rgba(110,231,155,.12);
+position:relative;
+}
+.demo-wrap::before {
+content:"";
+position:absolute; top:0; left:18%; right:18%; height:1px;
+background:linear-gradient(90deg, transparent, rgba(168,255,207,.4), transparent);
+z-index:2;
+}
+.demo-wrap img { width:100%; height:auto; display:block; }
+.demo-cap {
+padding:14px 20px;
+font-size:.82em;
+color:var(--text-dim);
+border-top:1px solid var(--border);
+text-align:center;
+font-weight:200;
+letter-spacing:.03em;
+}
+.demo-cap strong { color:var(--hifi); font-weight:400; font-family:'JetBrains Mono', monospace; letter-spacing:.1em; }
+
 /* ---------- Features ---------- */
 .features {
 display:grid;
@@ -498,6 +527,48 @@ transition:color .3s var(--ease);
 }
 .meta a:hover { color:var(--hifi); }
 
+/* ---------- Download dual cards ---------- */
+.dl-cards {
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+max-width:640px;
+margin:0 auto;
+}
+.dl-card {
+display:block;
+background:rgba(5,11,8,.55);
+border:1px solid var(--border);
+border-radius:14px;
+padding:24px 22px;
+text-decoration:none;
+position:relative;
+transition:all .4s var(--ease);
+}
+.dl-card:hover {
+border-color:var(--border-hi);
+background:rgba(110,231,155,.05);
+transform:translateY(-2px);
+box-shadow:0 0 30px -10px rgba(110,231,155,.2);
+}
+.dl-card.primary { border-color:rgba(168,255,207,.3); background:rgba(110,231,155,.07); }
+.dl-card.primary:hover { border-color:var(--hifi); }
+.dl-card h4 { color:var(--text); font-size:.98em; font-weight:400; letter-spacing:.04em; margin:10px 0 8px; }
+.dl-card p { color:var(--text-dim); font-size:.8em; font-weight:200; line-height:1.6; }
+.dl-badge {
+font-family:'JetBrains Mono', monospace;
+font-size:.6em;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:var(--bg);
+background:var(--accent);
+border-radius:3px;
+padding:3px 8px;
+font-weight:400;
+}
+.dl-badge.free { background:transparent; color:var(--hifi); border:1px solid rgba(168,255,207,.35); }
+@media (max-width:720px) { .dl-cards { grid-template-columns:1fr; } }
+
 /* ---------- Footer ---------- */
 footer {
 text-align:center;
@@ -561,10 +632,25 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 </p>
 </div>
 
+<div class="demo-wrap in">
+<img src="img/leplayer-demo.gif" alt="LePlayer 演示 — 氛围光 / 逐字歌词 / 沉浸背景" loading="lazy">
+<div class="demo-cap"><strong>实机演示</strong> — 动态氛围光 · 逐字桌面歌词 · 沉浸式封面背景（5s 实录）</div>
+</div>
+
 <div class="features">
 <div class="card">
 <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
-<h3>三种输出后端<span class="tag">NEW</span></h3>
+<h3>15 万首大曲库<span class="tag">NEW</span></h3>
+<p>keyset 游标分批处理，查重 / 清理 / 批量编辑零全库加载，15 万首级浏览 / 搜索毫秒级响应</p>
+</div>
+<div class="card">
+<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
+<h3>DLNA 双向投送</h3>
+<p>投送到电视 / 音箱，也可作为渲染器被手机投送；投送中心合一入口</p>
+</div>
+<div class="card">
+<div class="mini-eq"><i></i><i></i><i></i><i></i><i></i></div>
+<h3>三种输出后端</h3>
 <p>WASAPI 共享、WASAPI 独占、ASIO 随时切换，独占与 ASIO 实现 Bit-Perfect 直通</p>
 </div>
 <div class="card">
@@ -642,8 +728,10 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 <h2>更新说明</h2>
 <p class="gallery-sub">版本记录</p>
 <div class="section">
-<h3><span class="ver">v1.7.9</span> <span class="date">当前版本 · 设置页收口 + 搜索框重写 + 快捷键补全版</span></h3>
+<h3><span class="ver">v1.7.9</span> <span class="date">当前版本 · 大曲库内存防爆 + 设置页收口版</span></h3>
 <ul>
+<li><strong>大曲库内存防爆清理</strong>：查重 / 孤儿清理 / 文件夹删除 / 封面重建 / 曲风批量编辑全部改为数据库分批（keyset 游标）处理，15 万首级曲库批量操作不再全库进内存，主代码 0 处全量拉取</li>
+<li><strong>双渠道分发上线</strong>：GitHub 恢复发布社区完整版（与商店版同版本同功能，免费、无试用期、无功能锁；区别仅更新方式）</li>
 <li>设置页收口：删除 5 个未生效的占位实验开关（Hi-Res 自动检测 / AI 母带 / 空间音频 / 云端听歌记录 / 语音控制），联网补全两开关合一</li>
 <li>搜索框重写：胶囊造型、宽度随界面语言自适应，中 / 英 / 繁显示一致，补齐悬停与按下反馈</li>
 <li>新快捷键：Ctrl + F 聚焦搜索框；曲库多选后 Delete 一键移出（确认弹窗，绝不删除音频文件）</li>
@@ -769,8 +857,22 @@ h2 { font-size:1.15em; letter-spacing:.14em; }
 </div>
 
 <div class="download">
-<a class="btn" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">下载最新版本</a>
-<p class="meta"><a href="guide.html">详细使用指南</a> · Windows x64 · 内置运行时 · 无需预装 Java · 约 161 MB</p>
+<h2 style="margin:0 0 6px;">获取 LePlayer</h2>
+<p class="gallery-sub" style="margin-bottom:28px;">双渠道 · 同一版本 · 全功能无阉割</p>
+<div class="dl-cards">
+<a class="dl-card primary" href="https://apps.microsoft.com/detail/9PDTB5PT4VR7">
+<span class="dl-badge">推荐</span>
+<h4>微软商店版 · ¥19 买断</h4>
+<p>静默自动更新 · 商店签名认证 · 一键安装</p>
+</a>
+<a class="dl-card" href="https://github.com/LePlayer-Studio/LePlayer/releases/latest">
+<span class="dl-badge free">免费</span>
+<h4>GitHub 社区版</h4>
+<p>全功能 · 无试用期 · 无功能锁 · 手动更新</p>
+</a>
+</div>
+<p class="meta" style="margin-top:26px;">LePlayer 的本地全功能完全免费。如果您觉得它好用，欢迎前往微软商店（¥19）购买官方版，这不仅能获得一键静默更新，也是支持独立开发者继续维护的最大动力。</p>
+<p class="meta"><a href="guide.html">详细使用指南</a> · 💬 交流群 QQ 859684728 · Windows x64 · 内置运行时 · 无需预装 Java</p>
 </div>
 
 <footer>
