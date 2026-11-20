@@ -33,6 +33,7 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 > - **⬇️ GitHub 社区版（免费）**：[Releases 最新版](https://github.com/LePlayer-Studio/LePlayer/releases/latest) 直接下载安装包，无试用期、无功能锁、无弹窗；不含静默自动更新——「检查更新」会引导你回到本页下载新版。
 > - **🛒 微软商店版（¥19 买断）**：支持**静默自动更新**、商店签名认证、一键安装。**如果你觉得 LePlayer 好用，欢迎前往微软商店购买正版——这是对独立开发者最直接的支持。**
 > - **💬 交流群**：QQ 群 **859684728**（小红书主页同名群聊入口同步开放）——反馈问题、提需求、抢先体验新版本。
+> - **📌 版本封顶**：GitHub 社区版与本站公开文档停留在 **v1.7.9**；v1.7.10 及以后仅在微软商店发布。
 >
 > Both channels ship the **same version with identical, full features**. The GitHub edition is free (no trial, no feature locks, manual updates only); the Microsoft Store edition (¥19, one-time) adds silent auto-updates and official certification. If you like LePlayer, buying the Store edition is the best way to support an independent developer.
 
