@@ -104,6 +104,15 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 - **绿色版**为当前默认桌面图标
 - 深色模式下任务栏与系统托盘图标随主题自动切换
 
+## 📸 界面预览 / Screenshots
+
+<div align="center">
+
+<img src="docs/img/dark-library.png" width="420" alt="曲库" style="border-radius:8px;" /> <img src="docs/img/dark-albums.png" width="420" alt="专辑" style="border-radius:8px;" />
+<img src="docs/img/dark-engine.png" width="420" alt="音频引擎" style="border-radius:8px;" /> <img src="docs/img/light-library.png" width="420" alt="浅色主题" style="border-radius:8px;" />
+
+</div>
+
 ## 🏗️ 双引擎架构 / Dual-Engine
 
 | 层 | 职责 |
