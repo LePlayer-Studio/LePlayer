@@ -12,14 +12,14 @@
 Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直出 bit-perfect · 全格式 HiFi 解码
 
 ![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-blue)
-![Latest](https://img.shields.io/badge/最新版-v1.7.14%20(社区版)-brightgreen)
-![GitHub](https://img.shields.io/badge/GitHub%20社区版-v1.7.14-success)
+![Latest](https://img.shields.io/badge/最新版-v1.7.9-brightgreen)
+![GitHub](https://img.shields.io/badge/GitHub%20社区版-v1.7.9-success)
 ![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blueviolet)
 ![Rust](https://img.shields.io/badge/Rust-Audio-orange)
 
-[🛒 微软商店（¥19 买断，静默更新）](https://apps.microsoft.com/detail/9PDTB5PT4VR7) · [⬇️ GitHub 社区版 v1.7.14（免费）](https://github.com/LePlayer-Studio/LePlayer/releases/latest) · 💬 交流群：QQ 859684728 · [🌐 在线预览](https://leplayer-studio.github.io/LePlayer/) · [使用指南](https://leplayer-studio.github.io/LePlayer/guide.html)
+[🛒 微软商店（¥19 买断）](https://apps.microsoft.com/detail/9PDTB5PT4VR7) · [⬇️ GitHub 社区版 v1.7.9（免费）](https://github.com/LePlayer-Studio/LePlayer/releases/latest) · 💬 交流群：QQ 859684728 · [🌐 在线预览](https://leplayer-studio.github.io/LePlayer/) · [使用指南](https://leplayer-studio.github.io/LePlayer/guide.html)
 
-**LePlayer 的本地全功能完全免费，GitHub 社区版与商店版同版本同功能；商店版多一项静默自动更新。觉得好用欢迎前往微软商店（¥19）购买，这是支持独立开发者最直接的方式。**
+**LePlayer 的本地全功能完全免费。如果您觉得它好用，欢迎前往微软商店（¥19）购买官方版，这不仅能获得一键静默更新，也是支持独立开发者继续维护的最大动力。**
 
 <img src="docs/img/leplayer-demo.gif" width="860" alt="LePlayer 演示" style="border-radius:12px;margin-top:20px;" />
 
@@ -29,12 +29,14 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 
 > ## 📢 双渠道分发 / Distribution
 >
-> - **两个渠道，同一个产品**：GitHub 社区版与微软商店版**版本号与功能完全一致**，不设功能差、不锁功能；唯一差异是更新方式。
-> - **⬇️ GitHub 社区版（免费）**：[Releases 最新版](https://github.com/LePlayer-Studio/LePlayer/releases/latest) 直接下载安装包，无试用期、无功能锁、无弹窗；更新为手动覆盖安装（「检查更新」会引导你回到 Releases 下载新版）。
+> - **两个渠道，同一个产品**：GitHub 社区版与微软商店版**功能完全一致、全功能无阉割**；但**版本号各自更新**——GitHub 社区版封顶 v1.7.9，微软商店版持续更新（当前已至 v1.7.12 及以后）。
+> - **⬇️ GitHub 社区版（免费）**：[Releases 最新版](https://github.com/LePlayer-Studio/LePlayer/releases/latest) 直接下载安装包，无试用期、无功能锁、无弹窗；不含静默自动更新——「检查更新」会引导你回到本页下载新版。
 > - **🛒 微软商店版（¥19 买断）**：支持**静默自动更新**、商店签名认证、一键安装。**如果你觉得 LePlayer 好用，欢迎前往微软商店购买正版——这是对独立开发者最直接的支持。**
 > - **💬 交流群**：QQ 群 **859684728**（小红书主页同名群聊入口同步开放）——反馈问题、提需求、抢先体验新版本。
+> - **📌 版本封顶**：GitHub 社区版与本站公开文档停留在 **v1.7.9**；v1.7.10 及以后仅在微软商店发布。
+> - **🛒 商店更新动态**：微软商店版现已更新至 **v1.7.12**（桌面歌词锁子冷启动、详情页头像、播放进度稳定性修复）；想要最新功能请前往 [微软商店](https://apps.microsoft.com/detail/9PDTB5PT4VR7) 获取。
 >
-> Both channels ship the **identical feature set and version number** with no feature locks. The GitHub community edition is free (manual upgrade via Releases); the Microsoft Store edition (¥19 one-time) adds silent auto-updates and official certification. If you like LePlayer, buying the Store edition is the best way to support an independent developer.
+> Both channels ship the **identical full feature set with no feature locks**, but their **versions advance independently**. The GitHub community edition is capped at v1.7.9 (free, no trial, manual updates only); the Microsoft Store edition keeps updating (currently v1.7.12 and later, ¥19 one-time) and adds silent auto-updates plus official certification. If you like LePlayer, buying the Store edition is the best way to support an independent developer.
 
 ---
 
@@ -134,15 +136,15 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 > 当前仅发布 **Windows x64** 版本，内置运行时，**无需预装 Java 环境**。
 
-### 🛒 方式一：微软商店（¥19 买断，静默更新，v1.7.14）
+### 🛒 方式一：微软商店（¥19 买断，v1.7.9）
 
 - 在 Microsoft Store 搜索 **「LePlayer」**，或点击 [商店页面](https://apps.microsoft.com/detail/9PDTB5PT4VR7)
 - 买断制，一次购买永久使用，**静默自动更新**，商店签名认证
 - 支持 Windows 10 2004（build 19041）及以上 / Windows 11
 
-### ⬇️ 方式二：GitHub 社区版（免费，v1.7.14，功能与商店版一致）
+### ⬇️ 方式二：GitHub 社区版（免费，v1.7.9，功能与商店版一致）
 
-- 下载 [`LePlayer-Setup-1.7.14.exe`](https://github.com/LePlayer-Studio/LePlayer/releases/latest)（约 128 MB）
+- 下载 [`LePlayer-Setup-1.7.9.exe`](https://github.com/LePlayer-Studio/LePlayer/releases/latest)（约 127 MB）
 - **全功能、无试用期、无功能锁**；不含静默自动更新，「设置 → 检查更新」会引导回到 [Releases](https://github.com/LePlayer-Studio/LePlayer/releases) 下载新版
 - 历史版本见 [Releases](https://github.com/LePlayer-Studio/LePlayer/releases)
 
@@ -157,16 +159,6 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 > **渠道差异**：商店版（MSIX）数据目录由系统管理，不支持自定义路径；GitHub 版（NSIS）可自选安装与缓存目录。两版数据目录各自独立，切换渠道后需重新添加一次音乐文件夹（音频文件本身不受影响）。
 
 ## 🆕 更新日志 / Changelog
-
-### v1.7.14 — 扫描诊断版：大曲库 / DSD / DFF
-
-- **首启动"选完音乐文件夹应用消失"根治**：DataStore 写入异常不再杀进程，失败保持引导页并给出可读提示；新增"直接进入"应急入口与全链 `[Onboarding][Diag]` 取证日志
-- **大曲库分片落库**：500 首 / 1.5 秒双阈值 + 收尾强制落库，扫描途中逐步出歌，不再"发现 450 首、曲库 0 首"；扫描中断后重扫不丢
-- **扫描提速**：特殊容器直跳强制 demuxer + probe 4 并发预取（400 个坏样本实测 83.4s → 39.1s，2.1×）
-- **`.dff`（DSDIFF）支持**：新增只读 chunk 头的解析器，`.dff` 可正常入库、显示真实 DSD 位流率与时长；修复 DoP 播放链路，>2GB 整轨可播；DST 压缩 `.dff` 明确不支持
-- **DSD 输出可见**：设置页实时显示"当前 DSD 输出：原生直出 / DoP 载波 / PCM 转码"；非 ASIO 播 `.dsf` 会提示"已转 PCM、会重采样"
-- **DLNA 投送队列**：右键"投送到设备"未投送时自动找设备并开播（从这首到队尾；队列外的歌回退同专辑后续），已投送时为插队；面板队列可点击跳播
-- 本版仅 EXE；未出 MSIX / 未跑 WACK。大曲库真实 NAS 全量扫描尚未实测，自测方法见发布页清单
 
 ### v1.7.9 — 大曲库内存防爆 + 设置页收口版
 - **大曲库内存防爆清理**：查重 / 孤儿清理 / 文件夹删除 / 封面重建 / 曲风批量编辑全部改为数据库分批（keyset 游标）处理，15 万首级曲库批量操作不再把全库拉进内存；主代码 0 处全量拉取
