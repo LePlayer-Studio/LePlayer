@@ -744,6 +744,27 @@ a,a:visited { color:var(--accent); }
 <h2>更新说明</h2>
 <p class="gallery-sub">版本记录</p>
 <div class="section">
+<div class="section">
+<h3><span class="ver">v1.7.14</span> <span class="date">微软商店版 · 待上架（GitHub 社区版封顶 v1.7.9）</span></h3>
+<ul>
+<li><strong>.dff（DSDIFF）整轨支持</strong>：只读 chunk 头解析、不扫音频体；DSD64 / 128 / 256 可入库播放（ASIO 下原生 / DoP 直出，非 ASIO 转 PCM 并提示）</li>
+<li><strong>首启动选完音乐文件夹即退出（根治）</strong>：异常不再冒泡到进程退出，保留引导并新增「直接进入」应急入口</li>
+<li><strong>大曲库「发现很多首但曲库 0 首」</strong>：分片落库，长扫描不再只留最后一片</li>
+<li><strong>扫描提速与诊断</strong>：.dff 只读头，慢解析可用 LEPLAYER_SCAN_DIAG=1 打印</li>
+<li><strong>投送右键两档</strong>：队列内顺播到队尾；队列外按同专辑 Track# 往后、不跨目录；计数统一「含本首」</li>
+<li><strong>文件夹校验补边界</strong>：拒绝设备路径与 CON/NUL/COM1 等保留设备名；UNC 带不带尾斜杠判定一致</li>
+<li>设置页按秒显示 DSD 实际输出路由（原生 / DoP / PCM）</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><span class="ver">v1.7.12</span> <span class="date">微软商店版 · 播放稳定性补丁</span></h3>
+<ul>
+<li>桌面歌词冷启动点击小锁子无响应（有限重试）</li>
+<li>艺术家详情页头像放大到 112dp，信息区重排</li>
+<li>播放进度假死不再误判卡死，stop 重载不再制造卡顿</li>
+</ul>
+</div>
 <h3><span class="ver">v1.7.9</span> <span class="date">当前版本 · 大曲库内存防爆 + 设置页收口版</span></h3>
 <ul>
 <li><strong>大曲库内存防爆清理</strong>：查重 / 孤儿清理 / 文件夹删除 / 封面重建 / 曲风批量编辑全部改为数据库分批（keyset 游标）处理，15 万首级曲库批量操作不再全库进内存，主代码 0 处全量拉取</li>
