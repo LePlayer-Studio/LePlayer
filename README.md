@@ -29,14 +29,14 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 
 > ## 📢 双渠道分发 / Distribution
 >
-> - **两个渠道，同一个产品**：GitHub 社区版与微软商店版**功能完全一致、全功能无阉割**；但**版本号各自更新**——GitHub 社区版封顶 v1.7.9，微软商店版持续更新（当前已至 v1.7.13 及以后）。
+> - **两个渠道，同一个产品**：GitHub 社区版与微软商店版**功能完全一致、全功能无阉割**；但**版本号各自更新**——GitHub 社区版封顶 v1.7.9，微软商店版持续更新（当前已至 v1.7.12 及以后）。
 > - **⬇️ GitHub 社区版（免费）**：[Releases 最新版](https://github.com/LePlayer-Studio/LePlayer/releases/latest) 直接下载安装包，无试用期、无功能锁、无弹窗；不含静默自动更新——「检查更新」会引导你回到本页下载新版。
 > - **🛒 微软商店版（¥19 买断）**：支持**静默自动更新**、商店签名认证、一键安装。**如果你觉得 LePlayer 好用，欢迎前往微软商店购买正版——这是对独立开发者最直接的支持。**
 > - **💬 交流群**：QQ 群 **859684728**（小红书主页同名群聊入口同步开放）——反馈问题、提需求、抢先体验新版本。
 > - **📌 版本封顶**：GitHub 社区版与本站公开文档停留在 **v1.7.9**；v1.7.10 及以后仅在微软商店发布。
-> - **🛒 商店更新动态**：微软商店版现已更新至 **v1.7.13**（主窗位置漂移根治、偶发卡顿与欠载修复、解码分段计时）；想要最新功能请前往 [微软商店](https://apps.microsoft.com/detail/9PDTB5PT4VR7) 获取。
+> - **🛒 商店更新动态**：微软商店版现已更新至 **v1.7.12**（桌面歌词锁子冷启动、详情页头像、播放进度稳定性修复）；想要最新功能请前往 [微软商店](https://apps.microsoft.com/detail/9PDTB5PT4VR7) 获取。
 >
-> Both channels ship the **identical full feature set with no feature locks**, but their **versions advance independently**. The GitHub community edition is capped at v1.7.9 (free, no trial, manual updates only); the Microsoft Store edition keeps updating (currently v1.7.13 and later, ¥19 one-time) and adds silent auto-updates plus official certification. If you like LePlayer, buying the Store edition is the best way to support an independent developer.
+> Both channels ship the **identical full feature set with no feature locks**, but their **versions advance independently**. The GitHub community edition is capped at v1.7.9 (free, no trial, manual updates only); the Microsoft Store edition keeps updating (currently v1.7.12 and later, ¥19 one-time) and adds silent auto-updates plus official certification. If you like LePlayer, buying the Store edition is the best way to support an independent developer.
 
 ---
 
