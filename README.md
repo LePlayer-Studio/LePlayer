@@ -29,14 +29,14 @@ Kotlin × Rust 双引擎 · WASAPI 共享 / 独占 / ASIO 三后端 · 源率直
 
 > ## 📢 双渠道分发 / Distribution
 >
-> - **两个渠道，同一个产品**：GitHub 社区版与微软商店版**功能完全一致、全功能无阉割**；但**版本号各自更新**——GitHub 社区版封顶 v1.7.9，微软商店版持续更新（当前已至 v1.7.12 及以后）。
+> - **两个渠道，同一个产品**：GitHub 社区版与微软商店版**功能完全一致、全功能无阉割**；但**版本号各自更新**——GitHub 社区版封顶 v1.7.9，微软商店版持续更新（当前在架 v1.7.12，**v1.7.14 已提交认证、审核中**）。
 > - **⬇️ GitHub 社区版（免费）**：[Releases 最新版](https://github.com/LePlayer-Studio/LePlayer/releases/latest) 直接下载安装包，无试用期、无功能锁、无弹窗；不含静默自动更新——「检查更新」会引导你回到本页下载新版。
 > - **🛒 微软商店版（¥19 买断）**：支持**静默自动更新**、商店签名认证、一键安装。**如果你觉得 LePlayer 好用，欢迎前往微软商店购买正版——这是对独立开发者最直接的支持。**
 > - **💬 交流群**：QQ 群 **859684728**（小红书主页同名群聊入口同步开放）——反馈问题、提需求、抢先体验新版本。
 > - **📌 版本封顶**：GitHub 社区版与本站公开文档停留在 **v1.7.9**；v1.7.10 及以后仅在微软商店发布。
-> - **🛒 商店更新动态**：微软商店版现已更新至 **v1.7.12**（桌面歌词锁子冷启动、详情页头像、播放进度稳定性修复）；想要最新功能请前往 [微软商店](https://apps.microsoft.com/detail/9PDTB5PT4VR7) 获取。
+> - **🛒 商店更新动态**：当前在架 **v1.7.12**；**v1.7.14（大曲库内存重构 + 曲库查重 + DSD 音量三态）已提交认证，审核中**——通过后商店会自动推送更新，不需要手动下载。
 >
-> Both channels ship the **identical full feature set with no feature locks**, but their **versions advance independently**. The GitHub community edition is capped at v1.7.9 (free, no trial, manual updates only); the Microsoft Store edition keeps updating (currently v1.7.12 and later, ¥19 one-time) and adds silent auto-updates plus official certification. If you like LePlayer, buying the Store edition is the best way to support an independent developer.
+> Both channels ship the **identical full feature set with no feature locks**, but their **versions advance independently**. The GitHub community edition is capped at v1.7.9 (free, no trial, manual updates only); the Microsoft Store edition keeps updating (v1.7.12 live, **v1.7.14 submitted for certification**; ¥19 one-time) and adds silent auto-updates plus official certification. If you like LePlayer, buying the Store edition is the best way to support an independent developer.
 
 ---
 
@@ -160,14 +160,16 @@ Kotlin 与 Rust 各展所长——UI 用 Kotlin 快速迭代，音频链路用 R
 
 ## 🆕 更新日志 / Changelog
 
-### v1.7.14 — 扫描诊断 + .dff 支持版（微软商店版 · 待上架）
-- **`.dff`（DSDIFF）整轨支持**：只读 chunk 头解析、不扫音频数据体；DSD64 / 128 / 256 可入库播放（ASIO 下原生 / DoP 直出，非 ASIO 转 PCM 并提示）
-- **首启动选完音乐文件夹即退出（根治）**：异常不再冒泡到进程退出；保留引导，并新增「直接进入」应急入口
-- **大曲库「发现 450 首但曲库 0 首」**：分片落库，长扫描不再只留最后一片
-- **扫描提速与诊断**：`.dff` 只读头；`LEPLAYER_SCAN_DIAG=1` 可打印慢解析
-- **投送右键两档**：点在当前队列内→顺播到队尾；点在队列外→同专辑按 Track# 往后、不跨目录；toast 计数统一「含本首」
-- **音乐文件夹校验补边界**：拒绝 `\\?\` / `\\.\` 设备路径与 `CON/NUL/COM1` 等保留设备名；UNC 带不带尾斜杠判定一致
-- **设置页 DSD 路由指示**：按秒显示实测「原生 / DoP / PCM」
+### v1.7.14 — 大曲库内存重构 + 曲库查重 + DSD 音量三态（微软商店版 · 已提交认证，审核中）
+- **30 万首级曲库内存重构**：解析期不再全量驻留歌曲对象、专辑聚合改为流式、增量索引改路径哈希紧凑存储、终态对账改分页 keyset——一次全量重扫的常驻内存 **185 MB → 约 10 MB（-94.6%）**，稳态重扫 **25.0 秒 → 15.9 秒**，首扫峰值 **541 MB → 366 MB**（30 万首合成夹具，非真实 13TB 曲库实测）；无曲库结构变更，**升级不触发全量重扫**
+- **曲库查重（新入口）**：歌曲页工具条 →「查找重复」，按「歌名 + 歌手 + 4 秒时长桶」列疑似重复；**只读报告，不删不合不动文件**，可导出 UTF-8 CSV；1,178 首约 **7 毫秒**出结果（旧实现约 5 秒）
+- **搜索纳入文件路径**：搜索框同时命中文件路径与文件夹名；歌曲页新增随机播放按钮
+- **DSD 音量三态**：DoP / `.dff` 走位精确路线、音量锁定不干预；**Native DSD 音量低于 100% 自动降为 PCM 软件音量**（500 ms 防抖 + ASIO 静音闩），不再爆音；DSD 域重调制为默认关闭的实验开关
+- **设置页按证据显示**：输出卡首屏新增「实际输出」（格式 + 模式 + 采样率），并从引擎回读真实模式——**意图独占却被降级为共享会明示**；采样率补齐 88.2 / 176.4 / 352.8 / 384 kHz；位深度可检测硬件支持
+- **`.dff`（DSDIFF）**：按 FRM8 / PROP 头解析精确时长，ASIO 下走 DoP 播放，**超过 2 GB 的整轨不再被拒绝**；非 ASIO 播放给出「需要 ASIO（DoP 位精确）」提示而非静默降级
+- **游戏全屏两级判据**：主窗只对**游戏级全屏**让位；取不到进程名、浏览器 F11、桌面 / 开始菜单 / 搜索都不再误藏主窗，Alt+Tab 回来即刻可见
+- **修复批**：首启动选完音乐文件夹即退出的根治（引导不再被异常打断，另加「直接进入」应急入口）；大曲库「发现很多首但曲库 0 首」分片落库修复；艺术家名取色自愈；收件箱右键贴鼠标弹出；MINI 切屏重绘
+- **指纹改手动入口**：不再随扫描自动全库读盘，新增「强制重算全部指纹」；三语（简中 / 繁中 / 英文）各 1,440 key 全部走资源文件
 - 本版仅在微软商店更新，GitHub 社区版安装包仍封顶 **v1.7.9**
 
 ### v1.7.12 — 播放稳定性补丁版（微软商店版）
